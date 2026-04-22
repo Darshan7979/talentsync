@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
@@ -188,6 +188,12 @@
     .benefit-row div { padding: 0.8rem 1rem; }
     .promise { margin-bottom: 2.5rem; padding: 1.6rem 1.8rem; }
     .promise h2 { margin-bottom: 0.65rem; }
+      .content-grid.stacked-cols { align-items: start; }
+    .grid-col { display: flex; flex-direction: column; gap: 1.4rem; height: 100%; }
+    @media (max-width: 980px) {
+      .content-grid.stacked-cols { display: flex; flex-direction: column; }
+      .grid-col { display: contents; }
+    }
   </style>
   <link rel="stylesheet" href="navbar-home.css" />
   <link rel="stylesheet" href="navbar-unified.css" />
@@ -252,27 +258,14 @@
       <div class="stat"><strong>Reliable</strong><span>Structured screening and verification that help reduce hiring risk.</span></div>
     </section>
 
-    <section class="content-grid">
-      <article class="panel">
+    <section class="content-grid stacked-cols">
+  <div class="grid-col left-col">
+    <article class="panel" style="order: 1">
         <h2>Agility and Precision for a Dynamic Workforce</h2>
         <p>Every business has different hiring needs — permanent hires, urgent contracts, project-specific talent, or bulk expansion. Our staffing model is built for this reality: flexible in structure, disciplined in execution.</p>
         <p>We treat staffing as a strategic function. Before sourcing, we understand the role, the team, and what success looks like — so we move fast without sacrificing quality. Every candidate we present is ready to contribute from day one.</p>
       </article>
-
-      <aside class="panel">
-        <h2>Our Comprehensive Staffing Portfolio</h2>
-        <div class="feature-list">
-          <div class="feature-item"><strong>Permanent Employee Recruitment</strong><span>For roles that form the backbone of your organization, we prioritize long-term fit, retention strength, and future leadership potential.</span></div>
-          <div class="feature-item"><strong>Temporary and Contract Staffing</strong><span>We give you the workforce flexibility to manage seasonal peaks, leave cover, short-term spikes in workload, and immediate operational demands.</span></div>
-          <div class="feature-item"><strong>Project-Based Workforce Requirements</strong><span>We source niche specialists and subject matter experts for targeted initiatives such as transformations, audits, engineering programs, and digital projects.</span></div>
-          <div class="feature-item"><strong>Bulk Hiring and High-Volume Recruitment</strong><span>For launches, expansion drives, and large-scale manpower plans, we manage recruitment campaigns that deliver volume without sacrificing candidate quality.</span></div>
-          <div class="feature-item"><strong>Strategic Replacement and Expansion Hiring</strong><span>We help you manage employee transitions and team growth smoothly so daily operations remain stable while the business continues moving forward.</span></div>
-        </div>
-      </aside>
-    </section>
-
-    <section class="content-grid">
-      <article class="panel">
+    <article class="panel" style="order: 3">
         <h2>The TalentSync Quality Assurance Approach</h2>
         <p>We go beyond matching job titles. Our structured framework evaluates whether a candidate will truly perform, adapt, and thrive within your team — giving you shortlists that are decision-ready.</p>
         <div class="benefit-table">
@@ -282,13 +275,25 @@
           <div class="benefit-row"><div>Reliability and Vetting</div><div>Reference checks and broader verification support that help reduce hiring risk and strengthen confidence in the final selection.</div></div>
         </div>
       </article>
-
-      <article class="panel">
+  </div>
+  <div class="grid-col right-col">
+    <aside class="panel" style="order: 2">
+        <h2>Our Comprehensive Staffing Portfolio</h2>
+        <div class="feature-list">
+          <div class="feature-item"><strong>Permanent Employee Recruitment</strong><span>For roles that form the backbone of your organization, we prioritize long-term fit, retention strength, and future leadership potential.</span></div>
+          <div class="feature-item"><strong>Temporary and Contract Staffing</strong><span>We give you the workforce flexibility to manage seasonal peaks, leave cover, short-term spikes in workload, and immediate operational demands.</span></div>
+          <div class="feature-item"><strong>Project-Based Workforce Requirements</strong><span>We source niche specialists and subject matter experts for targeted initiatives such as transformations, audits, engineering programs, and digital projects.</span></div>
+          <div class="feature-item"><strong>Bulk Hiring and High-Volume Recruitment</strong><span>For launches, expansion drives, and large-scale manpower plans, we manage recruitment campaigns that deliver volume without sacrificing candidate quality.</span></div>
+          <div class="feature-item"><strong>Strategic Replacement and Expansion Hiring</strong><span>We help you manage employee transitions and team growth smoothly so daily operations remain stable while the business continues moving forward.</span></div>
+        </div>
+      </aside>
+    <article class="panel" style="order: 4">
         <h2>Driving Efficiency Through Partnership</h2>
         <p>We handle sourcing, screening, and interview coordination — so your teams focus only on the best candidates. Whether you're managing multiple openings or a sudden workforce shift, we bring consistency, speed, and clarity to every hiring decision.</p>
         <p>We don't just supply resumes — we deliver human capital solutions. Every assignment is approached with one goal: strengthening your workforce for measurable, lasting impact.</p>
       </article>
-    </section>
+  </div>
+</section>
 
     <section class="promise">
       <h2>Our Philosophy</h2>

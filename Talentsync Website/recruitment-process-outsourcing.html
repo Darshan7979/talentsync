@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
@@ -535,6 +535,12 @@
     .benefit-row div { padding: 0.8rem 1rem; }
     .promise { margin-bottom: 2.5rem; padding: 1.6rem 1.8rem; }
     .promise h2 { margin-bottom: 0.65rem; }
+      .content-grid.stacked-cols { align-items: start; }
+    .grid-col { display: flex; flex-direction: column; gap: 1.4rem; height: 100%; }
+    @media (max-width: 980px) {
+      .content-grid.stacked-cols { display: flex; flex-direction: column; }
+      .grid-col { display: contents; }
+    }
   </style>
   <link rel="stylesheet" href="navbar-home.css" />
   <link rel="stylesheet" href="navbar-unified.css" />
@@ -614,8 +620,9 @@
       </div>
     </section>
 
-    <section class="content-grid">
-      <article class="panel">
+    <section class="content-grid stacked-cols">
+  <div class="grid-col left-col">
+    <article class="panel" style="order: 1">
         <h2>Elevate Your Talent Acquisition Strategy</h2>
         <p>
           Our RPO service is built for organizations that need a reliable recruitment engine — one that responds fast without compromising quality or employer reputation. We take the operational load off your internal teams so leaders stay focused on growth and delivery.
@@ -627,8 +634,33 @@
           From sourcing and screening to interview scheduling, offer support, and onboarding — we manage the full hiring lifecycle with professionalism and structure. Every step feels organized for both your team and your candidates.
         </p>
       </article>
-
-      <aside class="panel">
+    <article class="panel" style="order: 3">
+        <h2>Why Partner With TalentSync For RPO?</h2>
+        <p>
+          A strong RPO model should do more than process resumes. It should improve hiring outcomes, create clarity for decision-makers, and make recruitment scalable during both stable periods and high-growth phases. Our approach combines recruitment expertise with business understanding, giving your organization a structured system that can grow with your needs.
+        </p>
+        <div class="benefit-table">
+          <div class="benefit-row">
+            <div>Scalability</div>
+            <div>Increase or reduce recruitment activity quickly based on seasonal hiring, project demands, expansion plans, or sudden workforce gaps.</div>
+          </div>
+          <div class="benefit-row">
+            <div>Cost Efficiency</div>
+            <div>Lower cost-per-hire by reducing internal workload, minimizing process delays, and decreasing overdependence on multiple outside hiring vendors.</div>
+          </div>
+          <div class="benefit-row">
+            <div>Quality of Hire</div>
+            <div>Access role-aware recruiters who understand technical, functional, and behavioral expectations, helping you reach stronger final selections faster.</div>
+          </div>
+          <div class="benefit-row">
+            <div>Tech-Enabled Hiring</div>
+            <div>Use modern sourcing methods, process tracking, and practical recruitment analytics without investing in a large internal hiring infrastructure.</div>
+          </div>
+        </div>
+      </article>
+  </div>
+  <div class="grid-col right-col">
+    <aside class="panel" style="order: 2">
         <h2>End-to-End Managed Recruitment</h2>
         <div class="feature-list">
           <div class="feature-item">
@@ -653,35 +685,7 @@
           </div>
         </div>
       </aside>
-    </section>
-
-    <section class="content-grid">
-      <article class="panel">
-        <h2>Why Partner With TalentSync For RPO?</h2>
-        <p>
-          A strong RPO model should do more than process resumes. It should improve hiring outcomes, create clarity for decision-makers, and make recruitment scalable during both stable periods and high-growth phases. Our approach combines recruitment expertise with business understanding, giving your organization a structured system that can grow with your needs.
-        </p>
-        <div class="benefit-table">
-          <div class="benefit-row">
-            <div>Scalability</div>
-            <div>Increase or reduce recruitment activity quickly based on seasonal hiring, project demands, expansion plans, or sudden workforce gaps.</div>
-          </div>
-          <div class="benefit-row">
-            <div>Cost Efficiency</div>
-            <div>Lower cost-per-hire by reducing internal workload, minimizing process delays, and decreasing overdependence on multiple outside hiring vendors.</div>
-          </div>
-          <div class="benefit-row">
-            <div>Quality of Hire</div>
-            <div>Access role-aware recruiters who understand technical, functional, and behavioral expectations, helping you reach stronger final selections faster.</div>
-          </div>
-          <div class="benefit-row">
-            <div>Tech-Enabled Hiring</div>
-            <div>Use modern sourcing methods, process tracking, and practical recruitment analytics without investing in a large internal hiring infrastructure.</div>
-          </div>
-        </div>
-      </article>
-
-      <article class="panel">
+    <article class="panel" style="order: 4">
         <h2>Transform Your Hiring Culture</h2>
         <p>
           With TalentSync, you gain a partner accountable for outcomes, not just activity. We improve time-to-fill, strengthen candidate quality, and build a hiring rhythm that is dependable for your team and professional for every applicant.
@@ -690,7 +694,8 @@
           Over time, this creates stronger recruitment discipline organization-wide — hiring managers receive better profiles, leadership gains predictable support, and candidates experience a journey that reflects your brand at its best.
         </p>
       </article>
-    </section>
+  </div>
+</section>
 
     <section class="promise">
       <h2>Our Promise</h2>

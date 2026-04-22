@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
@@ -321,6 +321,12 @@
     .benefit-row div { padding: 0.8rem 1rem; }
     .promise { margin-bottom: 2.5rem; padding: 1.6rem 1.8rem; }
     .promise h2 { margin-bottom: 0.65rem; }
+      .content-grid.stacked-cols { align-items: start; }
+    .grid-col { display: flex; flex-direction: column; gap: 1.4rem; height: 100%; }
+    @media (max-width: 980px) {
+      .content-grid.stacked-cols { display: flex; flex-direction: column; }
+      .grid-col { display: contents; }
+    }
   </style>
   <link rel="stylesheet" href="navbar-home.css" />
   <link rel="stylesheet" href="navbar-unified.css" />
@@ -385,8 +391,9 @@
       <div class="stat"><strong>Scalable</strong><span>Support for single specialists, legacy modernization, and full tech team builds.</span></div>
     </section>
 
-    <section class="content-grid">
-      <article class="panel">
+    <section class="content-grid stacked-cols">
+  <div class="grid-col left-col">
+    <article class="panel" style="order: 1">
         <h2>Powering Your Digital Transformation</h2>
         <p>
           Digital capability shapes your product quality, infrastructure resilience, and growth velocity. That's why IT recruitment demands precision beyond standard hiring. At TalentSync, we approach every tech search with deep awareness of how each role impacts your business.
@@ -395,21 +402,7 @@
           Our specialists stay ahead of market trends, reach passive candidates through direct outreach, and move fast so you don't lose strong talent to competitors. Every shortlist is curated for role fit, delivery style, and team dynamics — not just technical skills on paper.
         </p>
       </article>
-
-      <aside class="panel">
-        <h2>Specialist Roles We Source</h2>
-        <div class="feature-list">
-          <div class="feature-item"><strong>Software and Web Development</strong><span>We identify developers across back-end, front-end, and full stack functions, including talent experienced in Python, Java, .NET, React, and scalable application delivery.</span></div>
-          <div class="feature-item"><strong>Mobile Innovation</strong><span>We source iOS and Android developers who can build high-performance mobile experiences that support user engagement, speed, and platform reliability.</span></div>
-          <div class="feature-item"><strong>Infrastructure and Security</strong><span>We recruit system administrators, network engineers, cloud professionals, and cybersecurity specialists who protect uptime, performance, and operational resilience.</span></div>
-          <div class="feature-item"><strong>Data and Analytics</strong><span>We connect businesses with data analysts and BI specialists who can transform raw information into insights that support strategic and operational decisions.</span></div>
-          <div class="feature-item"><strong>Technical Support</strong><span>We provide IT support engineers and technical executives who ensure end-users, systems, and business teams stay connected to dependable technical assistance.</span></div>
-        </div>
-      </aside>
-    </section>
-
-    <section class="content-grid">
-      <article class="panel">
+    <article class="panel" style="order: 3">
         <h2>Our Technical Evaluation Framework</h2>
         <p>
           We do not just review resumes. We screen for practical value, project readiness, and long-term suitability. Our multi-layered evaluation process helps ensure that the professionals we recommend are prepared to contribute in real technical environments rather than only sounding impressive in a profile summary.
@@ -421,8 +414,19 @@
           <div class="benefit-row"><div>Project Fit</div><div>Alignment of the candidate�s experience with Agile, Scrum, DevOps, product delivery models, and the workflows used by your internal teams.</div></div>
         </div>
       </article>
-
-      <article class="panel">
+  </div>
+  <div class="grid-col right-col">
+    <aside class="panel" style="order: 2">
+        <h2>Specialist Roles We Source</h2>
+        <div class="feature-list">
+          <div class="feature-item"><strong>Software and Web Development</strong><span>We identify developers across back-end, front-end, and full stack functions, including talent experienced in Python, Java, .NET, React, and scalable application delivery.</span></div>
+          <div class="feature-item"><strong>Mobile Innovation</strong><span>We source iOS and Android developers who can build high-performance mobile experiences that support user engagement, speed, and platform reliability.</span></div>
+          <div class="feature-item"><strong>Infrastructure and Security</strong><span>We recruit system administrators, network engineers, cloud professionals, and cybersecurity specialists who protect uptime, performance, and operational resilience.</span></div>
+          <div class="feature-item"><strong>Data and Analytics</strong><span>We connect businesses with data analysts and BI specialists who can transform raw information into insights that support strategic and operational decisions.</span></div>
+          <div class="feature-item"><strong>Technical Support</strong><span>We provide IT support engineers and technical executives who ensure end-users, systems, and business teams stay connected to dependable technical assistance.</span></div>
+        </div>
+      </aside>
+    <article class="panel" style="order: 4">
         <h2>Why Choose TalentSync for IT Hiring?</h2>
         <p>
           The IT talent market is fast and competitive. Your engineering teams shouldn't be spending time on sourcing and screening. We handle the full vetting process so your leaders can focus only on the strongest, most relevant candidates.
@@ -431,7 +435,8 @@
           We reach passive talent through specialist networks and direct outreach — far beyond standard job boards. Whether you need one expert or a full team build, our search scales with your urgency and the complexity of the role.
         </p>
       </article>
-    </section>
+  </div>
+</section>
 
     <section class="promise">
       <h2>The TalentSync Edge</h2>
