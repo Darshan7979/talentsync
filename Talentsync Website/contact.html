@@ -1,0 +1,1053 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Contact Us | TalentSync HR Solution</title>
+  <link rel="icon" type="image/png" href="./assests/talentsynchrsolutionslogo.png" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="theme.css" />
+  <link rel="stylesheet" href="styles.css" />
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --navy: #0d1b6e;
+      --blue: #1a3cbe;
+      --sky: #0e8fdd;
+      --gold: #FFD700;
+      --white: #ffffff;
+      --light-bg: #f4f6ff;
+      --text-dark: #0f1628;
+      --text-body: #4a4e6a;
+      --text-muted: #8890b0;
+      --border: #e2e8f8;
+      --shadow-sm: 0 2px 16px rgba(13,27,110,0.07);
+      --shadow-md: 0 8px 36px rgba(13,27,110,0.11);
+      --shadow-lg: 0 20px 60px rgba(13,27,110,0.15);
+      --radius-sm: 10px;
+      --radius-md: 16px;
+      --radius-lg: 24px;
+      --gradient: linear-gradient(135deg, #0d1b6e 0%, #1a3cbe 50%, #0e8fdd 100%);
+      --gold-gradient: linear-gradient(90deg, #fff3c4 0%, #f6d365 38%, #d4a017 100%);
+      --gold-soft: #f6d365;
+    }
+
+    ::-webkit-scrollbar { width: 6px; }
+    ::-webkit-scrollbar-track { background: #e8eeff; }
+    ::-webkit-scrollbar-thumb { background: #1a3cbe; border-radius: 4px; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: #0a0015 !important;
+      color: var(--text-dark);
+      overflow-x: hidden;
+      line-height: 1.6;
+    }
+    body::before {
+      content: '' !important;
+      position: fixed !important;
+      inset: 0 !important;
+      background: #060d2e !important;
+      z-index: -1 !important;
+      pointer-events: none !important;
+    }
+
+    @keyframes pulse-glow { 0%, 100% { opacity: 0.55; transform: scale(1); } 50% { opacity: 0.85; transform: scale(1.08); } }
+
+    /* HERO - REMOVED */
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(22px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* SECTIONS */
+    .section { padding: 5.5rem 2rem; background: transparent; }
+    .section:first-of-type { padding: 4rem 2rem 5.5rem; }
+    .section-alt { background: transparent; }
+    .container { max-width: 1180px; margin: 0 auto; }
+
+    .section-label {
+      font-family: 'Poppins',sans-serif; font-size: 0.7rem; font-weight: 700;
+      letter-spacing: 0.25em; text-transform: uppercase; color: #7dd3fc; margin-bottom: 0.6rem;
+    }
+    .section-title {
+      font-family: 'Poppins',sans-serif; font-size: clamp(1.5rem, 2.8vw, 2.2rem);
+      font-weight: 800; color: #f0f4ff; letter-spacing: -0.025em; margin-bottom: 0.9rem; line-height: 1.2;
+      background: var(--gold-gradient);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .section-sub { font-size: 0.95rem; color: #c4b5fd; max-width: 520px; line-height: 1.85; }
+
+    /* CONTACT EXPERIENCE */
+    .contact-shell {
+      position: relative;
+      padding: 2.2rem;
+      border-radius: 32px;
+      border: 1px solid rgba(148, 163, 255, 0.16);
+      background:
+        radial-gradient(circle at top left, rgba(125, 211, 252, 0.14), transparent 32%),
+        radial-gradient(circle at bottom right, rgba(244, 114, 182, 0.14), transparent 30%),
+        linear-gradient(145deg, rgba(6, 14, 57, 0.76), rgba(24, 22, 82, 0.55));
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      box-shadow: 0 30px 90px rgba(3, 7, 30, 0.45);
+      overflow: hidden;
+      isolation: isolate;
+    }
+    .contact-shell::before,
+    .contact-shell::after {
+      content: '';
+      position: absolute;
+      border-radius: 999px;
+      filter: blur(12px);
+      opacity: 0.75;
+      pointer-events: none;
+      z-index: -1;
+      animation: orbitGlow 14s ease-in-out infinite;
+    }
+    .contact-shell::before {
+      width: 280px;
+      height: 280px;
+      top: -120px;
+      right: -80px;
+      background: radial-gradient(circle, rgba(14, 165, 233, 0.35), transparent 68%);
+    }
+    .contact-shell::after {
+      width: 220px;
+      height: 220px;
+      bottom: -90px;
+      left: -60px;
+      background: radial-gradient(circle, rgba(236, 72, 153, 0.24), transparent 70%);
+      animation-delay: -6s;
+    }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 0.92fr) minmax(0, 1.08fr);
+      gap: 1.6rem;
+      align-items: stretch;
+      position: relative;
+      z-index: 1;
+    }
+    .contact-column {
+      min-width: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 1.25rem;
+    }
+    .contact-panel,
+    .form-card {
+      position: relative;
+      border-radius: 28px;
+      border: 1px solid rgba(167, 139, 250, 0.2);
+      background: linear-gradient(180deg, rgba(16, 24, 78, 0.82), rgba(17, 18, 59, 0.66));
+      box-shadow: 0 20px 55px rgba(7, 10, 35, 0.34);
+      overflow: hidden;
+      transition: transform 0.35s ease, border-color 0.35s ease, box-shadow 0.35s ease, background 0.35s ease;
+    }
+    .contact-panel:hover,
+    .form-card:hover {
+      transform: translateY(-6px);
+      border-color: rgba(125, 211, 252, 0.32);
+      box-shadow: 0 28px 70px rgba(5, 9, 28, 0.45);
+    }
+    .contact-panel::before,
+    .form-card::before {
+      content: '';
+      position: absolute;
+      inset: 1px;
+      border-radius: inherit;
+      background: linear-gradient(180deg, rgba(255,255,255,0.08), rgba(255,255,255,0));
+      pointer-events: none;
+      opacity: 0.85;
+    }
+
+    .contact-panel {
+      padding: 1.8rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+    .info-stack {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 0.85rem;
+    }
+    .info-card {
+      position: relative;
+      min-width: 0;
+      padding: 1.2rem;
+      border-radius: 22px;
+      background: linear-gradient(155deg, rgba(15, 26, 88, 0.92), rgba(22, 17, 74, 0.65));
+      border: 1px solid rgba(167, 139, 250, 0.14);
+      display: flex;
+      flex-direction: column;
+      gap: 0.95rem;
+      box-shadow: inset 0 1px 0 rgba(255,255,255,0.05);
+      transition: transform 0.35s ease, border-color 0.35s ease, background 0.35s ease, box-shadow 0.35s ease;
+    }
+    .info-card::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      border-radius: inherit;
+      background: linear-gradient(135deg, rgba(125, 211, 252, 0.1), transparent 42%, transparent 58%, rgba(192, 132, 252, 0.08));
+      opacity: 0;
+      transition: opacity 0.35s ease;
+      pointer-events: none;
+    }
+    .info-card:hover {
+      transform: translateY(-4px) scale(1.01);
+      border-color: rgba(125, 211, 252, 0.28);
+      background: linear-gradient(155deg, rgba(20, 38, 114, 0.94), rgba(28, 19, 91, 0.78));
+      box-shadow: 0 18px 40px rgba(8, 11, 38, 0.35);
+    }
+    .info-card:hover::after { opacity: 1; }
+    .info-card.info-card-wide { grid-column: 1 / -1; padding: 1.25rem 1.2rem; }
+    .info-card.info-card-compact {
+      display: grid;
+      grid-template-columns: auto minmax(0, 1fr);
+      align-items: center;
+      gap: 0.9rem;
+      padding: 0.95rem 1.1rem;
+      min-height: 0;
+    }
+    .info-card.info-card-compact .info-icon {
+      width: 2.8rem;
+      height: 2.8rem;
+      border-radius: 16px;
+    }
+    .info-card.info-card-compact .info-title {
+      font-family: 'Poppins', sans-serif;
+      font-size: 1rem;
+      font-weight: 700;
+      color: #ffffff;
+      margin-bottom: 0.38rem;
+      background: var(--gold-gradient);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .info-card.info-card-compact .info-text { line-height: 1.55; }
+    .info-card.info-card-compact .office-hours { margin-top: 0.45rem; }
+
+    .info-icon {
+      width: 3.15rem;
+      height: 3.15rem;
+      border-radius: 18px;
+      background: linear-gradient(135deg, rgba(56, 189, 248, 0.18), rgba(168, 85, 247, 0.18));
+      border: 1px solid rgba(125, 211, 252, 0.24);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: inset 0 1px 0 rgba(255,255,255,0.07);
+    }
+    .info-icon svg {
+      width: 1.35rem;
+      height: 1.35rem;
+      stroke: #dbeafe;
+      fill: none;
+      stroke-width: 1.8;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+      display: block;
+    }
+    .info-body { min-width: 0; }
+    .info-label {
+      font-size: 0.68rem;
+      font-weight: 700;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: #7dd3fc;
+      margin-bottom: 0.3rem;
+    }
+    .info-title {
+      font-family: 'Poppins', sans-serif;
+      font-size: 1rem;
+      font-weight: 700;
+      color: #ffffff;
+      margin-bottom: 0.38rem;
+      background: var(--gold-gradient);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .info-text {
+      font-size: 0.88rem;
+      color: rgba(224, 231, 255, 0.78);
+      line-height: 1.72;
+    }
+    .info-text a {
+      color: #c4f1ff;
+      text-decoration: none;
+      transition: color 0.2s ease, opacity 0.2s ease;
+    }
+    .info-text a:hover {
+      color: #ffffff;
+      opacity: 1;
+      text-decoration: underline;
+    }
+
+    .office-hours {
+      margin-top: 0.75rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      border-radius: 999px;
+      padding: 0.42rem 0.9rem;
+      background: rgba(16, 185, 129, 0.12);
+      border: 1px solid rgba(52, 211, 153, 0.26);
+      color: #b7f7d2;
+      font-size: 0.77rem;
+      font-weight: 600;
+    }
+    .status-dot {
+      width: 0.52rem;
+      height: 0.52rem;
+      border-radius: 50%;
+      background: #22c55e;
+      box-shadow: 0 0 18px rgba(34, 197, 94, 0.65);
+      animation: pulse-dot 1.8s ease-in-out infinite;
+    }
+    @keyframes pulse-dot {
+      0%,100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.55; transform: scale(1.3); }
+    }
+
+    .form-card { padding: 1.9rem; }
+    .form-card:focus-within {
+      border-color: rgba(125, 211, 252, 0.34);
+      box-shadow: 0 30px 80px rgba(5, 9, 28, 0.48), 0 0 0 1px rgba(125, 211, 252, 0.15);
+    }
+    .form-header {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 1rem;
+      align-items: flex-start;
+      margin-bottom: 1.7rem;
+    }
+    .form-title-wrap h3 {
+      font-family: 'Poppins', sans-serif;
+      font-size: 1.34rem;
+      font-weight: 700;
+      color: #ffffff;
+      margin-bottom: 0.35rem;
+      background: var(--gold-gradient);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .form-title-wrap p {
+      font-size: 0.9rem;
+      color: rgba(196, 181, 253, 0.85);
+      line-height: 1.7;
+    }
+    .response-badge {
+      padding: 0.72rem 0.95rem;
+      border-radius: 18px;
+      border: 1px solid rgba(125, 211, 252, 0.18);
+      background: rgba(10, 18, 57, 0.58);
+      min-width: 150px;
+    }
+    .response-badge strong {
+      display: block;
+      font-family: 'Poppins', sans-serif;
+      font-size: 0.76rem;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--gold-soft);
+      margin-bottom: 0.25rem;
+    }
+    .response-badge span {
+      display: block;
+      font-size: 0.84rem;
+      color: rgba(224, 231, 255, 0.8);
+      line-height: 1.6;
+    }
+
+    .form-row { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1rem; }
+    .form-group { display: flex; flex-direction: column; gap: 0.45rem; margin-bottom: 1rem; }
+    .form-group label { font-family: 'Poppins', sans-serif; font-size: 0.79rem; font-weight: 600; color: #cbd5ff; }
+    .form-group label .req { color: #f87171; margin-left: 2px; }
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+      width: 100%;
+      padding: 0.9rem 1rem;
+      border: 1px solid rgba(167, 139, 250, 0.22);
+      border-radius: 16px;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.92rem;
+      color: #f8fbff;
+      background: linear-gradient(180deg, rgba(11, 20, 70, 0.88), rgba(15, 16, 53, 0.78));
+      outline: none;
+      transition: border-color 0.25s ease, box-shadow 0.25s ease, transform 0.25s ease, background 0.25s ease;
+    }
+    .form-group input::placeholder,
+    .form-group textarea::placeholder { color: rgba(196, 181, 253, 0.42); }
+    .form-group input:hover,
+    .form-group select:hover,
+    .form-group textarea:hover {
+      border-color: rgba(125, 211, 252, 0.24);
+      background: linear-gradient(180deg, rgba(11, 22, 80, 0.92), rgba(15, 18, 60, 0.8));
+    }
+    .form-group input:focus,
+    .form-group select:focus,
+    .form-group textarea:focus {
+      transform: translateY(-1px);
+      border-color: #7dd3fc;
+      background: linear-gradient(180deg, rgba(13, 28, 95, 0.96), rgba(16, 22, 72, 0.88));
+      box-shadow: 0 0 0 4px rgba(14, 165, 233, 0.14), 0 18px 30px rgba(0, 0, 0, 0.18);
+    }
+    .form-group input.error,
+    .form-group select.error,
+    .form-group textarea.error {
+      border-color: #f87171;
+      box-shadow: 0 0 0 4px rgba(248, 113, 113, 0.16);
+    }
+    .form-group .field-error { font-size: 0.74rem; color: #fca5a5; font-weight: 500; display: none; margin-top: 0.1rem; }
+    .form-group .field-error.show { display: block; }
+    .form-group textarea { resize: vertical; min-height: 142px; }
+    .form-group select {
+      cursor: pointer;
+      appearance: none;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%237dd3fc' stroke-width='2'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right 1rem center;
+      padding-right: 2.6rem;
+      color: #f8fbff;
+    }
+    .form-group select option { background: #13184d; color: #f8fbff; }
+
+    .submit-btn {
+      width: 100%;
+      padding: 1rem 1.4rem;
+      border: none;
+      border-radius: 999px;
+      cursor: pointer;
+      position: relative;
+      overflow: hidden;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.6rem;
+      font-family: 'Poppins', sans-serif;
+      font-size: 0.94rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: #ffffff;
+      background: linear-gradient(135deg, #0ea5e9 0%, #1d4ed8 42%, #7c3aed 100%);
+      box-shadow: 0 18px 44px rgba(29, 78, 216, 0.34);
+      transition: transform 0.28s ease, box-shadow 0.28s ease, filter 0.28s ease;
+      margin-top: 0.4rem;
+    }
+    .submit-btn::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(110deg, transparent 0%, rgba(255,255,255,0.22) 45%, transparent 75%);
+      transform: translateX(-120%);
+      transition: transform 0.7s ease;
+    }
+    .submit-btn:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 24px 54px rgba(29, 78, 216, 0.42);
+      filter: saturate(1.08);
+    }
+    .submit-btn:hover::before { transform: translateX(120%); }
+    .submit-btn:active { transform: translateY(0); }
+    .submit-btn:disabled { opacity: 0.8; cursor: wait; }
+    .submit-btn svg { width: 17px; height: 17px; stroke: white; fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; display: block; }
+
+    .success-message { display: none; text-align: center; padding: 2.6rem 1rem 2.2rem; animation: fadeUp 0.5s ease both; }
+    .success-message.show { display: block; }
+    .success-icon {
+      width: 72px;
+      height: 72px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, rgba(34,197,94,0.16), rgba(14,165,233,0.16));
+      border: 1px solid rgba(74, 222, 128, 0.28);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 1.3rem;
+      box-shadow: 0 16px 34px rgba(11, 91, 42, 0.18);
+    }
+    .success-icon svg { width: 34px; height: 34px; stroke: #4ade80; fill: none; stroke-width: 2.5; stroke-linecap: round; stroke-linejoin: round; display: block; }
+    .success-message h4 { font-family: 'Poppins', sans-serif; font-size: 1.3rem; font-weight: 700; color: #ffffff; margin-bottom: 0.5rem; }
+    .success-message p { font-size: 0.92rem; color: rgba(196, 181, 253, 0.9); line-height: 1.75; }
+
+    .map-section { display: none; }
+
+    @keyframes orbitGlow {
+      0%, 100% { transform: translate3d(0, 0, 0) scale(1); }
+      50% { transform: translate3d(0, 12px, 0) scale(1.04); }
+    }
+
+    /* REVEAL */
+    .reveal { opacity: 0; transform: translateY(28px); transition: opacity 0.65s ease, transform 0.65s ease; }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+    .reveal-delay-1 { transition-delay: 0.1s; }
+    .reveal-delay-2 { transition-delay: 0.2s; }
+    .reveal-delay-3 { transition-delay: 0.3s; }
+    .reveal-delay-4 { transition-delay: 0.4s; }
+
+    /* â•â• RESPONSIVE â•â• */
+    @media (max-width: 1024px) {
+      .contact-shell { padding: 1.7rem; }
+      .contact-grid { grid-template-columns: 1fr; gap: 1.4rem; }
+      .contact-column { gap: 1.1rem; }
+    }
+    @media (max-width: 768px) {
+      .contact-shell { padding: 1.25rem; border-radius: 26px; }
+      .contact-panel,
+      .form-card { border-radius: 24px; }
+      .contact-panel,
+      .form-card { padding: 1.4rem; }
+      .info-stack,
+      .form-row { grid-template-columns: 1fr; }
+      .form-header { flex-direction: column; align-items: flex-start; }
+      .response-badge { width: 100%; }
+
+    }
+    @media (max-width: 480px) {
+      .section { padding: 3.5rem 1.2rem; }
+      .contact-shell { padding: 1rem; border-radius: 22px; }
+      .response-badge { font-size: 0.7rem; }
+      .info-card,
+      .form-card { border-radius: 20px; }
+    }
+
+    /* â•â• CONTACT PAGE â€” beat theme.css overrides â•â• */
+    html body { background: #0a0015 !important; }
+    html body::before {
+      content: '' !important;
+      position: fixed !important;
+      inset: 0 !important;
+      background: #060d2e !important;
+      z-index: -1 !important;
+      pointer-events: none !important;
+    }
+    html body .section { background: transparent !important; }
+
+    html body h2,
+    html body h3,
+    html body h4 { color: #f0f4ff !important; }
+    html body p { color: #d4d8f0 !important; }
+    html body .section-title {
+      font-family: 'Poppins',sans-serif; font-size: clamp(1.5rem, 2.8vw, 2.2rem);
+      font-weight: 800; color: #f0f4ff; letter-spacing: -0.025em; margin-bottom: 0.9rem; line-height: 1.2;
+      background: var(--gold-gradient);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    html body .section-sub { color: #c4b5fd !important; }
+    html body .section-label,
+    html body .info-label { color: #7dd3fc !important; }
+    html body .response-badge strong { color: var(--gold-soft) !important; }
+
+    html body .contact-shell {
+      border-color: rgba(148, 163, 255, 0.16) !important;
+      background:
+        radial-gradient(circle at top left, rgba(125, 211, 252, 0.14), transparent 32%),
+        radial-gradient(circle at bottom right, rgba(244, 114, 182, 0.14), transparent 30%),
+        linear-gradient(145deg, rgba(6, 14, 57, 0.76), rgba(24, 22, 82, 0.55)) !important;
+      box-shadow: 0 30px 90px rgba(3, 7, 30, 0.45) !important;
+    }
+    html body .contact-panel,
+    html body .form-card {
+      background: linear-gradient(180deg, rgba(16, 24, 78, 0.82), rgba(17, 18, 59, 0.66)) !important;
+      border: 1px solid rgba(167, 139, 250, 0.2) !important;
+      box-shadow: 0 20px 55px rgba(7, 10, 35, 0.34) !important;
+      backdrop-filter: blur(18px) !important;
+      -webkit-backdrop-filter: blur(18px) !important;
+    }
+    html body .info-card {
+      background: linear-gradient(155deg, rgba(15, 26, 88, 0.92), rgba(22, 17, 74, 0.65)) !important;
+      border: 1px solid rgba(167, 139, 250, 0.14) !important;
+      box-shadow: inset 0 1px 0 rgba(255,255,255,0.05) !important;
+      color: #e0e7ff !important;
+    }
+    html body .info-card:hover {
+      background: linear-gradient(155deg, rgba(20, 38, 114, 0.94), rgba(28, 19, 91, 0.78)) !important;
+      border-color: rgba(125, 211, 252, 0.28) !important;
+      box-shadow: 0 18px 40px rgba(8, 11, 38, 0.35) !important;
+      transform: translateY(-4px) scale(1.01) !important;
+    }
+    html body .info-title,
+    html body .form-title-wrap h3 {
+      display: block;
+      font-family: 'Poppins', sans-serif;
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: #ffffff;
+      margin-bottom: 0.22rem;
+      background: var(--gold-gradient);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    html body .info-text,
+    html body .response-badge span,
+    html body .form-title-wrap p,
+    html body .success-message p { color: rgba(224, 231, 255, 0.78) !important; }
+    html body .info-text a { color: #c4f1ff !important; }
+    html body .info-icon {
+      background: linear-gradient(135deg, rgba(56, 189, 248, 0.18), rgba(168, 85, 247, 0.18)) !important;
+      border: 1px solid rgba(125, 211, 252, 0.24) !important;
+    }
+    html body .info-icon svg { stroke: #dbeafe !important; }
+    html body .response-badge {
+      background: rgba(10, 18, 57, 0.58) !important;
+      border-color: rgba(125, 211, 252, 0.18) !important;
+    }
+    html body .form-group label { color: #cbd5ff !important; }
+    html body .form-group label .req,
+    html body .form-group .field-error { color: #fca5a5 !important; }
+    html body .form-group input,
+    html body .form-group select,
+    html body .form-group textarea {
+      background: linear-gradient(180deg, rgba(11, 20, 70, 0.88), rgba(15, 16, 53, 0.78)) !important;
+      border-color: rgba(167, 139, 250, 0.22) !important;
+      color: #ffffff !important;
+    }
+    html body .form-group input::placeholder,
+    html body .form-group textarea::placeholder { color: rgba(196,181,253,0.42) !important; }
+    html body .form-group input:focus,
+    html body .form-group select:focus,
+    html body .form-group textarea:focus {
+      background: linear-gradient(180deg, rgba(13, 28, 95, 0.96), rgba(16, 22, 72, 0.88)) !important;
+      border-color: #7dd3fc !important;
+      box-shadow: 0 0 0 4px rgba(14, 165, 233, 0.14), 0 18px 30px rgba(0, 0, 0, 0.18) !important;
+    }
+    html body .success-message h4 { color: #ffffff !important; }
+
+    /* Footer Map Link Styling */
+    .contact-with-icon {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      transition: color 0.2s ease;
+    }
+    .contact-with-icon svg {
+      stroke: currentColor;
+      flex-shrink: 0;
+    }
+    .contact-with-icon:hover {
+      color: #7dd3fc;
+    }
+    .find-us-map-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.6rem;
+      margin-top: 0.8rem;
+      padding: 0.5rem 1rem;
+      border-radius: 8px;
+      background: rgba(14, 165, 233, 0.1);
+      border: 1px solid rgba(125, 211, 252, 0.3);
+      color: #c4f1ff;
+      text-decoration: none;
+      font-size: 0.85rem;
+      font-weight: 600;
+      transition: all 0.2s ease;
+    }
+    .find-us-map-btn:hover {
+      background: rgba(14, 165, 233, 0.2);
+      border-color: rgba(125, 211, 252, 0.5);
+      color: #ffffff;
+      transform: translateX(2px);
+    }
+    .find-us-map-btn svg {
+      stroke: currentColor;
+      stroke-width: 2;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+  </style>
+   <link rel="stylesheet" href="navbar.css" />
+</head>
+<body>
+<!-- NAVBAR -->
+<nav class="navbar">
+  <a href="index.html" class="nav-brand">
+    <div class="nav-logo">
+      <img src="./assests/talentsynchrsolutionslogo.png" alt="TalentSync Logo" />
+    </div>
+    <div class="nav-title">
+      <span class="nav-title-main">TalentSync</span>
+      <span class="nav-title-sub">HR Solution</span>
+    </div>
+  </a>
+
+  <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+    <span></span><span></span><span></span>
+  </button>
+
+  <div class="nav-menu" id="navMenu">
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="services.html">Services</a></li>
+      <li><a href="Jobs.html">Jobs</a></li>
+      <li><a href="blogs.html">Blogs/Resources</a></li>
+      <li><a href="about.html">About Us</a></li>
+    </ul>
+    <button class="nav-contact-btn" onclick="window.location.href='contact.html'">Contact</button>
+  </div>
+</nav>
+
+<div class='nav-overlay' id='navOverlay'></div>
+
+<!-- CONTACT INFO + FORM -->
+<section class="section">
+  <div class="container">
+    <div class="reveal" style="margin-bottom:3rem;">
+      <div class="section-label">Reach Out</div>
+      <h2 class="section-title">We'd Love to Hear from You</h2>
+      <p class="section-sub">Share your hiring goals, career questions, or partnership ideas and our team will take it forward from here.</p>
+    </div>
+
+    <div class="contact-grid">
+        <div class="contact-column">
+          <div class="contact-panel reveal reveal-delay-1">
+            <div class="info-stack">
+              <div class="info-card info-card-wide">
+                <div class="info-icon">
+                  <svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                </div>
+                <div class="info-body">
+                  <div class="info-label">Corporate Office</div>
+                  <div class="info-title">TalentSync HR Solution</div>
+                  <div class="info-text">
+                    2nd Floor, Shop No. 1, Sai Housing Society<br/>
+                    Karve Nagar Main Chowk, Near Cummins College<br/>
+                    Karvenagar, Pune, Maharashtra 411052, India
+                  </div>
+                </div>
+              </div>
+
+              <div class="info-card info-card-compact">
+                <div class="info-icon">
+                  <svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+                </div>
+                <div class="info-body">
+                  <div class="info-label">Email</div>
+                  <div class="info-title">Write to Us</div>
+                  <div class="info-text">
+                    <a href="mailto:info@talentsynchrsolutions.com">info@talentsynchrsolutions.com</a>
+                  </div>
+                </div>
+              </div>
+
+              <div class="info-card info-card-compact">
+                <div class="info-icon">
+                  <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.79 19.79 0 0 1 2.12 4.18 2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.12.9.35 1.78.68 2.62a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.46-1.25a2 2 0 0 1 2.11-.45c.84.33 1.72.56 2.62.68A2 2 0 0 1 22 16.92z"/></svg>
+                </div>
+                <div class="info-body">
+                  <div class="info-label">Phone</div>
+                  <div class="info-title">Call the Office</div>
+                  <div class="info-text">
+                    <a href="tel:+917722009638">+91 77220 09638</a>
+                  </div>
+                </div>
+              </div>
+
+              <div class="info-card info-card-compact">
+                <div class="info-icon">
+                  <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                </div>
+                <div class="info-body">
+                  <div class="info-label">Working Hours</div>
+                  <div class="info-title">Business Hours</div>
+                  <div class="info-text">
+                    Monday - Saturday: 9:00 AM - 6:00 PM<br/>
+                    Sunday: Closed
+                  </div>
+                  <div class="office-hours">
+                    <span class="status-dot"></span>
+                    Currently Open
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+
+        </div>
+
+        <div class="contact-column">
+          <div class="form-card reveal reveal-delay-3">
+            <div class="form-header">
+              <div class="form-title-wrap">
+                <h3>Send Us a Message</h3>
+                <p>Tell us what you need and we will route your enquiry to the right specialist.</p>
+              </div>
+              <div class="response-badge">
+                <strong>Response Window</strong>
+                <span>Usually within 1-2 business days</span>
+              </div>
+            </div>
+
+            <div class="success-message" id="successMessage">
+              <div class="success-icon">
+                <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+              </div>
+              <h4>Message Sent!</h4>
+              <p>Thank you for reaching out. Our team will review your message and connect with you shortly.</p>
+            </div>
+
+            <div id="formContainer">
+              <div class="form-row">
+                <div class="form-group">
+                  <label for="fullName">Full Name <span class="req">*</span></label>
+                  <input type="text" id="fullName" name="name" autocomplete="name" />
+                  <span class="field-error" id="fullNameError">Please enter your full name.</span>
+                </div>
+                <div class="form-group">
+                  <label for="email">Email Address <span class="req">*</span></label>
+                  <input type="email" id="email" name="email" autocomplete="email" />
+                  <span class="field-error" id="emailError">Please enter a valid email address.</span>
+                </div>
+              </div>
+              <div class="form-row">
+                <div class="form-group">
+                  <label for="phone">Phone Number <span class="req">*</span></label>
+                  <input type="tel" id="phone" name="phone" autocomplete="tel" />
+                  <span class="field-error" id="phoneError">Please enter a valid phone number.</span>
+                </div>
+                <div class="form-group">
+                  <label for="subject">Subject <span class="req">*</span></label>
+                  <select id="subject" name="subject">
+                    <option value="">- Select a subject -</option>
+                    <option value="recruitment">Recruitment Enquiry</option>
+                    <option value="careers">Career Opportunities</option>
+                    <option value="hr-consulting">HR Consulting</option>
+                    <option value="partnership">Business Partnership</option>
+                    <option value="other">Other</option>
+                  </select>
+                  <span class="field-error" id="subjectError">Please select a subject.</span>
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="message">Message <span class="req">*</span></label>
+                <textarea id="message" name="message"></textarea>
+                <span class="field-error" id="messageError">Please enter your message (min. 10 characters).</span>
+              </div>
+              <button class="submit-btn" id="submitBtn" type="button" onclick="validateAndSubmit()">
+                Send Message
+                <svg viewBox="0 0 24 24"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+</section>
+
+<!-- FOOTER -->
+    <footer class="footer">
+  <div class="footer-accent-bar"></div>
+  <div class="footer-inner">
+    <div class="footer-main">
+      <div class="footer-grid">
+        <div>
+          <div class="footer-brand">
+            <div class="footer-logo">
+              <img src="./assests/talentsynchrsolutionslogo.png" alt="TalentSync Logo" />
+            </div>
+            <div class="footer-brand-name">TalentSync<span>HR Solution</span></div>
+          </div>
+          <p class="footer-desc">Empowering organizations with intelligent HR tools that attract, develop, and retain top talent — all in one seamless platform.</p>
+          <div class="footer-social">
+            <a href="https://wa.me/7722009638" target="_blank" rel="noopener noreferrer" class="social-link social-whatsapp" aria-label="WhatsApp">
+              <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+            </a>
+            <a href="https://www.linkedin.com/in/talentsync-hr-solution-2a56063a5" class="social-link social-linkedin" aria-label="LinkedIn">
+              <svg viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+            </a>
+            <a href="#" class="social-link social-facebook" aria-label="Facebook">
+              <svg viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+            </a>
+            <a href="https://www.instagram.com/talentsynchr" class="social-link social-instagram" aria-label="Instagram">
+              <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+            </a>
+            <a href="https://x.com/hr_talentsync" class="social-link social-x" aria-label="X">
+              <svg viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.748l7.73-8.835L1.254 2.25H8.08l4.253 5.622zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+            </a>
+            <a href="https://youtube.com/@talentsynchrsolutions" class="social-link social-youtube" aria-label="YouTube">
+              <svg viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 00-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 00.502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 002.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 002.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+            </a>
+          </div>
+        </div>
+        <div class="footer-col">
+          <h4>Quick Links</h4>
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="services.html">Services</a></li>
+            <li><a href="contact.html">Contact Us</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Services</h4>
+          <ul>
+            <li><a href="recruitment-process-outsourcing.html">Recruitment</a></li>
+            <li><a href="staffing-solutions.html">Staffing Solutions</a></li>
+            <li><a href="it-recruitment.html">IT Recruitment</a></li>
+            <li><a href="hr-outsourcing.html">HR Outsourcing</a></li>
+            <li><a href="services.html">More</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Contact</h4>
+          <ul>
+            <li><a href="mailto:hr@talentsynchrsolution.com">hr@talentsynchrsolution.com</a></li>
+            <li><a href="tel:+917722009638">Office: 7722009638</a></li>
+            <li><a href="https://maps.app.goo.gl/33eAfciDfQ1Eb69w9" class="contact-with-icon">Karve Nagar, Pune – 411052 <svg viewBox="0 0 24 24" width="16" height="16" stroke="currentColor" fill="none" stroke-width="2"><path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></a></li>
+          </ul>
+          <a href="https://maps.app.goo.gl/33eAfciDfQ1Eb69w9" class="find-us-map-btn" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" width="18" height="18" stroke="currentColor" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg> Find us on Map</a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2026 <strong>TalentSync HR Solution.</strong> All rights reserved.</p>
+      <div class="footer-bottom-links">
+        <a href="#">Privacy Policy</a>
+        <a href="#">Terms of Use</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+<script>
+  emailjs.init("DAl1ITkdpLhmz_ELX");
+
+  // Mobile nav
+  (function () {
+    const hamburger = document.getElementById('hamburger');
+    const navMenu = document.getElementById('navMenu');
+    const overlay = document.getElementById('navOverlay');
+    function closeMenu() {
+      hamburger.classList.remove('active');
+      navMenu.classList.remove('active');
+      overlay.classList.remove('active');
+    }
+    hamburger.addEventListener('click', function () {
+      hamburger.classList.toggle('active');
+      navMenu.classList.toggle('active');
+      overlay.classList.toggle('active');
+    });
+    overlay.addEventListener('click', closeMenu);
+    document.querySelectorAll('.dropdown .dropdown-toggle').forEach(function (toggle) {
+      toggle.addEventListener('click', function (e) {
+        if (window.innerWidth <= 768) {
+          e.preventDefault();
+          toggle.closest('.dropdown').classList.toggle('open');
+        }
+      });
+    });
+  })();
+
+  // Scroll reveal
+  (function () {
+    const revealEls = document.querySelectorAll('.reveal');
+    const observer = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.1 });
+    revealEls.forEach(function (el) { observer.observe(el); });
+  })();
+
+  // Form validation
+  function validateAndSubmit() {
+    var isValid = true;
+
+    function setError(fieldId, errorId, condition) {
+      var field = document.getElementById(fieldId);
+      var err = document.getElementById(errorId);
+      if (condition) {
+        field.classList.add('error'); err.classList.add('show'); isValid = false;
+      } else {
+        field.classList.remove('error'); err.classList.remove('show');
+      }
+    }
+
+    var name = document.getElementById('fullName').value.trim();
+    var email = document.getElementById('email').value.trim();
+    var phone = document.getElementById('phone').value.trim();
+    var subject = document.getElementById('subject').value;
+    var message = document.getElementById('message').value.trim();
+
+    var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    var phoneRegex = /^[\+]?[\d\s\-\(\)]{7,15}$/;
+
+    setError('fullName', 'fullNameError', name.length < 2);
+    setError('email', 'emailError', !emailRegex.test(email));
+    setError('phone', 'phoneError', !phoneRegex.test(phone));
+    setError('subject', 'subjectError', subject === '');
+    setError('message', 'messageError', message.length < 10);
+
+    if (!isValid) return;
+
+    var btn = document.getElementById('submitBtn');
+    btn.innerHTML = 'Sendingâ€¦ <svg viewBox="0 0 24 24" style="width:17px;height:17px;stroke:white;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;display:block"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>';
+    btn.disabled = true;
+
+    emailjs.send("service_rbthbdj", "template_pnd97g3", {
+      name: name, email: email, phone: phone, subject: subject, message: message
+    }).then(function () {
+      document.getElementById('formContainer').style.display = 'none';
+      document.getElementById('successMessage').classList.add('show');
+    }, function () {
+      alert("Failed to send message. Please try again.");
+      btn.innerHTML = 'Send Message <svg viewBox="0 0 24 24" style="width:17px;height:17px;stroke:white;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;display:block"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>';
+      btn.disabled = false;
+    });
+  }
+
+  ['fullName', 'email', 'phone', 'subject', 'message'].forEach(function (id) {
+    var el = document.getElementById(id);
+    var ev = (id === 'subject') ? 'change' : 'input';
+    el.addEventListener(ev, function () {
+      el.classList.remove('error');
+      var errEl = document.getElementById(id + 'Error');
+      if (errEl) errEl.classList.remove('show');
+    });
+  });
+</script>
+  <script src="script.js"></script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Staffing Solutions | TalentSync HR Solution</title>
+  <link rel="icon" type="image/png" href="./assests/talentsynchrsolutionslogo.png" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg: #050816;
+      --bg-soft: #0d1428;
+      --panel: rgba(11, 19, 40, 0.88);
+      --panel-border: rgba(255, 255, 255, 0.08);
+      --text: #f6f8ff;
+      --muted: #c5d0ec;
+      --accent: #67b6ff;
+      --accent-strong: #2f7df6;
+      --gold: #ffd36a;
+      --shadow: 0 24px 60px rgba(0, 0, 0, 0.38);
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: radial-gradient(circle at top right, rgba(47, 125, 246, 0.22), transparent 28%), radial-gradient(circle at left center, rgba(103, 182, 255, 0.12), transparent 30%), linear-gradient(180deg, #02040c 0%, #050816 32%, #081128 100%);
+      color: var(--text);
+      min-height: 100vh;
+      line-height: 1.8;
+      overflow-x: hidden;
+    }
+    a { color: inherit; text-decoration: none; }
+    .page-shell { width: min(1180px, calc(100% - 2rem)); margin: 0 auto; }
+    .navbar { position: sticky; top: 0; z-index: 50; backdrop-filter: blur(14px); background: rgba(5, 8, 22, 0.72); border-bottom: 1px solid rgba(255, 255, 255, 0.06); }
+    .nav-inner { width: min(1180px, calc(100% - 2rem)); margin: 0 auto; padding: 1rem 0; display: flex; align-items: center; justify-content: space-between; gap: 1rem; }
+    .brand { display: flex; align-items: center; gap: 0.85rem; }
+    .brand img { width: 48px; height: 48px; border-radius: 12px; object-fit: cover; box-shadow: 0 12px 25px rgba(0, 0, 0, 0.3); }
+    .brand-text { display: flex; flex-direction: column; line-height: 1.15; }
+    .brand-text strong, .brand-text span { color: #ffffff; font-size: 1rem; font-weight: 700; }
+    .nav-links { display: flex; align-items: center; gap: 1rem; flex-wrap: wrap; justify-content: flex-end; }
+    .nav-links a { color: var(--muted); font-size: 0.95rem; transition: color 0.25s ease, transform 0.25s ease; }
+    .nav-links a:hover, .nav-links a.active { color: #ffffff; transform: translateY(-1px); }
+    .hero { padding: 4.5rem 0 2rem; }
+    .hero-grid { display: grid; grid-template-columns: 1.15fr 0.85fr; gap: 2rem; align-items: center; }
+    .hero-copy { padding: 1rem 0; }
+    .eyebrow { display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.45rem 0.9rem; border-radius: 999px; border: 1px solid rgba(255, 255, 255, 0.09); background: rgba(255, 255, 255, 0.04); color: var(--gold); font-size: 0.78rem; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; margin-bottom: 1.4rem; }
+    .hero h1 { font-family: 'Times New Roman', serif; font-size: clamp(2.4rem, 5vw, 4.5rem); line-height: 1.08; margin-bottom: 1.2rem; }
+    .hero h1 span { background: linear-gradient(90deg, #ffffff 0%, #8bc5ff 55%, #ffd36a 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+    .hero p { color: var(--muted); font-size: 1.02rem; max-width: 62ch; margin-bottom: 1.8rem; }
+    .hero-actions { display: flex; gap: 1rem; flex-wrap: wrap; }
+    .btn { display: inline-flex; align-items: center; justify-content: center; padding: 0.95rem 1.45rem; border-radius: 999px; font-weight: 700; transition: transform 0.25s ease, box-shadow 0.25s ease, background 0.25s ease; }
+    .btn-primary { background: linear-gradient(135deg, var(--accent-strong), var(--accent)); color: #ffffff; box-shadow: 0 20px 35px rgba(47, 125, 246, 0.25); }
+    .btn-secondary { border: 1px solid rgba(255, 255, 255, 0.12); background: rgba(255, 255, 255, 0.03); color: #ffffff; }
+    .btn:hover { transform: translateY(-2px); }
+    .hero-card { position: relative; padding: 1.2rem; border-radius: 28px; background: linear-gradient(180deg, rgba(255,255,255,0.07), rgba(255,255,255,0.02)); border: 1px solid rgba(255,255,255,0.1); box-shadow: var(--shadow); }
+    .hero-card img { width: 100%; display: block; border-radius: 22px; min-height: 340px; object-fit: cover; }
+    .floating-badge { position: absolute; left: 1.8rem; bottom: 1.8rem; padding: 0.95rem 1rem; border-radius: 18px; background: rgba(5, 8, 22, 0.82); border: 1px solid rgba(255,255,255,0.08); max-width: 240px; backdrop-filter: blur(10px); }
+    .floating-badge strong { display: block; color: #ffffff; margin-bottom: 0.25rem; font-size: 1rem; }
+    .floating-badge span { color: var(--muted); font-size: 0.88rem; line-height: 1.5; }
+    .stats { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 1rem; margin: 2rem 0 3rem; }
+    .stat { padding: 1.3rem 1.1rem; background: var(--panel); border: 1px solid var(--panel-border); border-radius: 22px; box-shadow: var(--shadow); }
+    .stat strong { display: block; font-size: 1.8rem; color: #ffffff; margin-bottom: 0.3rem; }
+    .stat span { color: var(--muted); font-size: 0.92rem; }
+    .content-grid { display: grid; grid-template-columns: 1.05fr 0.95fr; gap: 1.4rem; margin-bottom: 2rem; }
+    .panel { background: var(--panel); border: 1px solid var(--panel-border); border-radius: 28px; padding: 2rem; box-shadow: var(--shadow); }
+    .panel h2 { font-size: 1.65rem; margin-bottom: 1rem; }
+    .panel p + p { margin-top: 1rem; }
+    .panel p { color: var(--muted); }
+    .feature-list { display: grid; gap: 1rem; margin-top: 1.2rem; }
+    .feature-item { padding: 1.1rem 1.15rem; border-radius: 20px; background: rgba(255, 255, 255, 0.03); border: 1px solid rgba(255, 255, 255, 0.06); }
+    .feature-item strong { display: block; color: #ffffff; margin-bottom: 0.3rem; font-size: 1rem; }
+    .feature-item span { color: var(--muted); font-size: 0.95rem; }
+    .benefit-table { overflow: hidden; border-radius: 24px; border: 1px solid rgba(255,255,255,0.08); margin-top: 1.25rem; }
+    .benefit-row { display: grid; grid-template-columns: 0.8fr 1.2fr; }
+    .benefit-row:not(:last-child) { border-bottom: 1px solid rgba(255,255,255,0.07); }
+    .benefit-row div { padding: 1rem 1.1rem; }
+    .benefit-row div:first-child { background: rgba(255,255,255,0.05); color: #ffffff; font-weight: 700; }
+    .benefit-row div:last-child { color: var(--muted); }
+    .promise { margin-bottom: 4rem; padding: 2.1rem; border-radius: 30px; background: linear-gradient(135deg, rgba(47,125,246,0.18), rgba(255,211,106,0.08)), rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08); box-shadow: var(--shadow); }
+    .promise h2 { font-size: 1.8rem; margin-bottom: 0.9rem; }
+    .promise p { color: var(--muted); max-width: 74ch; }
+    @media (max-width: 980px) { .hero-grid, .content-grid { grid-template-columns: 1fr; } .stats { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+    @media (max-width: 640px) {
+      .page-shell, .nav-inner { width: min(100% - 1.2rem, 1180px); }
+      .navbar { position: static; }
+      .nav-inner, .footer-box { flex-direction: column; align-items: flex-start; }
+      .hero { padding-top: 2rem; }
+      .stats { grid-template-columns: 1fr; }
+      .panel, .promise { padding: 1.4rem; }
+      .benefit-row { grid-template-columns: 1fr; }
+      .floating-badge { position: static; max-width: none; margin-top: 1rem; }
+    }
+
+    /* == FOOTER == */
+    .footer { background: linear-gradient(160deg, #010818 0%, #020d2e 30%, #030f3a 60%, #040c30 80%, #050e38 100%); position: relative; overflow: hidden; padding: 0; }
+    .footer::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse 55% 45% at 10% 15%, rgba(255,215,0,0.05) 0%, transparent 55%), radial-gradient(ellipse 45% 55% at 90% 85%, rgba(255,215,0,0.04) 0%, transparent 55%); pointer-events: none; }
+    .footer::after { content: ''; position: absolute; inset: 0; background-image: radial-gradient(circle, rgba(255,215,0,0.04) 1px, transparent 1px); background-size: 40px 40px; pointer-events: none; }
+    .footer-inner { position: relative; z-index: 2; }
+    .footer-accent-bar { height: 2px; background: linear-gradient(90deg, transparent 0%, rgba(255,215,0,0.3) 20%, #FFD700 50%, rgba(255,215,0,0.3) 80%, transparent 100%); opacity: 1; }
+    .footer-main { max-width: 1180px; margin: 0 auto; padding: 4rem 2rem 3rem; }
+    .footer-grid { display: grid; grid-template-columns: 1.6fr 1fr 1fr 1fr; gap: 3rem; padding-bottom: 1.5rem; }
+    .footer-brand { display: flex; align-items: center; gap: 12px; margin-bottom: 1.1rem; }
+    .footer-logo { width: 42px; height: 42px; border-radius: 10px; overflow: hidden; flex-shrink: 0; }
+    .footer-logo img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .footer-brand-name { font-weight: 700; font-size: 1.05rem; color: #ffffff !important; line-height: 1.2; -webkit-text-fill-color: #ffffff !important; background: none !important; }
+    .footer-brand-name span { display: block; color: #ffffff !important; font-weight: 500; -webkit-text-fill-color: #ffffff !important; }
+    .footer-desc { font-size: 0.86rem; line-height: 1.85; color: rgba(255,255,255,0.45) !important; max-width: 270px; margin-bottom: 1.8rem; -webkit-text-fill-color: rgba(255,255,255,0.45) !important; background: none !important; }
+    .footer-social { display: flex; flex-wrap: wrap; gap: 0.6rem; }
+    .social-link { width: 40px; height: 40px; border-radius: 8px; display: flex; align-items: center; justify-content: center; text-decoration: none; transition: transform 0.25s, box-shadow 0.25s; }
+    .social-link:hover { transform: translateY(-3px) scale(1.08); }
+    .social-whatsapp { background: #25D366; box-shadow: 0 4px 14px rgba(37,211,102,0.3); }
+    .social-linkedin { background: #0A66C2; box-shadow: 0 4px 14px rgba(10,102,194,0.3); }
+    .social-facebook { background: #1877F2; box-shadow: 0 4px 14px rgba(24,119,242,0.3); }
+    .social-instagram { background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%, #d6249f 60%, #285AEB 90%); box-shadow: 0 4px 14px rgba(214,36,159,0.3); }
+    .social-x { background: #111; box-shadow: 0 4px 14px rgba(0,0,0,0.4); }
+    .social-youtube { background: #FF0000; box-shadow: 0 4px 14px rgba(255,0,0,0.3); }
+    .social-link svg { width: 19px; height: 19px; fill: #fff; display: block; position: relative; z-index: 1; }
+    .footer-col h4 { font-size: 0.75rem !important; font-weight: 700 !important; letter-spacing: 0.2em !important; text-transform: uppercase !important; color: #FFD700 !important; -webkit-text-fill-color: #FFD700 !important; background: none !important; margin-bottom: 1.2rem !important; position: relative; padding-bottom: 0.65rem !important; }
+    .footer-col h4::after { content: ''; position: absolute; bottom: 0; left: 0; width: 24px; height: 1.5px; background: rgba(255,215,0,0.5); border-radius: 2px; }
+    .footer-col ul { list-style: none !important; display: flex !important; flex-direction: column !important; gap: 0.6rem !important; margin: 0 !important; padding: 0 !important; }
+    .footer-col ul li a { font-size: 0.86rem !important; color: rgba(255,255,255,0.45) !important; -webkit-text-fill-color: rgba(255,255,255,0.45) !important; background: none !important; text-decoration: none !important; display: inline-flex !important; align-items: center !important; gap: 0.4rem !important; padding: 0.15rem 0.5rem !important; border-radius: 5px !important; margin-left: -0.5rem !important; transition: color 0.2s, background 0.2s !important; }
+    .footer-col ul li a::before { content: '›'; color: rgba(255,215,0,0.4); font-size: 1rem; transition: color 0.2s, transform 0.2s; }
+    .footer-col ul li a:hover { color: #FFD700 !important; -webkit-text-fill-color: #FFD700 !important; background: rgba(255,215,0,0.05) !important; }
+    .footer-col ul li a:hover::before { color: #FFD700; transform: translateX(3px); }
+    .footer-bottom { max-width: 1180px; margin: 0 auto; padding: 1.2rem 2rem 1.8rem; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 0.8rem; }
+    .footer-bottom p { font-size: 0.81rem !important; color: rgba(255,255,255,0.3) !important; -webkit-text-fill-color: rgba(255,255,255,0.3) !important; background: none !important; margin: 0 !important; }
+    .footer-bottom p strong { color: rgba(255,215,0,0.7) !important; -webkit-text-fill-color: rgba(255,215,0,0.7) !important; font-weight: 600 !important; }
+    .footer-bottom-links { display: flex; gap: 1.4rem; }
+    .footer-bottom-links a { font-size: 0.81rem !important; color: rgba(255,255,255,0.3) !important; -webkit-text-fill-color: rgba(255,255,255,0.3) !important; background: none !important; text-decoration: none !important; padding: 0.15rem 0.5rem !important; border-radius: 5px !important; transition: color 0.2s !important; }
+    .footer-bottom-links a:hover { color: rgba(255,215,0,0.7) !important; -webkit-text-fill-color: rgba(255,215,0,0.7) !important; }
+    @media (max-width: 1024px) { .footer-grid { grid-template-columns: 1.4fr 1fr 1fr; gap: 2rem; } .footer-grid > div:first-child { grid-column: 1 / -1; } }
+    @media (max-width: 768px) { .footer-grid { grid-template-columns: 1fr 1fr; gap: 2rem; } .footer-grid > div:first-child { grid-column: 1 / -1; } .footer-bottom { flex-direction: column; align-items: flex-start; } }
+    @media (max-width: 480px) { .footer-grid { grid-template-columns: 1fr; } .footer-main { padding: 3rem 1.5rem 2rem; } }
+    /* Footer Map Link Styling */
+    .contact-with-icon {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      transition: color 0.2s ease;
+    }
+    .contact-with-icon svg {
+      stroke: currentColor;
+      flex-shrink: 0;
+    }
+    .contact-with-icon:hover {
+      color: #7dd3fc;
+    }
+    .find-us-map-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.6rem;
+      margin-top: 0.8rem;
+      padding: 0.5rem 1rem;
+      border-radius: 8px;
+      background: rgba(14, 165, 233, 0.1);
+      border: 1px solid rgba(125, 211, 252, 0.3);
+      color: #c4f1ff;
+      text-decoration: none;
+      font-size: 0.85rem;
+      font-weight: 600;
+      transition: all 0.2s ease;
+    }
+    .find-us-map-btn:hover {
+      background: rgba(14, 165, 233, 0.2);
+      border-color: rgba(125, 211, 252, 0.5);
+      color: #ffffff;
+      transform: translateX(2px);
+    }
+    .find-us-map-btn svg {
+      stroke: currentColor;
+      stroke-width: 2;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+</style>
+  <link rel="stylesheet" href="navbar-home.css" />
+  <link rel="stylesheet" href="navbar-unified.css" />
+ </head>
+<body>
+<nav class="navbar">
+    <a href="index.html" class="nav-brand" style="text-decoration:none;">
+      <div class="nav-logo">
+        <img src="./assests/talentsynchrsolutionslogo.png" alt="TalentSync Logo" />
+      </div>
+      <div class="nav-title">
+        <span class="nav-title-main">TalentSync</span>
+        <span class="nav-title-sub">HR Solution</span>
+      </div>
+    </a>
+
+    <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+      <span></span><span></span><span></span>
+    </button>
+
+    <div class="nav-menu" id="navMenu">
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="services.html" class="active-link">Services</a></li>
+        <li><a href="Jobs.html">Jobs</a></li>
+        <li><a href="blogs.html">Blogs/Resources</a></li>
+        <li><a href="about.html">About Us</a></li>
+      </ul>
+      <button class="nav-contact-btn" onclick="window.location.href='contact.html'">Contact</button>
+    </div>
+  </nav>
+
+<div class='nav-overlay' id='navOverlay'></div>
+
+  <main class="page-shell">
+    <section class="hero">
+      <div class="hero-grid">
+        <div class="hero-copy">
+          <div class="eyebrow">Flexible Workforce Support</div>
+          <h1>Staffing Solutions With <span>Agility, Precision, and Speed</span></h1>
+          <p>
+            In an era of rapid market shifts, evolving project demands, and changing workforce expectations, the ability to access the right professionals at the right moment becomes a real competitive advantage. TalentSync HR Solution delivers staffing services that help organizations stay responsive, reduce hiring gaps, and secure dependable talent for both immediate requirements and long-term business growth.
+          </p>
+          <p>
+            Whether you are hiring a single strategic role or scaling a large team under tight deadlines, our staffing specialists combine speed, structure, and careful screening to ensure each candidate adds value both technically and culturally.
+          </p>
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="contact.html">Build Your Team</a>
+            <a class="btn btn-secondary" href="services.html">Back To Services</a>
+          </div>
+        </div>
+
+        <div class="hero-card">
+          <img src="./assests/Staffing solutions.jpg" alt="Staffing solutions workforce collaboration" />
+
+        </div>
+      </div>
+    </section>
+
+    <section class="stats">
+      <div class="stat"><strong>Responsive</strong><span>Rapid talent delivery for urgent vacancies and fast-changing workforce needs.</span></div>
+      <div class="stat"><strong>Precise</strong><span>Profiles selected for role fit, business context, and cultural alignment.</span></div>
+      <div class="stat"><strong>Scalable</strong><span>Hiring support that grows with new projects, offices, and expansion plans.</span></div>
+      <div class="stat"><strong>Reliable</strong><span>Structured screening and verification that help reduce hiring risk.</span></div>
+    </section>
+
+    <section class="content-grid">
+      <article class="panel">
+        <h2>Agility and Precision for a Dynamic Workforce</h2>
+        <p>Modern businesses rarely hire under one fixed condition. Some roles are foundational and long term, some are temporary but urgent, and some are tied directly to business-critical projects with strict timelines. Our staffing service is built around this reality. We help organizations bridge the gap between operational need and professional expertise by offering a hiring model that remains flexible without losing discipline.</p>
+        <p>At TalentSync HR Solution, we treat staffing as a strategic business function, not simply a resume-supply exercise. We work closely with clients to understand why the role exists, what success looks like in that position, how the team operates, and which blend of technical capability and working style will create the best outcome. This gives us the context needed to move quickly while still preserving hiring quality.</p>
+        <p>Our staffing specialists are experienced in supporting organizations through manpower shortages, specialized project requirements, replacement hiring, and expansion phases. This means we can deliver talent for immediate execution while also keeping broader workforce continuity in mind. We understand that every hiring delay can affect output, customer timelines, and internal team performance, so our process is designed to reduce friction and accelerate decision-making.</p>
+        <p>Whether you are a growing startup, a large corporate team, or a business balancing multiple operational priorities, our staffing solutions provide the agility needed to respond to workforce challenges with confidence. We focus on placing professionals who are not only capable on paper but ready to contribute meaningfully in your real working environment.</p>
+      </article>
+
+      <aside class="panel">
+        <h2>Our Comprehensive Staffing Portfolio</h2>
+        <div class="feature-list">
+          <div class="feature-item"><strong>Permanent Employee Recruitment</strong><span>For roles that form the backbone of your organization, we prioritize long-term fit, retention strength, and future leadership potential.</span></div>
+          <div class="feature-item"><strong>Temporary and Contract Staffing</strong><span>We give you the workforce flexibility to manage seasonal peaks, leave cover, short-term spikes in workload, and immediate operational demands.</span></div>
+          <div class="feature-item"><strong>Project-Based Workforce Requirements</strong><span>We source niche specialists and subject matter experts for targeted initiatives such as transformations, audits, engineering programs, and digital projects.</span></div>
+          <div class="feature-item"><strong>Bulk Hiring and High-Volume Recruitment</strong><span>For launches, expansion drives, and large-scale manpower plans, we manage recruitment campaigns that deliver volume without sacrificing candidate quality.</span></div>
+          <div class="feature-item"><strong>Strategic Replacement and Expansion Hiring</strong><span>We help you manage employee transitions and team growth smoothly so daily operations remain stable while the business continues moving forward.</span></div>
+        </div>
+      </aside>
+    </section>
+
+    <section class="content-grid">
+      <article class="panel">
+        <h2>The TalentSync Quality Assurance Approach</h2>
+        <p>Our recruitment specialists do not stop at matching job titles or surface-level experience. We use a structured evaluation framework that helps us understand whether a candidate will perform well, adapt quickly, and thrive within your environment. This is what allows us to present shortlists that are practical, relevant, and genuinely decision-ready.</p>
+        <div class="benefit-table">
+          <div class="benefit-row"><div>Technical Proficiency</div><div>Deep assessment of hard skills, software knowledge, practical capability, and the certifications or domain knowledge relevant to the role.</div></div>
+          <div class="benefit-row"><div>Professional Experience</div><div>Review of previous responsibilities, delivery exposure, career consistency, and the kind of business environments where the candidate has already succeeded.</div></div>
+          <div class="benefit-row"><div>Cultural Alignment</div><div>Evaluation of communication style, work ethic, collaboration habits, and adaptability so the candidate can integrate into your specific team dynamic.</div></div>
+          <div class="benefit-row"><div>Reliability and Vetting</div><div>Reference checks and broader verification support that help reduce hiring risk and strengthen confidence in the final selection.</div></div>
+        </div>
+      </article>
+
+      <article class="panel">
+        <h2>Driving Efficiency Through Partnership</h2>
+        <p>By leveraging our talent pipeline, sourcing reach, and structured screening process, your organization can reduce time-to-hire and minimize the cost of vacancy across important roles. We take on the heavy lifting of profile search, initial evaluation, and interview coordination, allowing your internal teams to focus on the strongest available candidates instead of spending time on large volumes of unsuitable applications.</p>
+        <p>This partnership model is especially useful when hiring needs shift quickly or when multiple openings must be managed at the same time. We help create consistency in recruitment delivery while giving leadership and hiring managers more clarity and control over final decisions. The outcome is a staffing process that feels faster, more organized, and more aligned with business reality.</p>
+        <p>Our philosophy is simple: we do not just provide resumes, we provide human capital solutions. Every staffing assignment is approached with the goal of strengthening your workforce and helping your business move confidently through growth phases, operational change, or project execution periods. No matter the contract duration, we focus on delivering people who will contribute to measurable success.</p>
+      </article>
+    </section>
+
+    <section class="promise">
+      <h2>Our Philosophy</h2>
+      <p>TalentSync HR Solution helps organizations stay agile by delivering professionals who match business needs with speed, precision, and accountability. We believe strong staffing support should reduce disruption, improve workforce readiness, and give clients confidence that the people joining their teams can support performance from day one.</p>
+    </section>
+  </main>
+
+      <footer class="footer">
+  <div class="footer-accent-bar"></div>
+  <div class="footer-inner">
+    <div class="footer-main">
+      <div class="footer-grid">
+        <div>
+          <div class="footer-brand">
+            <div class="footer-logo">
+              <img src="./assests/talentsynchrsolutionslogo.png" alt="TalentSync Logo" />
+            </div>
+            <div class="footer-brand-name">TalentSync<span>HR Solution</span></div>
+          </div>
+          <p class="footer-desc">Empowering organizations with intelligent HR tools that attract, develop, and retain top talent — all in one seamless platform.</p>
+          <div class="footer-social">
+            <a href="https://wa.me/7722009638" target="_blank" rel="noopener noreferrer" class="social-link social-whatsapp" aria-label="WhatsApp">
+              <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+            </a>
+            <a href="https://www.linkedin.com/in/talentsync-hr-solution-2a56063a5" class="social-link social-linkedin" aria-label="LinkedIn">
+              <svg viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+            </a>
+            <a href="#" class="social-link social-facebook" aria-label="Facebook">
+              <svg viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+            </a>
+            <a href="https://www.instagram.com/talentsynchr" class="social-link social-instagram" aria-label="Instagram">
+              <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+            </a>
+            <a href="https://x.com/hr_talentsync" class="social-link social-x" aria-label="X">
+              <svg viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.748l7.73-8.835L1.254 2.25H8.08l4.253 5.622zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+            </a>
+            <a href="https://youtube.com/@talentsynchrsolutions" class="social-link social-youtube" aria-label="YouTube">
+              <svg viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 00-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 00.502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 002.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 002.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+            </a>
+          </div>
+        </div>
+        <div class="footer-col">
+          <h4>Quick Links</h4>
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="services.html">Services</a></li>
+            <li><a href="contact.html">Contact Us</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Services</h4>
+          <ul>
+            <li><a href="recruitment-process-outsourcing.html">Recruitment</a></li>
+            <li><a href="staffing-solutions.html">Staffing Solutions</a></li>
+            <li><a href="it-recruitment.html">IT Recruitment</a></li>
+            <li><a href="hr-outsourcing.html">HR Outsourcing</a></li>
+            <li><a href="services.html">More</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Contact</h4>
+          <ul>
+            <li><a href="mailto:hr@talentsynchrsolution.com">hr@talentsynchrsolution.com</a></li>
+            <li><a href="tel:+917722009638">Office: 7722009638</a></li>
+            <li><a href="https://maps.app.goo.gl/33eAfciDfQ1Eb69w9" class="contact-with-icon">Karve Nagar, Pune – 411052 <svg viewBox="0 0 24 24" width="16" height="16" stroke="currentColor" fill="none" stroke-width="2"><path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></a></li>
+          </ul>
+          <a href="https://maps.app.goo.gl/33eAfciDfQ1Eb69w9" class="find-us-map-btn" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" width="18" height="18" stroke="currentColor" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg> Find us on Map</a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2026 <strong>TalentSync HR Solution.</strong> All rights reserved.</p>
+      <div class="footer-bottom-links">
+        <a href="#">Privacy Policy</a>
+        <a href="#">Terms of Use</a>
+      </div>
+    </div>
+  </div>
+</footer>
+  <script src="script.js"></script>
+</body>
+</html>

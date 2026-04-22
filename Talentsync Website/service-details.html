@@ -1,0 +1,620 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Service Details - TalentSync HR Solution</title>
+    <link rel="icon" type="image/png" href="./assests/talentsynchrsolutionslogo.png" />
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet" />
+    <link rel="stylesheet" href="theme.css" />
+    <style>
+        *,
+        *::before,
+        *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: #f5f7ff;
+            color: #1a1a1a;
+            line-height: 1.65;
+        }
+
+        .navbar {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0.9rem 1.4rem;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(6px);
+            box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+        }
+
+        .brand {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            text-decoration: none;
+        }
+
+        .brand img {
+            width: 38px;
+            height: 38px;
+            border-radius: 8px;
+            object-fit: cover;
+        }
+
+        .brand span {
+            color: #0d1b6e;
+            font-weight: 700;
+            font-size: 0.98rem;
+            line-height: 1.1;
+        }
+
+        .nav-actions {
+            display: flex;
+            gap: 0.65rem;
+            align-items: center;
+        }
+
+        .btn {
+            border: none;
+            border-radius: 999px;
+            text-decoration: none;
+            font-size: 0.8rem;
+            font-weight: 600;
+            padding: 0.45rem 0.95rem;
+            cursor: pointer;
+        }
+
+        .btn-primary {
+            color: #fff;
+            background: linear-gradient(135deg, #0d1b6e, #1a3cbe);
+        }
+
+        .btn-light {
+            color: #0d1b6e;
+            background: #e9eeff;
+        }
+
+        .hero {
+            background: linear-gradient(140deg, #0d1b6e 0%, #1a3cbe 45%, #0e8fdd 100%);
+            color: #fff;
+            padding: 3.8rem 1.3rem 4.2rem;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: clamp(1.7rem, 4vw, 2.7rem);
+            margin-bottom: 0.8rem;
+            letter-spacing: -0.01em;
+        }
+
+        .hero p {
+            max-width: 860px;
+            margin: 0 auto;
+            color: rgba(255, 255, 255, 0.86);
+            font-size: 0.95rem;
+        }
+
+        .toc {
+            max-width: 1180px;
+            margin: -2rem auto 2.2rem;
+            padding: 0 1.2rem;
+        }
+
+        .toc-inner {
+            background: #ffffff;
+            border-radius: 14px;
+            padding: 1rem;
+            box-shadow: 0 10px 30px rgba(13, 27, 110, 0.12);
+            display: grid;
+            grid-template-columns: repeat(5, minmax(0, 1fr));
+            gap: 0.55rem;
+        }
+
+        .toc-inner a {
+            text-decoration: none;
+            color: #1a3cbe;
+            background: #f0f4ff;
+            border-radius: 8px;
+            padding: 0.52rem 0.58rem;
+            font-size: 0.75rem;
+            font-weight: 600;
+            transition: background 0.2s ease, transform 0.2s ease;
+        }
+
+        .toc-inner a:hover {
+            background: #e2ebff;
+            transform: translateY(-1px);
+        }
+
+        .services-wrap {
+            max-width: 1180px;
+            margin: 0 auto;
+            padding: 0 1.2rem 3rem;
+            display: grid;
+            gap: 1rem;
+        }
+
+        .service-section {
+            background: #ffffff;
+            border: 1px solid #e7edff;
+            border-radius: 14px;
+            padding: 1.2rem;
+            scroll-margin-top: 90px;
+            box-shadow: 0 5px 20px rgba(13, 27, 110, 0.06);
+        }
+
+        .service-section h2 {
+            color: #0d1b6e;
+            font-size: 1.15rem;
+            margin-bottom: 0.35rem;
+        }
+
+        .service-section .lead {
+            color: #4f5a7a;
+            font-size: 0.9rem;
+            margin-bottom: 0.9rem;
+        }
+
+        .service-grid {
+            display: grid;
+            grid-template-columns: 1.2fr 1fr;
+            gap: 1rem;
+        }
+
+        .detail-block {
+            background: #f8faff;
+            border: 1px solid #e8eeff;
+            border-radius: 10px;
+            padding: 0.85rem 0.9rem;
+        }
+
+        .detail-block h3 {
+            color: #15308f;
+            font-size: 0.84rem;
+            margin-bottom: 0.4rem;
+            text-transform: uppercase;
+            letter-spacing: 0.07em;
+        }
+
+        .detail-block ul {
+            padding-left: 1rem;
+            display: grid;
+            gap: 0.34rem;
+        }
+
+        .detail-block li {
+            color: #36405d;
+            font-size: 0.85rem;
+        }
+
+            text-align: center;
+            color: #4f5a7a;
+            font-size: 0.84rem;
+            padding: 1rem 1rem 2rem;
+        }
+
+        @media (max-width: 1080px) {
+            .toc-inner {
+                grid-template-columns: repeat(3, minmax(0, 1fr));
+            }
+
+            .service-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .toc-inner {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+
+            .service-section {
+                padding: 1rem;
+            }
+
+            .brand span {
+                font-size: 0.86rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .toc-inner {
+                grid-template-columns: 1fr;
+            }
+
+            .nav-actions {
+                gap: 0.4rem;
+            }
+
+            .btn {
+                font-size: 0.72rem;
+                padding: 0.4rem 0.75rem;
+            }
+        }
+    /* Footer Map Link Styling */
+    .contact-with-icon {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      transition: color 0.2s ease;
+    }
+    .contact-with-icon svg {
+      stroke: currentColor;
+      flex-shrink: 0;
+    }
+    .contact-with-icon:hover {
+      color: #7dd3fc;
+    }
+    .find-us-map-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.6rem;
+      margin-top: 0.8rem;
+      padding: 0.5rem 1rem;
+      border-radius: 8px;
+      background: rgba(14, 165, 233, 0.1);
+      border: 1px solid rgba(125, 211, 252, 0.3);
+      color: #c4f1ff;
+      text-decoration: none;
+      font-size: 0.85rem;
+      font-weight: 600;
+      transition: all 0.2s ease;
+    }
+    .find-us-map-btn:hover {
+      background: rgba(14, 165, 233, 0.2);
+      border-color: rgba(125, 211, 252, 0.5);
+      color: #ffffff;
+      transform: translateX(2px);
+    }
+    .find-us-map-btn svg {
+      stroke: currentColor;
+      stroke-width: 2;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+</style>
+  <link rel="stylesheet" href="navbar-home.css" />
+  <link rel="stylesheet" href="navbar-unified.css" />
+ </head>
+
+<body>
+    <nav class="navbar">
+      <a href="index.html" class="nav-brand" style="text-decoration:none;">
+        <div class="nav-logo">
+          <img src="./assests/talentsynchrsolutionslogo.png" alt="TalentSync Logo" />
+        </div>
+        <div class="nav-title">
+          <span class="nav-title-main">TalentSync</span>
+          <span class="nav-title-sub">HR Solution</span>
+        </div>
+      </a>
+
+      <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+        <span></span><span></span><span></span>
+      </button>
+
+      <div class="nav-menu" id="navMenu">
+        <ul class="nav-links">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="services.html" class="active-link">Services</a></li>
+          <li><a href="Jobs.html">Jobs</a></li>
+          <li><a href="blogs.html">Blogs/Resources</a></li>
+          <li><a href="about.html">About Us</a></li>
+        </ul>
+        <button class="nav-contact-btn" onclick="window.location.href='contact.html'">Contact</button>
+      </div>
+    </nav>
+
+    <div class="nav-overlay" id="navOverlay"></div>
+
+    <header class="hero">
+        <h1>Detailed Service Information</h1>
+        <p>
+            Explore complete details of every TalentSync offering, including scope, delivery model, process, timelines,
+            measurable outcomes, and ideal use cases for growing organizations.
+        </p>
+    </header>
+
+    <section class="toc">
+        <div class="toc-inner">
+            <a href="#rpo">RPO</a>
+            <a href="#staffing-solutions">Staffing Solutions</a>
+            <a href="#it-recruitment">IT Recruitment</a>
+            <a href="#hr-outsourcing">HR Outsourcing</a>
+            <a href="#digital-marketing-recruitment">Digital Marketing Recruitment</a>
+            <a href="#custom-software-development">Custom Software Development</a>
+            <a href="#mobile-app-development">Mobile App Development</a>
+            <a href="#web-app-development">Web App Development</a>
+            <a href="#data-analytics-solutions">Data Analytics Solutions</a>
+            <a href="#ai-ml-solutions">AI and ML Solutions</a>
+        </div>
+    </section>
+
+    <main class="services-wrap">
+        <section class="service-section" id="rpo">
+            <h2>Recruitment Process Outsourcing (RPO)</h2>
+            <p class="lead">An end-to-end hiring engine that acts as an extension of your internal talent acquisition
+                team.</p>
+            <div class="service-grid">
+                <div class="detail-block">
+                    <h3>What We Deliver</h3>
+                    <ul>
+                        <li>Workforce planning support based on hiring forecasts and budget limits.</li>
+                        <li>Role intake calibration sessions to define must-have and nice-to-have skill maps.</li>
+                        <li>Multi-channel sourcing strategy using job boards, talent communities, and passive outreach.
+                        </li>
+                        <li>Structured screening workflows and interview coordination with hiring panels.</li>
+                        <li>Offer management, candidate engagement, and pre-joining retention support.</li>
+                    </ul>
+                </div>
+                <div class="detail-block">
+                    <h3>Business Outcomes</h3>
+                    <ul>
+                        <li>Reduced time-to-hire and improved interview-to-offer conversion rates.</li>
+                        <li>Improved hiring quality through consistent scorecards and competency checks.</li>
+                        <li>Real-time hiring visibility through weekly KPI dashboards and funnel reports.</li>
+                        <li>Scalable hiring model for rapid growth without overbuilding in-house teams.</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section class="service-section" id="staffing-solutions">
+            <h2>Staffing Solutions</h2>
+            <p class="lead">Flexible workforce models for temporary, contract-to-hire, and permanent staffing needs.</p>
+            <div class="service-grid">
+                <div class="detail-block">
+                    <h3>Service Scope</h3>
+                    <ul>
+                        <li>Contract staffing for short-term projects and seasonal demand spikes.</li>
+                        <li>Permanent hiring for business-critical and leadership positions.</li>
+                        <li>Contract-to-hire model to reduce hiring risk before full-time onboarding.</li>
+                        <li>Pre-vetted talent pools by domain, experience level, and location readiness.</li>
+                        <li>Compliance-first onboarding and documentation management.</li>
+                    </ul>
+                </div>
+                <div class="detail-block">
+                    <h3>Ideal Use Cases</h3>
+                    <ul>
+                        <li>Project launches with urgent manpower requirements.</li>
+                        <li>Backfill and expansion hiring across departments.</li>
+                        <li>Organizations looking to control hiring cost and reduce bad hires.</li>
+                        <li>Teams needing immediate access to ready-to-join professionals.</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section class="service-section" id="it-recruitment">
+            <h2>IT Recruitment</h2>
+            <p class="lead">Specialized technology hiring for product, platform, data, cloud, and security teams.</p>
+            <div class="service-grid">
+                <div class="detail-block">
+                    <h3>Capabilities</h3>
+                    <ul>
+                        <li>Hiring for software engineering, DevOps, QA, cloud, and cybersecurity roles.</li>
+                        <li>Technical screening with role-based competency benchmarks.</li>
+                        <li>Evaluation of architecture understanding, coding quality, and system thinking.</li>
+                        <li>Talent mapping for niche stacks such as AI engineering and MLOps.</li>
+                        <li>Experience with startup speed hiring and enterprise governance hiring models.</li>
+                    </ul>
+                </div>
+                <div class="detail-block">
+                    <h3>Delivery Approach</h3>
+                    <ul>
+                        <li>Kickoff within 48 hours after requirement freeze.</li>
+                        <li>Shortlisted profiles shared in structured batches with feedback loop closure.</li>
+                        <li>Interview scheduling support and compensation benchmarking guidance.</li>
+                        <li>Joining assurance workflows to reduce offer drop-offs.</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section class="service-section" id="hr-outsourcing">
+            <h2>HR Outsourcing</h2>
+            <p class="lead">Comprehensive HR operations support so internal teams can focus on culture and strategic
+                growth.</p>
+            <div class="service-grid">
+                <div class="detail-block">
+                    <h3>Operational Coverage</h3>
+                    <ul>
+                        <li>Employee lifecycle administration from onboarding to exit management.</li>
+                        <li>Policy drafting, handbook alignment, and compliance controls.</li>
+                        <li>Attendance, leave, and payroll input governance support.</li>
+                        <li>Performance management cadence setup and documentation support.</li>
+                        <li>Employee grievance channels and escalation matrix definition.</li>
+                    </ul>
+                </div>
+                <div class="detail-block">
+                    <h3>Value Delivered</h3>
+                    <ul>
+                        <li>Reduced operational burden for founders and business leaders.</li>
+                        <li>Better compliance readiness and lower process leakages.</li>
+                        <li>Consistent employee experience across all lifecycle stages.</li>
+                        <li>Scalable HR framework for fast-growing teams.</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section class="service-section" id="digital-marketing-recruitment">
+            <h2>Digital Marketing Recruitment</h2>
+            <p class="lead">Role-specific hiring for performance marketing, content, growth, analytics, and brand
+                functions.</p>
+            <div class="service-grid">
+                <div class="detail-block">
+                    <h3>Roles We Hire For</h3>
+                    <ul>
+                        <li>Performance Marketers, SEO Specialists, and Media Buyers.</li>
+                        <li>Content Strategists, Copywriters, and Visual Campaign Managers.</li>
+                        <li>CRM and automation professionals for lifecycle growth.</li>
+                        <li>Marketing analysts with attribution and reporting expertise.</li>
+                        <li>Brand managers for integrated digital and offline campaigns.</li>
+                    </ul>
+                </div>
+                <div class="detail-block">
+                    <h3>Selection Filters</h3>
+                    <ul>
+                        <li>Campaign impact history and conversion metrics ownership.</li>
+                        <li>Hands-on platform proficiency and experimentation mindset.</li>
+                        <li>Audience understanding and creative-testing rigor.</li>
+                        <li>Cross-functional collaboration skills with product and sales teams.</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section class="service-section" id="custom-software-development">
+            <h2>Custom Software Development</h2>
+            <p class="lead">Bespoke software solutions designed around your exact workflow, compliance, and business
+                goals.</p>
+            <div class="service-grid">
+                <div class="detail-block">
+                    <h3>Development Services</h3>
+                    <ul>
+                        <li>Requirement discovery workshops and process mapping.</li>
+                        <li>Architecture planning for scalability, security, and maintainability.</li>
+                        <li>UI/UX prototyping with stakeholder review checkpoints.</li>
+                        <li>Modular development with quality assurance and release management.</li>
+                        <li>Documentation, user training, and support handover.</li>
+                    </ul>
+                </div>
+                <div class="detail-block">
+                    <h3>Common Solutions</h3>
+                    <ul>
+                        <li>Internal workflow systems and approval automation tools.</li>
+                        <li>CRM, HRMS, and dashboard-driven management platforms.</li>
+                        <li>Integrations with payment, ERP, and third-party APIs.</li>
+                        <li>Legacy modernization and process digitization projects.</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section class="service-section" id="mobile-app-development">
+            <h2>Mobile Application Development</h2>
+            <p class="lead">User-focused Android and iOS mobile experiences built for performance, reliability, and
+                growth.</p>
+            <div class="service-grid">
+                <div class="detail-block">
+                    <h3>What We Build</h3>
+                    <ul>
+                        <li>Consumer and enterprise mobile apps with clear conversion flows.</li>
+                        <li>Cross-platform and native apps based on project requirements.</li>
+                        <li>Secure authentication, notifications, analytics, and in-app workflows.</li>
+                        <li>Offline-ready features for field operations and distributed teams.</li>
+                        <li>Store-ready release packaging and deployment support.</li>
+                    </ul>
+                </div>
+                <div class="detail-block">
+                    <h3>Quality Standards</h3>
+                    <ul>
+                        <li>Performance optimization for low and high-end devices.</li>
+                        <li>Usability testing across screen sizes and OS versions.</li>
+                        <li>Crash monitoring, update cycle planning, and ongoing maintenance.</li>
+                        <li>Security checks for data storage and API communication.</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section class="service-section" id="web-app-development">
+            <h2>Web Application Development</h2>
+            <p class="lead">Modern web platforms that are secure, fast, and tailored to your business process
+                architecture.</p>
+            <div class="service-grid">
+                <div class="detail-block">
+                    <h3>Core Components</h3>
+                    <ul>
+                        <li>Front-end development with responsive, conversion-first interfaces.</li>
+                        <li>Back-end services with clean APIs and robust role-based access controls.</li>
+                        <li>Database design for reliability, scale, and reporting readiness.</li>
+                        <li>Admin panels, dashboards, and workflow automation modules.</li>
+                        <li>Cloud deployment with backup and monitoring setup.</li>
+                    </ul>
+                </div>
+                <div class="detail-block">
+                    <h3>Project Lifecycle</h3>
+                    <ul>
+                        <li>Discovery and technical blueprinting.</li>
+                        <li>Agile sprint planning with staged demos and approvals.</li>
+                        <li>Testing, UAT support, and production launch.</li>
+                        <li>Post-launch enhancements and SLA-based support.</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section class="service-section" id="data-analytics-solutions">
+            <h2>Data Analytics Solutions</h2>
+            <p class="lead">Data-to-decision systems that transform business information into actionable growth
+                insights.</p>
+            <div class="service-grid">
+                <div class="detail-block">
+                    <h3>Analytics Offerings</h3>
+                    <ul>
+                        <li>Data pipeline setup and central reporting model design.</li>
+                        <li>Custom dashboards for sales, operations, HR, and finance visibility.</li>
+                        <li>KPI framework definition and trend analysis automation.</li>
+                        <li>Data cleansing and governance practices for better decision confidence.</li>
+                        <li>Predictive reporting modules for planning and risk detection.</li>
+                    </ul>
+                </div>
+                <div class="detail-block">
+                    <h3>Impact Areas</h3>
+                    <ul>
+                        <li>Faster strategic decisions with real-time business performance views.</li>
+                        <li>Reduced reporting effort through automated dashboard refresh.</li>
+                        <li>Improved forecasting accuracy and revenue planning support.</li>
+                        <li>Cross-team alignment around shared business metrics.</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section class="service-section" id="ai-ml-solutions">
+            <h2>Artificial Intelligence and Machine Learning Solutions</h2>
+            <p class="lead">AI-first capability development to automate decisions, personalize experiences, and improve
+                efficiency.</p>
+            <div class="service-grid">
+                <div class="detail-block">
+                    <h3>Solution Modules</h3>
+                    <ul>
+                        <li>Intelligent chat assistants and workflow automation bots.</li>
+                        <li>Recommendation systems and customer behavior prediction models.</li>
+                        <li>Document processing with OCR and NLP-based classification.</li>
+                        <li>Demand forecasting, anomaly detection, and risk scoring models.</li>
+                        <li>AI-powered reporting assistants for business teams.</li>
+                    </ul>
+                </div>
+                <div class="detail-block">
+                    <h3>Implementation Method</h3>
+                    <ul>
+                        <li>Use-case prioritization based on ROI and data readiness.</li>
+                        <li>Model development with validation benchmarks and drift monitoring.</li>
+                        <li>Secure deployment pipeline with governance controls.</li>
+                        <li>Continuous improvement through feedback loops and retraining cycles.</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <p class="footer-note">Need a proposal tailored to your business goals? Use the Talk to Us button to schedule a
+        consultation.</p>
+  <script src="script.js"></script>
+</body>
+
+</html>

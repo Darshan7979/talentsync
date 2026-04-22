@@ -1,0 +1,517 @@
+/* ═══════════════════════════════════════════════
+   TALENTSYNC — DARK + WHITE CONTRAST THEME
+   Option 2: Dark navy shell · Clean white content
+   Navy text on white · Gold hover accents
+   Feels like: Apple, Pentagram, modern agency
+═══════════════════════════════════════════════ */
+
+:root {
+  --navy:       #0d1b6e;
+  --navy-deep:  #060d2e;
+  --blue:       #1a3cbe;
+  --sky:        #0e8fdd;
+  --gold:       #c9a84c;
+  --gold-light: #e2c47a;
+  --gold-dim:   rgba(201,168,76,0.1);
+  --white:      #ffffff;
+  --off-white:  #f8f9fc;
+  --text:       #1a1a2e;
+  --text-body:  #444455;
+  --text-muted: #6b6b80;
+  --border:     #e8eaf2;
+}
+
+/* ── Scrollbar ── */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: #f0f2ff; }
+::-webkit-scrollbar-thumb { background: var(--blue); border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: var(--navy); }
+* { scrollbar-width: thin; scrollbar-color: var(--blue) #f0f2ff; }
+
+/* ── Body — white base ── */
+body {
+  background: var(--white) !important;
+  color: var(--text-body) !important;
+}
+
+/* ══════════════════════════════
+   NAVBAR — controlled by navbar-home.css
+══════════════════════════════ */
+
+/* ══════════════════════════════
+   HERO BANNERS — dark navy
+   (about, services, contact, jobs, blogs)
+══════════════════════════════ */
+.about-hero,
+.srv-hero,
+.jobs-hero {
+  background: linear-gradient(135deg, var(--navy) 0%, var(--blue) 55%, var(--sky) 100%) !important;
+}
+.about-hero h1, .srv-hero h1, .jobs-hero h1 { color: #ffffff !important; }
+.about-hero p, .srv-hero-desc, .jobs-hero p { color: rgba(255,255,255,0.75) !important; }
+.srv-hero-tag { color: rgba(255,255,255,0.6) !important; }
+.hero-wave svg path { fill: var(--white) !important; }
+
+/* ══════════════════════════════
+   INNER SECTIONS — clean white
+══════════════════════════════ */
+.section,
+.srv-intro,
+.srv-grid-section,
+.section-head,
+.filter-group,
+.cta-section,
+.map-section,
+.blog-body,
+.resources-section,
+.video-section { background: var(--white) !important; }
+
+.how-it-works-v2,
+.industries,
+.testimonials,
+.section-alt,
+.pillars-section,
+.stats-bar { background: var(--off-white) !important; }
+
+/* ── Section text — navy on white ── */
+h2, h3, h4 { color: var(--navy) !important; }
+h2::after { background: var(--blue) !important; }
+p { color: var(--text-body) !important; }
+.section-label { color: var(--blue) !important; }
+.section-title { color: var(--navy) !important; }
+.section-sub { color: var(--text-muted) !important; }
+.srv-intro p { color: var(--text-body) !important; }
+
+/* ── Section tags ── */
+.section-tag { background: rgba(26,60,190,0.08) !important; color: var(--blue) !important; }
+.cta-tag { background: rgba(255,255,255,0.15) !important; color: #ffffff !important; }
+
+/* ══════════════════════════════
+   CARDS — white with navy text, gold hover
+══════════════════════════════ */
+.value-card,
+.info-card,
+.form-card,
+.job-card,
+.testi-card,
+.service-card,
+.industry-card,
+.step-card,
+.hiw-step-body,
+.form-section,
+.resource-card,
+.pillar-item,
+.video-card,
+.insight-card,
+.usecase-card,
+.roadmap-card,
+.tool-card,
+.related-card {
+  background: var(--white) !important;
+  border: 1px solid var(--border) !important;
+  color: var(--text-body) !important;
+  box-shadow: 0 2px 16px rgba(13,27,110,0.06) !important;
+}
+.value-card:hover,
+.info-card:hover,
+.job-card:hover,
+.service-card:hover,
+.industry-card:hover,
+.hiw-step-body:hover,
+.pillar-item:hover,
+.resource-card:hover,
+.insight-card:hover,
+.usecase-card:hover,
+.roadmap-card:hover,
+.tool-card:hover,
+.related-card:hover {
+  border-color: var(--gold) !important;
+  box-shadow: 0 8px 32px rgba(13,27,110,0.1) !important;
+  transform: translateY(-4px) !important;
+}
+.value-card h4,
+.info-title,
+.job-title,
+.industry-name,
+.resource-card h3,
+.pillar-item h5,
+.insight-card strong,
+.usecase-card h4,
+.roadmap-card h4,
+.tool-card h4,
+.related-card h4 { color: var(--navy) !important; }
+.value-card p,
+.info-text,
+.job-company,
+.company-name,
+.industry-desc,
+.resource-card p,
+.pillar-item p,
+.insight-card span,
+.usecase-card p,
+.roadmap-card p,
+.tool-card p,
+.related-card p { color: var(--text-muted) !important; }
+.value-card::before { background: var(--gold) !important; }
+
+/* ── Stats ── */
+.stats { background: linear-gradient(135deg, var(--navy) 0%, var(--blue) 60%, var(--sky) 100%) !important; }
+.stat-num, .stat-suffix { color: #FFD700 !important; }
+.stat-label { color: rgba(255,255,255,0.75) !important; }
+.stats-bar { background: var(--off-white) !important; }
+.stat-item h3 { color: var(--navy) !important; }
+.stat-item p { color: var(--text-muted) !important; }
+.stat-item .num { color: var(--navy) !important; }
+.stat-item .lbl { color: var(--text-muted) !important; }
+
+/* ── Vision/Mission ── */
+.vm-block { background: var(--off-white) !important; }
+.vm-block.vision { background: var(--navy) !important; }
+.vm-block h2 { color: var(--navy) !important; }
+.vm-block p { color: var(--text-body) !important; }
+.vm-block.vision h2 { color: #ffffff !important; }
+.vm-block.vision p { color: rgba(255,255,255,0.8) !important; }
+.vm-block.vision h2::after { background: var(--sky) !important; }
+
+/* ── Timeline ── */
+.timeline { border-left-color: rgba(26,60,190,0.25) !important; }
+.timeline-event::before { background: var(--white) !important; border-color: var(--blue) !important; }
+.timeline-event h4 { color: var(--blue) !important; }
+
+/* ── CTA section ── */
+.cta { background: linear-gradient(135deg, var(--navy) 0%, var(--blue) 60%, var(--sky) 100%) !important; }
+.cta h2 { color: #ffffff !important; }
+.cta p { color: rgba(255,255,255,0.78) !important; }
+.cta-tag { background: rgba(255,255,255,0.15) !important; color: #ffffff !important; }
+.cta-footer { background: var(--off-white) !important; }
+.cta-btn, .cta-btn-link { background: rgba(255,255,255,0.15) !important; color: #ffffff !important; border: 2px solid rgba(255,255,255,0.4) !important; box-shadow: none !important; }
+.cta-btn:hover, .cta-btn-link:hover { background: rgba(255,255,255,0.25) !important; }
+.cta .btn-white {
+  background: linear-gradient(135deg, var(--navy), var(--blue)) !important;
+  color: #ffffff !important;
+  border: none !important;
+  box-shadow: 0 6px 20px rgba(13,27,110,0.35) !important;
+}
+.cta .btn-white:hover {
+  box-shadow: 0 10px 28px rgba(13,27,110,0.45) !important;
+  transform: translateY(-2px) !important;
+}
+
+/* ── Buttons ── */
+.btn-primary, .apply-submit, .details-btn, .job-apply-btn, .submit-btn {
+  background: linear-gradient(135deg, var(--navy), var(--blue)) !important;
+  color: #ffffff !important;
+  border: none !important;
+  box-shadow: 0 4px 16px rgba(26,60,190,0.25) !important;
+}
+.btn-primary:hover, .apply-submit:hover, .details-btn:hover,
+.job-apply-btn:hover, .submit-btn:hover {
+  box-shadow: 0 8px 24px rgba(26,60,190,0.35) !important;
+  transform: translateY(-2px) !important;
+}
+.btn-outline, .btn-white {
+  border-color: rgba(13,27,110,0.2) !important;
+  color: var(--navy) !important;
+  background: transparent !important;
+}
+.btn-outline:hover, .btn-white:hover {
+  border-color: var(--navy) !important;
+  background: var(--navy) !important;
+  color: #ffffff !important;
+}
+.btn-hire-talent {
+  background: linear-gradient(135deg, var(--sky), var(--blue)) !important;
+  color: #ffffff !important;
+  border-color: transparent !important;
+  box-shadow: 0 8px 24px rgba(26,60,190,0.28) !important;
+}
+.btn-hire-talent:hover {
+  background: linear-gradient(135deg, var(--sky), var(--blue)) !important;
+  color: #ffffff !important;
+  border-color: transparent !important;
+  box-shadow: 0 12px 32px rgba(26,60,190,0.4) !important;
+}
+
+/* ── Form inputs ── */
+.form-group input,
+.form-group select,
+.form-group textarea,
+.apply-form input,
+.apply-form textarea,
+.form-section .form-group input,
+.form-section .form-group textarea,
+.form-section .form-group select {
+  background: var(--off-white) !important;
+  border-color: var(--border) !important;
+  color: var(--text) !important;
+}
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus,
+.apply-form input:focus,
+.apply-form textarea:focus {
+  border-color: var(--blue) !important;
+  box-shadow: 0 0 0 3px rgba(26,60,190,0.08) !important;
+  background: var(--white) !important;
+}
+.form-group label { color: var(--navy) !important; }
+.form-header h3, .form-section h2 { color: var(--navy) !important; }
+.form-header p { color: var(--text-muted) !important; }
+.file-label, .file-upload {
+  border-color: var(--border) !important;
+  color: var(--text-muted) !important;
+  background: var(--off-white) !important;
+}
+.file-label:hover, .file-upload:hover {
+  border-color: var(--blue) !important;
+  background: rgba(26,60,190,0.04) !important;
+}
+
+/* ── Contact info cards ── */
+.info-icon {
+  background: rgba(26,60,190,0.07) !important;
+  border: 1px solid rgba(26,60,190,0.12) !important;
+}
+.info-icon svg { stroke: var(--blue) !important; }
+.info-label { color: var(--blue) !important; }
+.info-text a { color: var(--blue) !important; }
+.info-text a:hover { color: var(--navy) !important; }
+
+/* ── Map ── */
+.map-section { background: var(--off-white) !important; }
+.map-wrapper { border-color: var(--border) !important; }
+
+/* ── Jobs ── */
+.jobs-hero h1 span { color: #FFD700 !important; }
+.filter-tab {
+  background: var(--white) !important;
+  border-color: var(--border) !important;
+  color: var(--text-muted) !important;
+}
+.filter-tab:hover, .filter-tab.active {
+  background: linear-gradient(135deg, var(--navy), var(--blue)) !important;
+  color: #ffffff !important;
+  border-color: transparent !important;
+  box-shadow: 0 4px 14px rgba(26,60,190,0.3) !important;
+}
+.filter-label { color: var(--navy) !important; font-weight: 700 !important; }
+.section-head h2 { color: var(--navy) !important; }
+.section-head h2 span { color: var(--blue) !important; }
+.section-head p { color: var(--text-muted) !important; }
+.underline-bar { background: linear-gradient(90deg, var(--navy), #FFD700) !important; }
+.job-card { background: var(--white) !important; border-color: var(--border) !important; }
+.job-card:hover { border-color: var(--gold) !important; box-shadow: 0 8px 32px rgba(13,27,110,0.1) !important; }
+.job-card::before { background: linear-gradient(90deg, var(--navy), var(--blue), var(--sky)) !important; }
+.category-chip { background: rgba(26,60,190,0.08) !important; color: var(--blue) !important; }
+.meta-chip { background: var(--off-white) !important; color: var(--text-muted) !important; }
+.salary { color: var(--navy) !important; font-weight: 700 !important; }
+.salary span { color: var(--text-muted) !important; }
+.salary-row { border-top-color: var(--border) !important; }
+.badge-full { background: rgba(46,125,50,0.1) !important; color: #2e7d32 !important; }
+.badge-part { background: rgba(230,81,0,0.1) !important; color: #e65100 !important; }
+.badge-remote { background: rgba(26,60,190,0.1) !important; color: var(--blue) !important; }
+.badge-contract { background: rgba(106,27,154,0.1) !important; color: #6a1b9a !important; }
+
+/* Detail panel */
+.detail-panel {
+  background: var(--white) !important;
+  border: 1px solid var(--border) !important;
+  box-shadow: 0 24px 80px rgba(13,27,110,0.18) !important;
+}
+.panel-close { background: var(--off-white) !important; color: var(--text-muted) !important; }
+.panel-close:hover { background: var(--border) !important; color: var(--navy) !important; }
+.panel-title { color: var(--navy) !important; }
+.panel-company { color: var(--text-muted) !important; }
+.panel-chip { background: var(--off-white) !important; color: var(--text-body) !important; }
+.panel-divider { background: var(--border) !important; }
+.panel-section-title { color: var(--text-muted) !important; }
+.panel-desc { color: var(--text-body) !important; }
+.panel-list li { color: var(--text-body) !important; }
+.panel-list li::before { color: var(--blue) !important; }
+.panel-salary-box {
+  background: linear-gradient(135deg, var(--navy), var(--blue)) !important;
+  border: none !important;
+}
+.panel-salary-box .s-label { color: rgba(255,255,255,0.7) !important; }
+.panel-salary-box .s-val { color: #ffffff !important; }
+
+/* CTA cards (jobs) */
+.cta-card.seeker { background: linear-gradient(135deg, var(--navy), var(--blue)) !important; border: none !important; }
+.cta-card.employer { background: linear-gradient(135deg, var(--sky), var(--navy)) !important; border: none !important; }
+.cta-card h3 { color: #ffffff !important; }
+.cta-card p { color: rgba(255,255,255,0.7) !important; }
+.cta-icon { background: rgba(255,255,255,0.15) !important; border-color: rgba(255,255,255,0.25) !important; }
+
+/* ── Services ── */
+.srv-card { background: var(--navy) !important; border: 1px solid rgba(255,255,255,0.06) !important; }
+.srv-card:hover { box-shadow: 0 12px 40px rgba(13,27,110,0.2) !important; transform: translateY(-5px) !important; }
+.srv-card-btn {
+  background: rgba(255,255,255,0.15) !important;
+  border-color: rgba(255,255,255,0.4) !important;
+  color: #ffffff !important;
+}
+.srv-card-btn:hover { background: rgba(255,255,255,0.25) !important; }
+.tag { background: rgba(26,60,190,0.08) !important; color: var(--blue) !important; }
+
+/* ── About ── */
+.content-visual {
+  background: var(--off-white) !important;
+  border: 1px solid var(--border) !important;
+  box-shadow: inset 0 0 40px rgba(13,27,110,0.04) !important;
+}
+
+/* ── How it works ── */
+.hiw-header h2 { color: var(--navy) !important; }
+.hiw-header p { color: var(--text-muted) !important; }
+.hiw-toggle { background: var(--off-white) !important; }
+.hiw-tab { color: var(--text-muted) !important; }
+.hiw-tab.active { color: #ffffff !important; }
+.hiw-tab-slider { background: linear-gradient(135deg, var(--navy), var(--blue)) !important; }
+.hiw-step-body { background: var(--white) !important; border-color: var(--border) !important; }
+.hiw-step-body:hover { background: var(--off-white) !important; border-color: var(--gold) !important; }
+.hiw-step-text h4 { color: var(--navy) !important; }
+.hiw-step-text p { color: var(--text-muted) !important; }
+.seeker-num { background: rgba(26,60,190,0.08) !important; color: var(--blue) !important; border-color: rgba(26,60,190,0.2) !important; }
+.seeker-icon { background: linear-gradient(135deg, var(--navy), var(--blue)) !important; color: #ffffff !important; }
+.seeker-badge { background: rgba(26,60,190,0.08) !important; color: var(--blue) !important; }
+.seeker-final { background: var(--white) !important; border: 1px solid var(--border) !important; }
+.seeker-final h4 { color: var(--navy) !important; }
+.seeker-final p { color: var(--text-muted) !important; }
+.seeker-final .hiw-final-icon { background: rgba(26,60,190,0.08) !important; color: var(--blue) !important; }
+.hiw-step-line { background: linear-gradient(180deg, rgba(26,60,190,0.2), rgba(26,60,190,0.05)) !important; }
+
+/* ── Industries ── */
+.industry-icon svg { stroke: var(--blue) !important; }
+
+/* ── Testimonials ── */
+.testi-quote { color: var(--blue) !important; opacity: 0.15 !important; }
+.testi-stars { color: #f2c94c !important; }
+.testi-name { color: var(--navy) !important; }
+.testi-role { color: var(--text-muted) !important; }
+.testi-avatar { background: linear-gradient(135deg, var(--navy), var(--blue)) !important; color: #ffffff !important; }
+
+/* ── Blogs ── */
+.resource-card::after { background: var(--blue) !important; }
+.category-tag { background: rgba(26,60,190,0.08) !important; color: var(--blue) !important; }
+.read-more { color: var(--blue) !important; }
+.pillar-icon-wrap { background: rgba(26,60,190,0.07) !important; }
+.pillar-icon-wrap svg { color: var(--blue) !important; }
+.pillar-item:hover .pillar-icon-wrap { background: linear-gradient(135deg, var(--navy), var(--blue)) !important; }
+.pillar-item:hover .pillar-icon-wrap svg { color: #ffffff !important; }
+.bottom-cta { background: var(--navy) !important; border-radius: 24px !important; }
+.bottom-cta h3 { color: #ffffff !important; }
+.bottom-cta p { color: rgba(255,255,255,0.75) !important; }
+
+/* ── Blog article pages ── */
+.section-block h2 { color: var(--navy) !important; border-left-color: var(--blue) !important; }
+.section-block h3 { color: var(--blue) !important; }
+.section-block p { color: var(--text-body) !important; }
+.insight-card { background: var(--white) !important; border-top-color: var(--blue) !important; box-shadow: 0 4px 20px rgba(13,27,110,0.07) !important; }
+.insight-card strong { color: var(--blue) !important; }
+.insight-card span { color: var(--text-muted) !important; }
+.card-icon { background: linear-gradient(135deg, var(--navy), var(--blue)) !important; color: #ffffff !important; }
+.card-icon svg { stroke: #ffffff !important; }
+.tip-box { background: linear-gradient(135deg, #eef2ff, var(--white)) !important; border-left-color: var(--blue) !important; }
+.highlight-box { background: var(--navy) !important; border: none !important; }
+.highlight-box h3 { color: #8fd4ff !important; }
+.highlight-box li { color: rgba(255,255,255,0.85) !important; border-bottom-color: rgba(255,255,255,0.1) !important; }
+.highlight-box li::before { color: #8fd4ff !important; }
+.related-section { border-top-color: var(--border) !important; }
+.back-btn { color: var(--blue) !important; }
+.back-btn:hover { color: var(--navy) !important; }
+
+/* ── Service details ── */
+.toc-inner { background: var(--white) !important; box-shadow: 0 10px 30px rgba(13,27,110,0.1) !important; border: 1px solid var(--border) !important; }
+.toc-inner a { background: #f0f4ff !important; color: var(--blue) !important; }
+.toc-inner a:hover { background: #e2ebff !important; }
+.service-section { background: var(--white) !important; border-color: var(--border) !important; box-shadow: 0 5px 20px rgba(13,27,110,0.06) !important; }
+.service-section h2 { color: var(--navy) !important; }
+.service-section .lead { color: var(--text-muted) !important; }
+.detail-block { background: #f8faff !important; border-color: #e8eeff !important; }
+.detail-block h3 { color: var(--navy) !important; }
+.detail-block li { color: var(--text-body) !important; }
+.footer-note { color: var(--text-muted) !important; }
+.brand span { color: var(--navy) !important; }
+.btn-light { background: #e9eeff !important; color: var(--navy) !important; border: none !important; }
+
+/* ── Reveal ── */
+.reveal { opacity: 0; transform: translateY(28px); transition: opacity 0.6s ease, transform 0.6s ease; }
+.reveal.visible, .reveal.in-view { opacity: 1 !important; transform: translateY(0) !important; }
+.section-block, .insight-card, .usecase-card, .roadmap-card,
+.tool-card, .related-card, .resource-card-link, .pillar-item,
+.service-card, .workflow-item, .phase-item, .step-card {
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+.section-block.in-view, .insight-card.in-view, .usecase-card.in-view,
+.roadmap-card.in-view, .tool-card.in-view, .related-card.in-view,
+.resource-card-link.in-view, .pillar-item.in-view,
+.service-card.in-view, .workflow-item.in-view, .phase-item.in-view,
+.step-card.in-view {
+  opacity: 1 !important;
+  transform: translateY(0) !important;
+}
+
+/* Services page overrides */
+.srv-card h2 {
+  font-family: "Tenor Sans", sans-serif !important;
+  color: #f4f7ff !important;
+  font-weight: 400 !important;
+  letter-spacing: 0.03em !important;
+  line-height: 1.35 !important;
+  text-transform: none !important;
+}
+
+.srv-grid > .srv-card:last-child {
+  grid-column: 2;
+}
+
+@media (max-width: 1024px) {
+  .srv-grid > .srv-card:last-child {
+    grid-column: auto;
+  }
+}
+
+/* Home hero text visibility */
+.hero-sub {
+  color: rgba(245, 241, 241, 0.838) !important;
+  text-shadow: 0 2px 12px rgba(6,13,46,0.35) !important;
+}
+
+/* Home hero button overrides */
+.hero .btn-primary {
+  background: linear-gradient(135deg, #f4d06f, #d4a63a) !important;
+  color: #1b1930 !important;
+  box-shadow: 0 8px 24px rgba(212,166,58,0.32) !important;
+}
+
+.hero .btn-primary:hover {
+  box-shadow: 0 12px 32px rgba(212,166,58,0.44) !important;
+}
+
+.hero .btn-hire-talent {
+  background: rgba(255,255,255,0.12) !important;
+  color: #ffffff !important;
+  border: 1px solid rgba(255,255,255,0.45) !important;
+  box-shadow: 0 8px 24px rgba(6,13,46,0.18) !important;
+  backdrop-filter: blur(10px) !important;
+}
+
+.hero .btn-hire-talent:hover {
+  background: rgba(255,255,255,0.2) !important;
+  color: #ffffff !important;
+  border-color: rgba(255,255,255,0.65) !important;
+  box-shadow: 0 12px 32px rgba(6,13,46,0.28) !important;
+}
+
+.hero .hero-scroll-cue {
+  opacity: 0.72 !important;
+}
+
+.hero .scroll-mouse {
+  border-color: rgba(244,208,111,0.95) !important;
+  box-shadow: 0 0 18px rgba(244,208,111,0.18) !important;
+}
+
+.hero .scroll-wheel {
+  background: #f4d06f !important;
+}

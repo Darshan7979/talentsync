@@ -1,0 +1,608 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Admin Dashboard — TalentSync</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --navy:      #0d1b6e;
+      --navy-deep: #060d2e;
+      --blue:      #1a3cbe;
+      --sky:       #0e8fdd;
+      --gold:      #f6d365;
+      --gold-dark: #d4a017;
+      --white:     #ffffff;
+      --off-white: #f8f9fc;
+      --border:    #e8eaf2;
+      --text:      #1a1a2e;
+      --muted:     #6b6b80;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: var(--navy-deep);
+      color: var(--text);
+    }
+
+    /* ── SCROLLBAR ── */
+    ::-webkit-scrollbar { width: 6px; }
+    ::-webkit-scrollbar-track { background: #f0f2ff; }
+    ::-webkit-scrollbar-thumb { background: var(--blue); border-radius: 3px; }
+
+    /* ══════════════════════════════
+       HEADER
+    ══════════════════════════════ */
+    .header {
+      height: 68px;
+      background: linear-gradient(135deg, rgba(4,10,40,0.98), rgba(6,15,60,0.96));
+      backdrop-filter: blur(20px);
+      border-bottom: 1px solid rgba(246,211,101,0.15);
+      box-shadow: 0 4px 24px rgba(0,0,0,0.4);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 2rem;
+      position: fixed;
+      top: 0;
+      width: 100%;
+      z-index: 1000;
+    }
+
+    .header-brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .header-logo {
+      width: 42px;
+      height: 42px;
+      border-radius: 10px;
+      overflow: hidden;
+      flex-shrink: 0;
+    }
+
+    .header-logo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .header-title-main {
+      font-weight: 700;
+      font-size: 1.05rem;
+      color: #ffffff;
+      line-height: 1.2;
+    }
+
+    .header-title-sub {
+      font-size: 0.7rem;
+      font-weight: 400;
+      color: rgba(255,255,255,0.55);
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+
+    .header-badge {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(246,211,101,0.1);
+      border: 1px solid rgba(246,211,101,0.25);
+      border-radius: 999px;
+      padding: 0.35rem 1rem;
+      font-size: 0.78rem;
+      font-weight: 600;
+      color: var(--gold);
+      letter-spacing: 0.06em;
+    }
+
+    .header-badge::before {
+      content: '';
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: var(--gold);
+      box-shadow: 0 0 6px rgba(246,211,101,0.7);
+      animation: pulse 2s ease-in-out infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.4; }
+    }
+
+    /* ══════════════════════════════
+       LAYOUT
+    ══════════════════════════════ */
+    .dashboard {
+      display: flex;
+      margin-top: 68px;
+      height: calc(100vh - 68px);
+    }
+
+    /* ══════════════════════════════
+       SIDEBAR
+    ══════════════════════════════ */
+    .sidebar {
+      width: 240px;
+      flex-shrink: 0;
+      background: linear-gradient(160deg, #050d2e 0%, #0a1540 60%, #0d1e52 100%);
+      border-right: 1px solid rgba(246,211,101,0.1);
+      padding: 2rem 1.2rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.4rem;
+    }
+
+    .sidebar-label {
+      font-size: 0.65rem;
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.25);
+      padding: 0 0.6rem;
+      margin-bottom: 0.6rem;
+    }
+
+    .menu-item {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 0.75rem 1rem;
+      border-radius: 10px;
+      cursor: pointer;
+      font-size: 0.88rem;
+      font-weight: 500;
+      color: rgba(210,220,255,0.7);
+      border: 1px solid transparent;
+      transition: all 0.2s ease;
+    }
+
+    .menu-item:hover {
+      background: rgba(246,211,101,0.07);
+      color: var(--gold);
+      border-color: rgba(246,211,101,0.15);
+    }
+
+    .menu-item.active {
+      background: linear-gradient(135deg, rgba(246,211,101,0.15), rgba(212,160,23,0.1));
+      color: var(--gold);
+      border-color: rgba(246,211,101,0.3);
+      font-weight: 600;
+      box-shadow: 0 4px 16px rgba(246,211,101,0.1);
+    }
+
+    .menu-icon {
+      font-size: 1rem;
+      width: 20px;
+      text-align: center;
+    }
+
+    .sidebar-divider {
+      height: 1px;
+      background: rgba(255,255,255,0.06);
+      margin: 0.8rem 0;
+    }
+
+    /* ══════════════════════════════
+       MAIN CONTENT
+    ══════════════════════════════ */
+    .main {
+      flex: 1;
+      background: var(--off-white);
+      overflow-y: auto;
+    }
+
+    .content {
+      padding: 2.5rem;
+      width: 100%;
+    }
+
+    #addSection {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    #addSection .page-heading {
+      width: 100%;
+      max-width: 750px;
+      text-align: center;
+    }
+
+    #addSection .card {
+      width: 100%;
+      max-width: 750px;
+    }
+
+    .page-heading {
+      margin-bottom: 1.8rem;
+    }
+
+    .page-heading h2 {
+      font-size: 1.5rem;
+      font-weight: 800;
+      color: var(--navy);
+      letter-spacing: -0.02em;
+    }
+
+    .page-heading p {
+      font-size: 0.88rem;
+      color: var(--muted);
+      margin-top: 0.3rem;
+    }
+
+    /* ══════════════════════════════
+       FORM CARD
+    ══════════════════════════════ */
+    .card {
+      background: var(--white);
+      border-radius: 16px;
+      padding: 2rem;
+      border: 1px solid var(--border);
+      box-shadow: 0 4px 24px rgba(13,27,110,0.07);
+    }
+
+    .form-section-title {
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--blue);
+      margin-bottom: 1rem;
+      margin-top: 1.4rem;
+      padding-bottom: 0.5rem;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .form-section-title:first-child { margin-top: 0; }
+
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+    }
+
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+      margin-bottom: 12px;
+    }
+
+    .form-group label {
+      font-size: 0.78rem;
+      font-weight: 600;
+      color: var(--navy);
+    }
+
+    input, textarea, select {
+      width: 100%;
+      padding: 11px 14px;
+      border-radius: 9px;
+      border: 1px solid var(--border);
+      background: var(--off-white);
+      font-family: 'Poppins', sans-serif;
+      font-size: 0.88rem;
+      color: var(--text);
+      transition: border-color 0.2s, box-shadow 0.2s, background 0.2s;
+      outline: none;
+    }
+
+    input:focus, textarea:focus, select:focus {
+      border-color: var(--blue);
+      background: var(--white);
+      box-shadow: 0 0 0 3px rgba(26,60,190,0.08);
+    }
+
+    textarea { height: 90px; resize: vertical; }
+
+    select { cursor: pointer; }
+
+    .submit-btn {
+      width: 100%;
+      padding: 13px;
+      background: linear-gradient(135deg, var(--navy), var(--blue));
+      color: #ffffff;
+      border: none;
+      border-radius: 10px;
+      font-family: 'Poppins', sans-serif;
+      font-weight: 700;
+      font-size: 0.9rem;
+      cursor: pointer;
+      letter-spacing: 0.04em;
+      box-shadow: 0 4px 16px rgba(26,60,190,0.3);
+      transition: transform 0.2s, box-shadow 0.2s;
+      margin-top: 0.5rem;
+    }
+
+    .submit-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(26,60,190,0.4);
+    }
+
+    /* ══════════════════════════════
+       JOB LIST
+    ══════════════════════════════ */
+    #jobsSection h2 {
+      font-size: 1.5rem;
+      font-weight: 800;
+      color: var(--navy);
+      margin-bottom: 1.5rem;
+    }
+
+    .job-tab {
+      background: var(--white);
+      border-radius: 14px;
+      margin-bottom: 10px;
+      border: 1px solid var(--border);
+      box-shadow: 0 2px 12px rgba(13,27,110,0.05);
+      overflow: hidden;
+      transition: box-shadow 0.2s, border-color 0.2s;
+    }
+
+    .job-tab:hover {
+      border-color: rgba(26,60,190,0.2);
+      box-shadow: 0 6px 24px rgba(13,27,110,0.1);
+    }
+
+    .job-header {
+      padding: 1rem 1.2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      cursor: pointer;
+    }
+
+    .job-header-left { display: flex; align-items: center; gap: 12px; }
+
+    .job-icon {
+      width: 40px;
+      height: 40px;
+      border-radius: 10px;
+      background: linear-gradient(135deg, var(--navy), var(--blue));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1rem;
+      flex-shrink: 0;
+    }
+
+    .job-title {
+      font-weight: 700;
+      font-size: 0.95rem;
+      color: var(--navy);
+    }
+
+    .job-company {
+      font-size: 0.8rem;
+      color: var(--muted);
+      margin-top: 2px;
+    }
+
+    .job-chevron {
+      font-size: 0.75rem;
+      color: var(--muted);
+      transition: transform 0.25s;
+    }
+
+    .job-tab.open .job-chevron { transform: rotate(180deg); }
+
+    .job-body {
+      display: none;
+      padding: 1.2rem;
+      border-top: 1px solid var(--border);
+      background: var(--off-white);
+    }
+
+    .job-body p {
+      font-size: 0.85rem;
+      color: var(--muted);
+      margin-bottom: 6px;
+      line-height: 1.6;
+    }
+
+    .job-body p b { color: var(--navy); font-weight: 600; }
+
+    .job-actions {
+      display: flex;
+      gap: 10px;
+      margin-top: 1rem;
+    }
+
+    .edit-btn, .delete-btn {
+      flex: 1;
+      padding: 9px;
+      border: none;
+      border-radius: 8px;
+      font-family: 'Poppins', sans-serif;
+      font-weight: 600;
+      font-size: 0.82rem;
+      cursor: pointer;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    .edit-btn {
+      background: linear-gradient(135deg, var(--navy), var(--blue));
+      color: #ffffff;
+      box-shadow: 0 3px 10px rgba(26,60,190,0.25);
+    }
+
+    .edit-btn:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 6px 16px rgba(26,60,190,0.35);
+    }
+
+    .delete-btn {
+      background: linear-gradient(135deg, #fff0f0, #ffe4e4);
+      color: #c0392b;
+      border: 1px solid rgba(192,57,43,0.2);
+    }
+
+    .delete-btn:hover {
+      background: linear-gradient(135deg, #ffe4e4, #ffd0d0);
+      transform: translateY(-1px);
+    }
+
+    /* ── Empty state ── */
+    .empty-state {
+      text-align: center;
+      padding: 4rem 2rem;
+      color: var(--muted);
+    }
+
+    .empty-state .empty-icon {
+      font-size: 3rem;
+      margin-bottom: 1rem;
+      opacity: 0.4;
+    }
+
+    .empty-state p { font-size: 0.9rem; }
+  </style>
+</head>
+
+<body>
+
+<!-- HEADER -->
+<header class="header">
+  <div class="header-brand">
+    <div class="header-logo">
+      <img src="../assests/logo.png" alt="TalentSync Logo">
+    </div>
+    <div>
+      <div class="header-title-main">TalentSync</div>
+      <div class="header-title-sub">HR Solution</div>
+    </div>
+  </div>
+
+  <div class="header-badge">Admin Panel</div>
+</header>
+
+<!-- DASHBOARD -->
+<div class="dashboard">
+
+  <!-- SIDEBAR -->
+  <aside class="sidebar">
+    <div class="sidebar-label">Menu</div>
+
+    <div class="menu-item active" id="addTab">
+      <span class="menu-icon">➕</span> Add Job
+    </div>
+    <div class="menu-item" id="viewTab">
+      <span class="menu-icon">📋</span> Available Jobs
+    </div>
+
+    <div class="sidebar-divider"></div>
+    <div class="sidebar-label">System</div>
+    <div class="menu-item" onclick="window.location.href='../index.html'">
+      <span class="menu-icon">🌐</span> View Website
+    </div>
+  </aside>
+
+  <!-- MAIN -->
+  <main class="main">
+    <div class="content">
+
+      <!-- ADD JOB SECTION -->
+      <div id="addSection">
+        <div class="page-heading">
+          <h2>Add New Job</h2>
+          <p>Fill in the details below to post a new job listing.</p>
+        </div>
+
+        <div class="card">
+          <form id="jobForm">
+
+            <div class="form-section-title">Company & Role</div>
+            <div class="form-row">
+              <div class="form-group">
+                <label>Company Name</label>
+                <input id="company" placeholder="e.g. Accenture" required>
+              </div>
+              <div class="form-group">
+                <label>Job Title</label>
+                <input id="jobTitle" placeholder="e.g. Senior Developer" required>
+              </div>
+            </div>
+
+            <div class="form-row">
+              <div class="form-group">
+                <label>Location</label>
+                <input id="location" placeholder="e.g. Mumbai, India">
+              </div>
+              <div class="form-group">
+                <label>Salary</label>
+                <input id="salary" placeholder="e.g. ₹8–12 LPA">
+              </div>
+            </div>
+
+            <div class="form-section-title">Job Details</div>
+            <div class="form-group">
+              <label>Requirements / Skills</label>
+              <input id="requirements" placeholder="e.g. React, Node.js, 3+ years">
+            </div>
+            <div class="form-row">
+              <div class="form-group">
+                <label>Roles & Responsibilities</label>
+                <input id="roles" placeholder="e.g. Lead frontend development">
+              </div>
+              <div class="form-group">
+                <label>Industries</label>
+                <input id="industries" placeholder="e.g. IT, FinTech">
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="form-group">
+                <label>Hiring Model</label>
+                <select id="hiringModel">
+                  <option value="">Select model</option>
+                  <option value="full-time">Full-time</option>
+                  <option value="contract">Contract</option>
+                  <option value="part-time">Part-time</option>
+                  <option value="remote">Remote</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label>Turnaround Time</label>
+                <input id="turnaround" placeholder="e.g. 2–3 weeks">
+              </div>
+            </div>
+
+            <div class="form-section-title">Description</div>
+            <div class="form-group">
+              <label>Job Description</label>
+              <textarea id="description" placeholder="Describe the role, team, and expectations..."></textarea>
+            </div>
+            <div class="form-group">
+              <label>Highlights</label>
+              <textarea id="highlights" placeholder="Key perks, benefits, or standout points..."></textarea>
+            </div>
+
+            <button type="submit" class="submit-btn" id="submitBtn">Post Job</button>
+          </form>
+        </div>
+      </div>
+
+      <!-- JOBS LIST SECTION -->
+      <div id="jobsSection" style="display:none;">
+        <div class="page-heading">
+          <h2>Available Jobs</h2>
+          <p>Manage all active job listings below.</p>
+        </div>
+        <div id="jobsContainer"></div>
+      </div>
+
+    </div>
+  </main>
+
+</div>
+
+<script type="module" src="admin.js"></script>
+
+</body>
+</html>
