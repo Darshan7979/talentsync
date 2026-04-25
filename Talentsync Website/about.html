@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
@@ -81,8 +81,8 @@
     .reveal.in-view { opacity: 1; transform: translateY(0); }
     .flex-content { display: flex; align-items: center; gap: 4rem; margin-top: 2rem; position: relative; z-index: 1; }
     .content-text { flex: 1; position: relative; z-index: 1; }
-    .content-visual { flex: 1; background: rgba(77, 20, 140, 0.1); border: 1px solid rgba(123, 44, 191, 0.2); backdrop-filter: blur(20px); border-radius: 30px; padding: 3rem; display: flex; justify-content: center; align-items: center; box-shadow: 0 8px 32px rgba(123, 44, 191, 0.1), inset 0 0 20px rgba(0, 153, 255, 0.05); overflow: hidden; }
-    .content-visual img { width: 100%; height: 100%; object-fit: contain; border-radius: 22px; display: block; }
+    .content-visual { flex: 1; display: flex; justify-content: center; align-items: center; border-radius: 30px; overflow: hidden; }
+    .content-visual img { width: 100%; height: 100%; object-fit: cover; border-radius: 22px; display: block; }
     h2 { font-size: 2.2rem; background: linear-gradient(90deg, #0099ff, #7b2cbf); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; margin-bottom: 1.5rem; position: relative; }
     h2::after { content: ""; display: block; width: 60px; height: 4px; background: linear-gradient(90deg, #0099ff, #7b2cbf); margin-top: 10px; border-radius: 2px; }
     .center-header { text-align: center; position: relative; z-index: 1; }
@@ -216,7 +216,7 @@
       .vm-block { padding: 50px 1.5rem; }
       .cta-footer { padding: 50px 1.5rem; }
       h2 { font-size: 1.7rem; }
-      .content-visual { padding: 1.5rem; }
+
     }
     @media (max-width: 480px) {
       .about-hero { padding: 0 1rem; }
@@ -307,26 +307,12 @@
 
 <div class='nav-overlay' id='navOverlay'></div>
 
-  <!-- Hero -->
-  <header class="about-hero">
-    <video autoplay muted loop playsinline class="hero-video">
-      <source src="./bg-video.mp4" type="video/mp4">
-      <source src="./14684159_3840_2160_30fps.mp4" type="video/mp4">
-    </video>
-    <div class="hero-video-overlay"></div>
-    <div class="about-hero-inner">
-      
-      <h1>Architecting <span style="background: linear-gradient(90deg, #fff3c4 0%, #f6d365 40%, #d4a017 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">the Future</span></h1>
-      <div class="about-hero-divider"></div>
-      <p>TalentSync HR Solution is a professional business solutions and recruitment organization headquartered in Pune, committed to delivering technology-driven services that empower sustainable growth.</p>
-    </div>
-  </header>
 
-  <!-- Who We Are -->
-  <section class="section">
+  <!-- Our Story -->
+  <section class="section" style="padding-top: 40px;">
     <div class="flex-content">
       <div class="content-text reveal">
-       
+        <h2>Our Story</h2>
         <p>At TalentSync HR Solution, we are dedicated to helping organizations build capable teams and optimize their business operations through professional recruitment and technology solutions.</p>
         <p>We work closely with businesses to understand their workforce requirements and provide customized hiring and digital solutions that align with their organizational goals. Our approach is both candidate-focused and client-driven, ensuring that the right talent is matched with the right opportunities.</p>
       </div>
@@ -336,16 +322,10 @@
     </div>
   </section>
 
-  <!-- Stats Bar -->
-  <div class="stats-bar">
-    <div class="stat-item reveal"><h3>2024</h3><p>Year of Incorporation</p></div>
-    <div class="stat-item reveal"><h3>100%</h3><p>Ethical Commitment</p></div>
-    <div class="stat-item reveal"><h3>Pune</h3><p>Global Headquarters</p></div>
-    <div class="stat-item reveal"><h3>24/7</h3><p>Strategic Support</p></div>
-  </div>
+
 
   <!-- Our Values -->
-  <section class="section">
+  <section class="section" style="padding-top: 0;">
     <div class="center-header">
       <h2>Our Core Values</h2>
       <p style="max-width: 600px; margin: 0.5rem auto 3rem;">The principles that guide every interaction, from recruitment lifecycle to software deployment.</p>
@@ -395,9 +375,9 @@
     </div>
   </section>
 
-  <!-- Our Story -->
+  <!-- Our Journey -->
   <section class="section">
-    <h2>Our Story</h2>
+    <h2>Our Journey</h2>
     <div class="timeline">
       <div class="timeline-event reveal">
         <h4>November 2024</h4>
