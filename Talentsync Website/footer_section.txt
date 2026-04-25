@@ -1,6 +1,6 @@
 
 /* ══════════════════════════════════════
-       FOOTER — Attractive Gradient Blue
+       FOOTER, Attractive Gradient Blue
     ══════════════════════════════════════ */
     .footer {
       background: linear-gradient(160deg, #050e3a 0%, #0a1a6e 25%, #0f2faa 55%, #0b6dc7 80%, #0e9fe0 100%);
@@ -245,7 +245,7 @@
 
 .footer-bottom-links a:hover { color: #fff; background: rgba(255,255,255,0.1); }
 
-/* ══ SOCIAL ICONS — Official Brand Colors ══ */
+/* ══ SOCIAL ICONS, Official Brand Colors ══ */
 .footer-social { display: flex; flex-wrap: wrap; gap: 0.6rem; }
 
 .social-link {

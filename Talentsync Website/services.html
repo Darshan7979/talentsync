@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -48,12 +48,40 @@
       background: #060d2e;
       overflow-x: hidden;
       color: #efe9ff;
+      position: relative;
     }
     body::before {
       content: '';
       position: fixed;
       inset: 0;
-      background: #060d2e;
+      background:
+        radial-gradient(circle at 20% 12%, rgba(57, 92, 255, 0.22), transparent 18%),
+        radial-gradient(circle at 82% 4%, rgba(255, 214, 102, 0.1), transparent 16%),
+        radial-gradient(circle at 50% 100%, rgba(18, 34, 110, 0.34), transparent 30%),
+        linear-gradient(180deg, #05081f 0%, #060d2e 56%, #060d2e 100%);
+      background-size: 100% 100%, 100% 100%, 100% 100%, 100% 100%;
+      z-index: 0;
+      pointer-events: none;
+    }
+
+    body::after {
+      content: none;
+    }
+
+    .page-video-bg {
+      position: fixed;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      z-index: 0;
+      pointer-events: none;
+    }
+
+    .page-video-overlay {
+      position: fixed;
+      inset: 0;
+      background: linear-gradient(180deg, rgba(4,8,30,0.55) 0%, rgba(6,13,46,0.82) 60%, rgba(4,8,30,0.96) 100%);
       z-index: 0;
       pointer-events: none;
     }
@@ -95,18 +123,27 @@
       0%   { background-position: -200% center; }
       100% { background-position: 200% center; }
     }
-    @keyframes pulse-glow {
-      0%, 100% { opacity: 0.55; transform: scale(1); }
-      50%       { opacity: 0.85; transform: scale(1.08); }
+    @keyframes page-wave-drift {
+      0% {
+        transform: translate3d(0, 0, 0) scale(1);
+      }
+
+      50% {
+        transform: translate3d(-1.4%, 0.8%, 0) scale(1.03);
+      }
+
+      100% {
+        transform: translate3d(0, 0, 0) scale(1);
+      }
     }
 
     /* â”€â”€ HERO â”€â”€ */
     .srv-hero {
-      min-height: 100vh;
+      min-height: 58vh;
       display: flex;
       align-items: center;
       justify-content: center;
-      padding: 6rem 2rem;
+      padding: 2rem 2rem 2.5rem;
       text-align: center;
       color: #fff;
       position: relative;
@@ -114,60 +151,23 @@
     }
 
     .hero-video-bg {
-      position: absolute;
-      inset: 0;
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      z-index: 0;
-      pointer-events: none;
+      display: none;
     }
 
     .hero-video-overlay {
-      position: absolute;
-      inset: 0;
-      background:
-        linear-gradient(180deg, rgba(4,8,30,0.55) 0%, rgba(6,13,46,0.82) 60%, rgba(4,8,30,0.96) 100%);
-      z-index: 1;
-    }
-
-    /* ambient glow orbs */
-    .srv-hero::before {
-      content: '';
-      position: absolute;
-      width: clamp(320px, 50vw, 680px);
-      height: clamp(320px, 50vw, 680px);
-      border-radius: 50%;
-      background: radial-gradient(circle, rgba(124,58,237,0.28) 0%, transparent 70%);
-      top: -10%;
-      left: -8%;
-      z-index: 1;
-      pointer-events: none;
-      animation: pulse-glow 7s ease-in-out infinite;
-    }
-    .srv-hero::after {
-      content: '';
-      position: absolute;
-      width: clamp(260px, 40vw, 560px);
-      height: clamp(260px, 40vw, 560px);
-      border-radius: 50%;
-      background: radial-gradient(circle, rgba(246,211,101,0.18) 0%, transparent 70%);
-      bottom: -8%;
-      right: -6%;
-      z-index: 1;
-      pointer-events: none;
-      animation: pulse-glow 9s ease-in-out infinite reverse;
+      display: none;
     }
 
     .srv-hero-inner {
       max-width: 820px;
       margin: 0 auto;
+      margin-top: -6rem;
       position: relative;
       z-index: 2;
       display: flex;
       flex-direction: column;
       align-items: center;
-      gap: 0;
+      gap: 0.15rem;
     }
 
     /* pill badge */
@@ -203,19 +203,10 @@
       font-size: clamp(3rem, 7vw, 5.8rem);
       color: #fff;
       margin-bottom: 0;
+      margin-top: 0;
       letter-spacing: -0.04em;
       line-height: 1.06;
       animation: fadeUp 0.65s ease 0.12s both;
-    }
-
-    /* decorative divider */
-    .srv-hero-divider {
-      width: clamp(60px, 10vw, 100px);
-      height: 2px;
-      background: linear-gradient(90deg, transparent, rgba(246,211,101,0.9), transparent);
-      border-radius: 2px;
-      margin: 2rem auto;
-      animation: fadeUp 0.65s ease 0.22s both;
     }
 
     .srv-hero-desc {
@@ -224,42 +215,16 @@
       color: rgba(220, 228, 255, 0.82);
       line-height: 1.9;
       max-width: 620px;
-      margin: 0 auto 2.4rem;
+      margin: 0 auto;
       animation: fadeUp 0.65s ease 0.28s both;
     }
 
-    /* CTA button */
-    .srv-hero-cta {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.55rem;
-      font-family: 'Poppins', sans-serif;
-      font-size: clamp(0.88rem, 1.4vw, 1rem);
-      font-weight: 600;
-      color: #0b123d;
-      background: linear-gradient(135deg, #f6d365 0%, #d4a017 55%, #f9e39d 100%);
-      border: none;
-      border-radius: 999px;
-      padding: 0.85rem 2.2rem;
-      cursor: pointer;
-      text-decoration: none;
-      box-shadow: 0 8px 28px rgba(246,211,101,0.32);
-      transition: transform 0.28s ease, box-shadow 0.28s ease;
-      animation: fadeUp 0.65s ease 0.38s both;
-    }
-    .srv-hero-cta:hover {
-      transform: translateY(-3px) scale(1.03);
-      box-shadow: 0 14px 38px rgba(246,211,101,0.44);
-    }
-    .srv-hero-cta svg {
-      transition: transform 0.25s ease;
-    }
-    .srv-hero-cta:hover svg {
-      transform: translateX(4px);
-    }
-
     @media (max-width: 480px) {
-      .srv-hero-desc { margin-bottom: 1.8rem; }
+      .srv-hero-inner {
+        margin-top: -4rem;
+      }
+
+      .srv-hero-desc { margin-bottom: 0; }
     }
 
     /* â”€â”€ INTRO â”€â”€ */
@@ -284,6 +249,7 @@
 
     /* â”€â”€ SERVICES GRID â”€â”€ */
     .srv-grid-section {
+      background: transparent;
       padding: 0 2rem 5rem;
     }
 
@@ -295,115 +261,120 @@
       gap: 2rem;
     }
 
-    /* â”€â”€ SERVICE CARD â”€â”€ */
+    /* ── SERVICE CARD ── */
     .srv-card {
       position: relative;
       border-radius: 20px;
       overflow: hidden;
-      border: 1px solid rgba(146, 170, 255, 0.28);
-      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.35);
-      background: rgba(255, 255, 255, 0.06);
-      backdrop-filter: blur(16px);
-      -webkit-backdrop-filter: blur(16px);
-      padding: 1.5rem 1.4rem;
-      display: flex;
-      flex-direction: column;
-      gap: 0.95rem;
+      cursor: pointer;
+      border: 0;
+      box-shadow: none;
+      background: transparent;
       min-height: 280px;
-      transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+      width: 100%;
+      transition: transform 0.25s ease;
     }
 
     .srv-card:hover {
       transform: translateY(-5px);
-      border-color: rgba(220, 186, 104, 0.65);
-      box-shadow: 0 16px 48px rgba(0, 0, 0, 0.5);
     }
 
-    .srv-card::after {
-      content: '';
+    .srv-card-img {
       position: absolute;
-      inset: -1px;
-      background:
-        radial-gradient(700px 260px at 18% 0%, rgba(124, 58, 237, 0.32), transparent 55%),
-        radial-gradient(520px 240px at 110% 10%, rgba(255, 255, 255, 0.12), transparent 55%);
-      pointer-events: none;
+      inset: 0;
+      border-radius: inherit;
+      background-size: cover;
+      background-position: center;
+      transform: scale(1) translate(0%, 0%);
+      transition: transform 0.55s cubic-bezier(0.4, 0, 0.2, 1);
+      will-change: transform;
       z-index: 0;
     }
 
-    .srv-card-header {
+    .srv-card:hover .srv-card-img {
+      transform: scale(1.12) translate(5%, 5%);
+    }
+
+    .srv-card-text {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 144px;
+      padding: 24px 28px;
       display: flex;
-      align-items: flex-start;
-      gap: 0.9rem;
+      flex-direction: column;
+      justify-content: space-between;
+      z-index: 3;
     }
 
-    .srv-card-icon {
-      width: 44px;
-      height: 44px;
-      background: linear-gradient(135deg, rgba(124, 58, 237, 0.95), rgba(76, 29, 149, 0.95));
-      border: 1px solid rgba(255, 255, 255, 0.18);
-      border-radius: 12px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      flex-shrink: 0;
-      color: #ffffff;
-      box-shadow: 0 10px 24px rgba(124, 58, 237, 0.22);
+    .srv-card-label {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: #f6d365;
     }
 
-    .srv-card-icon svg {
-      width: 22px;
-      height: 22px;
-      display: block;
-      stroke: #ffffff;
-      filter: drop-shadow(0 0 6px rgba(124, 58, 237, 0.45));
-    }
-
-    .srv-card h2 {
+    .srv-card-title {
+      font-size: 22px;
       font-weight: 700;
-      font-size: 1rem;
       color: #fff;
       line-height: 1.3;
-      text-shadow: 0 1px 6px rgba(0,0,0,0.6);
+      text-shadow: 0 2px 4px rgba(0,0,0,0.6);
     }
 
-    .srv-card-desc {
-      margin: 0;
-      color: rgba(220, 228, 255, 0.84);
-      font-size: 0.92rem;
-      line-height: 1.75;
-    }
-
-    .srv-card-footer {
-      display: flex;
-      justify-content: flex-end;
-      margin-top: auto;
-    }
-
-    .srv-card-btn {
-      font-family: 'Poppins', sans-serif;
-      font-size: 0.78rem;
-      font-weight: 600;
-      color: #fff;
-      background: rgba(124, 58, 237, 0.18);
-      border: 1px solid rgba(124, 58, 237, 0.45);
-      border-radius: 50px;
-      padding: 0.42rem 1.1rem;
-      cursor: pointer;
-      letter-spacing: 0.03em;
-      transition: background 0.2s, border-color 0.2s, transform 0.2s;
-    }
-
-    .srv-card-btn:hover {
-      background: rgba(124, 58, 237, 0.32);
-      border-color: rgba(255, 255, 255, 0.24);
-      transform: translateY(-1px);
-    }
-
-    .srv-card > * {
-      position: relative;
+    .srv-card-overlay {
+      position: absolute;
+      inset: 0;
+      border-radius: inherit;
+      background: rgba(10, 10, 10, 0.65);
+      opacity: 0.3; /* Base opacity to darken images slightly */
+      transition: opacity 0.45s ease;
       z-index: 1;
     }
 
+    .srv-card:hover .srv-card-overlay {
+      opacity: 0.85; /* Darken a lot on hover so text is readable */
+    }
+
+    .srv-card-desc {
+      position: absolute;
+      inset: 0;
+      z-index: 2;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding: 28px;
+      transform: translateX(100%);
+      transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1) 0.08s;
+    }
+
+    .srv-card:hover .srv-card-desc {
+      transform: translateX(0%);
+    }
+
+    .srv-card-desc p {
+      color: #fff;
+      font-size: 15px;
+      line-height: 1.65;
+      margin-bottom: 20px;
+      font-weight: 400;
+      text-shadow: 0 1px 3px rgba(0,0,0,0.8);
+    }
+
+    .srv-card-read-more {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      color: #f6d365;
+      font-weight: 700;
+      font-size: 13px;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+      text-decoration: none;
+      text-shadow: 0 1px 2px rgba(0,0,0,0.8);
+    }
 
     /* â”€â”€ RESPONSIVE GRID â”€â”€ */
     @media (max-width: 768px) {
@@ -474,6 +445,12 @@
 </head>
 
 <body>
+  <video class="page-video-bg" autoplay muted loop playsinline poster="./bg1.jpg">
+    <source src="./bg-video.mp4" type="video/mp4" />
+    <source src="./14684159_3840_2160_30fps.mp4" type="video/mp4" />
+  </video>
+  <div class="page-video-overlay"></div>
+
 <!-- NAVBAR -->
   <nav class="navbar">
     <a href="index.html" class="nav-brand">
@@ -509,239 +486,220 @@
     </video>
     <div class="hero-video-overlay"></div>
     <div class="srv-hero-inner">
-      
       <h1>Our <span style="background: linear-gradient(90deg, #fff3c4 0%, #f6d365 40%, #d4a017 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">Services</span></h1>
-      <div class="srv-hero-divider"></div>
-      <p class="srv-hero-desc">
-        From sourcing the right talent to building intelligent digital systems, TalentSync HR Solution delivers
-        end-to-end services tailored to your organization's unique needs.
-      </p>
-      <a href="#services" class="srv-hero-cta">
-        Explore Services
-        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
-      </a>
     </div>
   </section>
-
-  <div class="srv-intro reveal">
-    <p>
-      We understand that every organization has unique workforce and operational requirements. Our services are
-      structured to provide customized solutions that address specific business challenges, improve operational
-      efficiency, and help organizations focus on their core objectives.
-    </p>
-  </div>
 
   <!-- SERVICES GRID -->
   <section class="srv-grid-section" id="services">
     <div class="srv-grid">
-
-      <!-- Recruitment Process Outsourcing -->
-      <div class="srv-card reveal reveal-delay-1">
-        <div class="srv-card-header">
-          <div class="srv-card-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-              stroke-linejoin="round">
-              <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" />
-              <circle cx="9" cy="7" r="4" />
-              <polyline points="16 11 18 13 22 9" />
-            </svg>
-          </div>
-          <h2>Recruitment Process Outsourcing (RPO)</h2>
+      <!-- Recruitment Process Outsourcing (RPO) -->
+      <div class="srv-card reveal reveal-delay-1" onclick="window.location.href='recruitment-process-outsourcing.html'">
+        <div class="srv-card-img" style="background-image: url('https://images.unsplash.com/photo-1573164713988-8665fc963095?w=800&q=80');"></div>
+        <div class="srv-card-text">
+          <span class="srv-card-label">01 Recruitment</span>
+          <h2 class="srv-card-title">Recruitment Process Outsourcing (RPO)</h2>
         </div>
-        <p class="srv-card-desc">
-          End-to-end recruitment ownership to reduce time-to-hire, improve quality, and scale hiring efficiently.
-        </p>
-        <div class="srv-card-footer">
-          <button class="srv-card-btn" onclick="window.location.href='recruitment-process-outsourcing.html'">
-            Learn More
-          </button>
+        <div class="srv-card-overlay"></div>
+        <div class="srv-card-desc">
+          <p>
+            End-to-end recruitment ownership to reduce time-to-hire, improve quality, and scale hiring efficiently.
+          </p>
+          <a href="recruitment-process-outsourcing.html" class="srv-card-read-more">
+            Read more
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none"
+              stroke="currentColor" stroke-width="2.5"
+              stroke-linecap="round" stroke-linejoin="round">
+              <path d="M5 12h14M12 5l7 7-7 7"/>
+            </svg>
+          </a>
         </div>
       </div>
 
       <!-- Staffing Solutions -->
-      <div class="srv-card reveal reveal-delay-2">
-        <div class="srv-card-header">
-          <div class="srv-card-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-              stroke-linejoin="round">
-              <rect x="2" y="7" width="20" height="14" rx="2" />
-              <path d="M16 7V5a2 2 0 0 0-4 0v2" />
-              <line x1="12" y1="12" x2="12" y2="16" />
-              <line x1="10" y1="14" x2="14" y2="14" />
-            </svg>
-          </div>
-          <h2>Staffing Solutions</h2>
+      <div class="srv-card reveal reveal-delay-2" onclick="window.location.href='staffing-solutions.html'">
+        <div class="srv-card-img" style="background-image: url('https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=800&q=80');"></div>
+        <div class="srv-card-text">
+          <span class="srv-card-label">02 Staffing</span>
+          <h2 class="srv-card-title">Staffing Solutions</h2>
         </div>
-        <p class="srv-card-desc">
-          Flexible staffing for contract, temporary, or permanent roles to match your workforce and timelines.
-        </p>
-        <div class="srv-card-footer">
-          <button class="srv-card-btn" onclick="window.location.href='staffing-solutions.html'">
-            Learn More
-          </button>
+        <div class="srv-card-overlay"></div>
+        <div class="srv-card-desc">
+          <p>
+            Flexible staffing for contract, temporary, or permanent roles to match your workforce and timelines.
+          </p>
+          <a href="staffing-solutions.html" class="srv-card-read-more">
+            Read more
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none"
+              stroke="currentColor" stroke-width="2.5"
+              stroke-linecap="round" stroke-linejoin="round">
+              <path d="M5 12h14M12 5l7 7-7 7"/>
+            </svg>
+          </a>
         </div>
       </div>
-      
 
       <!-- IT Recruitment -->
-      <div class="srv-card reveal reveal-delay-3">
-        <div class="srv-card-header">
-          <div class="srv-card-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-              stroke-linejoin="round">
-              <rect x="2" y="3" width="20" height="14" rx="2" />
-              <path d="M8 21h8M12 17v4" />
-            </svg>
-          </div>
-          <h2>IT Recruitment</h2>
+      <div class="srv-card reveal reveal-delay-3" onclick="window.location.href='it-recruitment.html'">
+        <div class="srv-card-img" style="background-image: url('https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=800&q=80');"></div>
+        <div class="srv-card-text">
+          <span class="srv-card-label">03 IT Recruitment</span>
+          <h2 class="srv-card-title">IT Recruitment</h2>
         </div>
-        <p class="srv-card-desc">
-          Specialized sourcing and screening for developers, engineers, and tech leaders - aligned to your stack.
-        </p>
-        <div class="srv-card-footer">
-          <button class="srv-card-btn" onclick="window.location.href='it-recruitment.html'">
-            Learn More
-          </button>
+        <div class="srv-card-overlay"></div>
+        <div class="srv-card-desc">
+          <p>
+            Specialized sourcing and screening for developers, engineers, and tech leaders - aligned to your stack.
+          </p>
+          <a href="it-recruitment.html" class="srv-card-read-more">
+            Read more
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none"
+              stroke="currentColor" stroke-width="2.5"
+              stroke-linecap="round" stroke-linejoin="round">
+              <path d="M5 12h14M12 5l7 7-7 7"/>
+            </svg>
+          </a>
         </div>
       </div>
 
       <!-- HR Outsourcing -->
-      <div class="srv-card reveal reveal-delay-1">
-        <div class="srv-card-header">
-          <div class="srv-card-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-              stroke-linejoin="round">
-              <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
-              <circle cx="9" cy="7" r="4" />
-              <path d="M23 21v-2a4 4 0 0 0-3-3.87" />
-              <path d="M16 3.13a4 4 0 0 1 0 7.75" />
-            </svg>
-          </div>
-          <h2>HR Outsourcing</h2>
+      <div class="srv-card reveal reveal-delay-1" onclick="window.location.href='hr-outsourcing.html'">
+        <div class="srv-card-img" style="background-image: url('https://images.unsplash.com/photo-1600880292203-757bb62b4baf?w=800&q=80');"></div>
+        <div class="srv-card-text">
+          <span class="srv-card-label">04 HR Outsourcing</span>
+          <h2 class="srv-card-title">HR Outsourcing</h2>
         </div>
-        <p class="srv-card-desc">
-          Streamline HR operations with onboarding, employee lifecycle support, and compliance-focused processes.
-        </p>
-        <div class="srv-card-footer">
-          <button class="srv-card-btn" onclick="window.location.href='hr-outsourcing.html'">
-            Learn More
-          </button>
+        <div class="srv-card-overlay"></div>
+        <div class="srv-card-desc">
+          <p>
+            Streamline HR operations with onboarding, employee lifecycle support, and compliance-focused processes.
+          </p>
+          <a href="hr-outsourcing.html" class="srv-card-read-more">
+            Read more
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none"
+              stroke="currentColor" stroke-width="2.5"
+              stroke-linecap="round" stroke-linejoin="round">
+              <path d="M5 12h14M12 5l7 7-7 7"/>
+            </svg>
+          </a>
         </div>
       </div>
 
       <!-- Customised Software Development -->
-      <div class="srv-card reveal reveal-delay-3">
-        <div class="srv-card-header">
-          <div class="srv-card-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-              stroke-linejoin="round">
-              <polyline points="16 18 22 12 16 6" />
-              <polyline points="8 6 2 12 8 18" />
-            </svg>
-          </div>
-          <h2>Customised Software Development</h2>
+      <div class="srv-card reveal reveal-delay-3" onclick="window.location.href='customised-software-development.html'">
+        <div class="srv-card-img" style="background-image: url('https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=800&q=80');"></div>
+        <div class="srv-card-text">
+          <span class="srv-card-label">05 Custom Software</span>
+          <h2 class="srv-card-title">Customised Software Development</h2>
         </div>
-        <p class="srv-card-desc">
-          Build tailored software that fits your workflows - designed for reliability, performance, and maintainability.
-        </p>
-        <div class="srv-card-footer">
-          <button class="srv-card-btn" onclick="window.location.href='customised-software-development.html'">
-            Learn More
-          </button>
+        <div class="srv-card-overlay"></div>
+        <div class="srv-card-desc">
+          <p>
+            Build tailored software that fits your workflows - designed for reliability, performance, and maintainability.
+          </p>
+          <a href="customised-software-development.html" class="srv-card-read-more">
+            Read more
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none"
+              stroke="currentColor" stroke-width="2.5"
+              stroke-linecap="round" stroke-linejoin="round">
+              <path d="M5 12h14M12 5l7 7-7 7"/>
+            </svg>
+          </a>
         </div>
       </div>
 
       <!-- Mobile Application Development -->
-      <div class="srv-card reveal reveal-delay-1">
-        <div class="srv-card-header">
-          <div class="srv-card-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-              stroke-linejoin="round">
-              <rect x="5" y="2" width="14" height="20" rx="2" />
-              <line x1="12" y1="18" x2="12.01" y2="18" />
-            </svg>
-          </div>
-          <h2>Mobile Application Development</h2>
+      <div class="srv-card reveal reveal-delay-1" onclick="window.location.href='mobile-application-development.html'">
+        <div class="srv-card-img" style="background-image: url('https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?w=800&q=80');"></div>
+        <div class="srv-card-text">
+          <span class="srv-card-label">06 Mobile App</span>
+          <h2 class="srv-card-title">Mobile Application Development</h2>
         </div>
-        <p class="srv-card-desc">
-          Design and develop scalable Android/iOS apps with a clean UX, strong performance, and secure architecture.
-        </p>
-        <div class="srv-card-footer">
-          <button class="srv-card-btn" onclick="window.location.href='mobile-application-development.html'">
-            Learn More
-          </button>
+        <div class="srv-card-overlay"></div>
+        <div class="srv-card-desc">
+          <p>
+            Design and develop scalable Android/iOS apps with a clean UX, strong performance, and secure architecture.
+          </p>
+          <a href="mobile-application-development.html" class="srv-card-read-more">
+            Read more
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none"
+              stroke="currentColor" stroke-width="2.5"
+              stroke-linecap="round" stroke-linejoin="round">
+              <path d="M5 12h14M12 5l7 7-7 7"/>
+            </svg>
+          </a>
         </div>
       </div>
 
       <!-- Web Application Development -->
-      <div class="srv-card reveal reveal-delay-2">
-        <div class="srv-card-header">
-          <div class="srv-card-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-              stroke-linejoin="round">
-              <circle cx="12" cy="12" r="10" />
-              <line x1="2" y1="12" x2="22" y2="12" />
-              <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z" />
-            </svg>
-          </div>
-          <h2>Web Application Development</h2>
+      <div class="srv-card reveal reveal-delay-2" onclick="window.location.href='web-application-development.html'">
+        <div class="srv-card-img" style="background-image: url('https://images.unsplash.com/photo-1461749280684-dccba630e2f6?w=800&q=80');"></div>
+        <div class="srv-card-text">
+          <span class="srv-card-label">07 Web App</span>
+          <h2 class="srv-card-title">Web Application Development</h2>
         </div>
-        <p class="srv-card-desc">
-          Modern, secure web applications built for speed, reliability, and scale - aligned to your business goals.
-        </p>
-        <div class="srv-card-footer">
-          <button class="srv-card-btn" onclick="window.location.href='web-application-development.html'">
-            Learn More
-          </button>
+        <div class="srv-card-overlay"></div>
+        <div class="srv-card-desc">
+          <p>
+            Modern, secure web applications built for speed, reliability, and scale - aligned to your business goals.
+          </p>
+          <a href="web-application-development.html" class="srv-card-read-more">
+            Read more
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none"
+              stroke="currentColor" stroke-width="2.5"
+              stroke-linecap="round" stroke-linejoin="round">
+              <path d="M5 12h14M12 5l7 7-7 7"/>
+            </svg>
+          </a>
         </div>
       </div>
 
       <!-- Data Analytics Solutions -->
-      <div class="srv-card reveal reveal-delay-3">
-        <div class="srv-card-header">
-          <div class="srv-card-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-              stroke-linejoin="round">
-              <line x1="18" y1="20" x2="18" y2="10" />
-              <line x1="12" y1="20" x2="12" y2="4" />
-              <line x1="6" y1="20" x2="6" y2="14" />
-            </svg>
-          </div>
-          <h2>Data Analytics Solutions</h2>
+      <div class="srv-card reveal reveal-delay-3" onclick="window.location.href='data-analytics-solutions.html'">
+        <div class="srv-card-img" style="background-image: url('https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&q=80');"></div>
+        <div class="srv-card-text">
+          <span class="srv-card-label">08 Data Analytics</span>
+          <h2 class="srv-card-title">Data Analytics Solutions</h2>
         </div>
-        <p class="srv-card-desc">
-          Turn raw data into clear dashboards and actionable insights to help teams make faster, better decisions.
-        </p>
-        <div class="srv-card-footer">
-          <button class="srv-card-btn" onclick="window.location.href='data-analytics-solutions.html'">
-            Learn More
-          </button>
+        <div class="srv-card-overlay"></div>
+        <div class="srv-card-desc">
+          <p>
+            Turn raw data into clear dashboards and actionable insights to help teams make faster, better decisions.
+          </p>
+          <a href="data-analytics-solutions.html" class="srv-card-read-more">
+            Read more
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none"
+              stroke="currentColor" stroke-width="2.5"
+              stroke-linecap="round" stroke-linejoin="round">
+              <path d="M5 12h14M12 5l7 7-7 7"/>
+            </svg>
+          </a>
         </div>
       </div>
 
-      <!-- AI & ML Solutions -->
-      <div class="srv-card reveal reveal-delay-1">
-        <div class="srv-card-header">
-          <div class="srv-card-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-              stroke-linejoin="round">
-              <path
-                d="M12 2a4 4 0 0 1 4 4v1h1a3 3 0 0 1 0 6h-1v1a4 4 0 0 1-8 0v-1H7a3 3 0 0 1 0-6h1V6a4 4 0 0 1 4-4z" />
-            </svg>
-          </div>
-          <h2>Artificial Intelligence &amp; Machine Learning</h2>
+      <!-- Artificial Intelligence & Machine Learning -->
+      <div class="srv-card reveal reveal-delay-1" onclick="window.location.href='artificial-intelligence-machine-learning.html'">
+        <div class="srv-card-img" style="background-image: url('https://images.unsplash.com/photo-1620712943543-bcc4688e7485?w=800&q=80');"></div>
+        <div class="srv-card-text">
+          <span class="srv-card-label">09 AI & ML</span>
+          <h2 class="srv-card-title">Artificial Intelligence & Machine Learning</h2>
         </div>
-        <p class="srv-card-desc">
-          Implement AI/ML solutions to automate workflows, enhance customer experiences, and unlock predictive insights.
-        </p>
-        <div class="srv-card-footer">
-          <button class="srv-card-btn" onclick="window.location.href='artificial-intelligence-machine-learning.html'">
-            Learn More
-          </button>
+        <div class="srv-card-overlay"></div>
+        <div class="srv-card-desc">
+          <p>
+            Implement AI/ML solutions to automate workflows, enhance customer experiences, and unlock predictive insights.
+          </p>
+          <a href="artificial-intelligence-machine-learning.html" class="srv-card-read-more">
+            Read more
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none"
+              stroke="currentColor" stroke-width="2.5"
+              stroke-linecap="round" stroke-linejoin="round">
+              <path d="M5 12h14M12 5l7 7-7 7"/>
+            </svg>
+          </a>
         </div>
       </div>
-
-    </div>
+        </div>
   </section>
 
   <!-- FOOTER -->

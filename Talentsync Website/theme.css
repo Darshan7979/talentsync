@@ -1,5 +1,5 @@
 /* ═══════════════════════════════════════════════
-   TALENTSYNC — DARK + WHITE CONTRAST THEME
+   TALENTSYNC, DARK + WHITE CONTRAST THEME
    Option 2: Dark navy shell · Clean white content
    Navy text on white · Gold hover accents
    Feels like: Apple, Pentagram, modern agency
@@ -28,18 +28,18 @@
 ::-webkit-scrollbar-thumb:hover { background: var(--navy); }
 * { scrollbar-width: thin; scrollbar-color: var(--blue) #f0f2ff; }
 
-/* ── Body — white base ── */
+/* ── Body, white base ── */
 body {
   background: var(--white) !important;
   color: var(--text-body) !important;
 }
 
 /* ══════════════════════════════
-   NAVBAR — controlled by navbar-home.css
+   NAVBAR, controlled by navbar-home.css
 ══════════════════════════════ */
 
 /* ══════════════════════════════
-   HERO BANNERS — dark navy
+   HERO BANNERS, dark navy
    (about, services, contact, jobs, blogs)
 ══════════════════════════════ */
 .about-hero,
@@ -53,7 +53,7 @@ body {
 .hero-wave svg path { fill: var(--white) !important; }
 
 /* ══════════════════════════════
-   INNER SECTIONS — clean white
+   INNER SECTIONS, clean white
 ══════════════════════════════ */
 .section,
 .srv-intro,
@@ -73,7 +73,7 @@ body {
 .pillars-section,
 .stats-bar { background: var(--off-white) !important; }
 
-/* ── Section text — navy on white ── */
+/* ── Section text, navy on white ── */
 h2, h3, h4 { color: var(--navy) !important; }
 h2::after { background: var(--blue) !important; }
 p { color: var(--text-body) !important; }
@@ -87,7 +87,7 @@ p { color: var(--text-body) !important; }
 .cta-tag { background: rgba(255,255,255,0.15) !important; color: #ffffff !important; }
 
 /* ══════════════════════════════
-   CARDS — white with navy text, gold hover
+   CARDS, white with navy text, gold hover
 ══════════════════════════════ */
 .value-card,
 .info-card,
