@@ -1359,7 +1359,7 @@
           </div>
           <div class="hero-stat-divider"></div>
           <div class="hero-stat">
-            <span class="hero-stat-num">1K+</span>
+            <span class="hero-stat-num">10K+</span>
             <span class="hero-stat-label">Candidates Placed</span>
           </div>
           <div class="hero-stat-divider"></div>
@@ -1862,15 +1862,7 @@
         }
         const cardWidth = getCardWidth();
         const offset = currentIndex * (cardWidth + gap);
-        track.style.transform = 'translateX(-' + offset + 'px)';
-        updateArrows();
-      }
-
-      rightBtn.addEventListener('click', function() { slide('right'); });
-      leftBtn.addEventListener('click', function() { slide('left'); });
-      
-      // Initialize arrows
-      updateArrows();
+        track.style.tra
 
       // Reset on resize
       window.addEventListener('resize', function() {
