@@ -135,21 +135,21 @@
     /* -- Values Grid -- */
     .values-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2rem; margin-top: 3rem; position: relative; z-index: 1; }
     .value-card { 
-      background: rgba(77, 20, 140, 0.15);
+      background: rgba(13, 27, 110, 0.2);
       backdrop-filter: blur(20px);
-      border: 1px solid rgba(123, 44, 191, 0.25);
+      border: 1px solid rgba(26, 60, 190, 0.3);
       padding: 2.5rem; 
       border-radius: 20px; 
       transition: all 0.4s ease; 
       position: relative; 
       overflow: hidden;
-      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2), inset 0 0 20px rgba(0, 153, 255, 0.05);
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2), inset 0 0 20px rgba(26, 60, 190, 0.05);
     }
-    .value-card::before { content: ""; position: absolute; top: 0; left: 0; width: 4px; height: 100%; background: linear-gradient(180deg, #0099ff, #7b2cbf); transform: scaleY(0); transition: transform 0.4s ease; }
-    .value-card:hover { transform: translateY(-10px); box-shadow: 0 20px 40px rgba(123, 44, 191, 0.3), inset 0 0 20px rgba(0, 153, 255, 0.1); border-color: rgba(0, 153, 255, 0.5); }
+    .value-card::before { content: ""; position: absolute; top: 0; left: 0; width: 4px; height: 100%; background: linear-gradient(180deg, #1a3cbe, #0e8fdd); transform: scaleY(0); transition: transform 0.4s ease; }
+    .value-card:hover { transform: translateY(-10px); box-shadow: 0 20px 40px rgba(26, 60, 190, 0.3), inset 0 0 20px rgba(26, 60, 190, 0.1); border-color: rgba(246, 211, 101, 0.5); }
     .value-card:hover::before { transform: scaleY(1); }
-    .value-icon { margin-bottom: 1.5rem; display: flex; align-items: center; color: #7b2cbf; }
-    .value-card h4 { font-size: 1.3rem; color: #0099ff; margin-bottom: 1rem; }
+    .value-icon { margin-bottom: 1.5rem; display: flex; align-items: center; color: #1a3cbe; }
+    .value-card h4 { font-size: 1.3rem; color: #f6d365; margin-bottom: 1rem; }
 
     /* -- Vision/Mission -- */
     .vision-mission { 
