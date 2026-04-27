@@ -502,10 +502,10 @@
       box-shadow: none;
       mask-image: none;
       -webkit-mask-image: none;
-      margin-left: -1.5rem;
-      margin-right: -1.5rem;
-      padding-left: 3.25rem;
-      padding-right: 3.25rem;
+      margin-left: 0;
+      margin-right: 0;
+      padding-left: 1rem;
+      padding-right: 1rem;
       scroll-behavior: smooth;
       scrollbar-width: none;
       -ms-overflow-style: none;
@@ -585,6 +585,7 @@
     }
 
     .page .industries-carousel .industries-nav {
+      display: none;
       position: absolute;
       inset: 0;
       z-index: 8;
@@ -1832,20 +1833,44 @@
         return Math.max(0, totalCards - visible);
       }
 
+      function updateArrows() {
+        const maxIdx = getMaxIndex();
+        // Hide left arrow at start
+        if (currentIndex <= 0) {
+          leftBtn.style.opacity = '0';
+          leftBtn.style.pointerEvents = 'none';
+        } else {
+          leftBtn.style.opacity = '1';
+          leftBtn.style.pointerEvents = 'auto';
+        }
+        // Hide right arrow at end
+        if (currentIndex >= maxIdx) {
+          rightBtn.style.opacity = '0';
+          rightBtn.style.pointerEvents = 'none';
+        } else {
+          rightBtn.style.opacity = '1';
+          rightBtn.style.pointerEvents = 'auto';
+        }
+      }
+
       function slide(direction) {
         const maxIdx = getMaxIndex();
         if (direction === 'right') {
-          currentIndex = currentIndex >= maxIdx ? 0 : currentIndex + 1;
+          currentIndex = currentIndex >= maxIdx ? maxIdx : currentIndex + 1;
         } else {
-          currentIndex = currentIndex <= 0 ? maxIdx : currentIndex - 1;
+          currentIndex = currentIndex <= 0 ? 0 : currentIndex - 1;
         }
         const cardWidth = getCardWidth();
         const offset = currentIndex * (cardWidth + gap);
         track.style.transform = 'translateX(-' + offset + 'px)';
+        updateArrows();
       }
 
       rightBtn.addEventListener('click', function() { slide('right'); });
       leftBtn.addEventListener('click', function() { slide('left'); });
+      
+      // Initialize arrows
+      updateArrows();
 
       // Reset on resize
       window.addEventListener('resize', function() {
