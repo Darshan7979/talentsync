@@ -56,4 +56,41 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   }, { threshold: 0.5 });
   document.querySelectorAll('.stat-num').forEach(function (el) { statsObserver.observe(el); });
+
+  const industriesMarquee = document.getElementById('industriesMarquee');
+  if (industriesMarquee) {
+    const industriesCarousel = industriesMarquee.closest('.industries-carousel');
+    const industriesTrack = industriesMarquee.querySelector('.industries-track');
+
+    function getCardStepSize() {
+      const firstCard = industriesTrack ? industriesTrack.querySelector('.industry-card') : null;
+      if (!firstCard) {
+        return Math.max(280, Math.floor(industriesMarquee.clientWidth * 0.8));
+      }
+
+      const trackStyles = window.getComputedStyle(industriesTrack);
+      const gap = parseFloat(trackStyles.columnGap || trackStyles.gap || '0');
+      const cardWidth = firstCard.getBoundingClientRect().width;
+      return Math.round(cardWidth + (Number.isNaN(gap) ? 0 : gap));
+    }
+
+    const navButtons = industriesCarousel
+      ? industriesCarousel.querySelectorAll('.industries-nav-btn')
+      : [];
+
+    // Start from a centered set of cards so both sides feel navigable on first load.
+    window.requestAnimationFrame(function () {
+      industriesMarquee.scrollLeft = getCardStepSize() * 4;
+    });
+
+    navButtons.forEach(function (button) {
+      button.addEventListener('click', function () {
+        const direction = button.getAttribute('data-dir') === 'prev' ? -1 : 1;
+        industriesMarquee.scrollBy({
+          left: direction * getCardStepSize(),
+          behavior: 'smooth'
+        });
+      });
+    });
+  }
 });

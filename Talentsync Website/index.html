@@ -465,7 +465,8 @@
     .page .industries-marquee {
       position: relative;
       padding: 1.3rem 0;
-      overflow: hidden;
+      overflow-x: auto;
+      overflow-y: visible;
       border: 0;
       background: transparent;
       box-shadow: none;
@@ -473,10 +474,84 @@
       -webkit-mask-image: none;
       margin-left: -1.5rem;
       margin-right: -1.5rem;
+      padding-left: 3.25rem;
+      padding-right: 3.25rem;
+      scroll-behavior: smooth;
+      scrollbar-width: none;
+      -ms-overflow-style: none;
+    }
+
+    .page .industries-carousel {
+      position: relative;
+    }
+
+    .page .industries-marquee::-webkit-scrollbar {
+      display: none;
     }
 
     .page .industries-focus-beam {
       display: none;
+    }
+
+    .page .industries-carousel .industries-nav {
+      position: absolute;
+      inset: 0;
+      z-index: 8;
+      pointer-events: none;
+    }
+
+    .page .industries-carousel .industries-nav-btn[data-dir="prev"] {
+      position: absolute;
+      top: 50%;
+      left: -3.4rem;
+      transform: translateY(-50%) scale(1);
+    }
+
+    .page .industries-carousel .industries-nav-btn[data-dir="next"] {
+      position: absolute;
+      top: 50%;
+      right: -2.45rem;
+      transform: translateY(-50%) scale(1);
+    }
+
+    .page .industries-carousel .industries-nav-btn {
+      pointer-events: auto;
+      width: 42px;
+      height: 42px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 999px;
+      border: 1px solid rgba(246, 211, 101, 0.42);
+      background: linear-gradient(145deg, rgba(10, 20, 68, 0.95), rgba(9, 14, 48, 0.95));
+      color: #f6d365;
+      box-shadow: 0 14px 26px rgba(4, 8, 30, 0.46);
+      cursor: pointer;
+      transition: transform 0.24s ease, border-color 0.24s ease, background 0.24s ease;
+    }
+
+    .page .industries-carousel .industries-nav-btn:hover {
+      transform: scale(1.06);
+      border-color: rgba(246, 211, 101, 0.7);
+      background: linear-gradient(145deg, rgba(18, 34, 102, 0.98), rgba(11, 20, 68, 0.95));
+    }
+
+    .page .industries-carousel .industries-nav-btn[data-dir="prev"]:hover,
+    .page .industries-carousel .industries-nav-btn[data-dir="next"]:hover {
+      transform: translateY(-50%) scale(1.06);
+    }
+
+    .page .industries-carousel .industries-nav-btn:focus-visible {
+      outline: 2px solid rgba(125, 211, 252, 0.95);
+      outline-offset: 2px;
+    }
+
+    .page .industries-carousel .industries-nav-btn svg {
+      width: 18px;
+      height: 18px;
+      stroke: currentColor;
+      stroke-width: 2.4;
+      fill: none;
     }
 
     .page .industries-track {
@@ -484,7 +559,7 @@
       gap: 1.35rem;
       width: max-content;
       padding: 0 0.25rem;
-      animation: industries-marquee 24s linear infinite;
+      animation: none;
     }
 
     .page .industries .industry-card {
@@ -1034,6 +1109,21 @@
       .industries-marquee {
         mask-image: none;
         -webkit-mask-image: none;
+        padding-left: 2.7rem;
+        padding-right: 2.7rem;
+      }
+
+      .industries-carousel .industries-nav-btn[data-dir="prev"] {
+        left: -2.7rem;
+      }
+
+      .industries-carousel .industries-nav-btn[data-dir="next"] {
+        right: -1.95rem;
+      }
+
+      .industries-carousel .industries-nav-btn {
+        width: 38px;
+        height: 38px;
       }
 
       .industries-focus-beam {
@@ -1079,6 +1169,24 @@
       .industries-track {
         gap: 1rem;
         animation-duration: 20s;
+      }
+
+      .industries-marquee {
+        padding-left: 2.35rem;
+        padding-right: 2.35rem;
+      }
+
+      .industries-carousel .industries-nav-btn {
+        width: 34px;
+        height: 34px;
+      }
+
+      .industries-carousel .industries-nav-btn[data-dir="prev"] {
+        left: -2.15rem;
+      }
+
+      .industries-carousel .industries-nav-btn[data-dir="next"] {
+        right: -1.45rem;
       }
 
       .industry-card {
@@ -1202,12 +1310,12 @@
 
         <div class="hero-stats">
           <div class="hero-stat">
-            <span class="hero-stat-num">500+</span>
+            <span class="hero-stat-num">100+</span>
             <span class="hero-stat-label">Partner Companies</span>
           </div>
           <div class="hero-stat-divider"></div>
           <div class="hero-stat">
-            <span class="hero-stat-num">10K+</span>
+            <span class="hero-stat-num">1K</span>
             <span class="hero-stat-label">Candidates Placed</span>
           </div>
           <div class="hero-stat-divider"></div>
@@ -1217,7 +1325,7 @@
           </div>
           <div class="hero-stat-divider"></div>
           <div class="hero-stat">
-            <span class="hero-stat-num">6+</span>
+            <span class="hero-stat-num">4+</span>
             <span class="hero-stat-label">Industries Served</span>
           </div>
         </div>
@@ -1242,7 +1350,20 @@
               <h2>Industries We Serve</h2>
               <p>Deep domain expertise across the most in-demand sectors in India.</p>
             </div>
-            <div class="industries-marquee reveal">
+            <div class="industries-carousel reveal">
+              <div class="industries-nav" aria-label="Industries navigation">
+                <button class="industries-nav-btn" type="button" data-dir="prev" aria-label="Show previous industries">
+                  <svg viewBox="0 0 24 24" aria-hidden="true">
+                    <path d="M15 6l-6 6 6 6" />
+                  </svg>
+                </button>
+                <button class="industries-nav-btn" type="button" data-dir="next" aria-label="Show next industries">
+                  <svg viewBox="0 0 24 24" aria-hidden="true">
+                    <path d="M9 6l6 6-6 6" />
+                  </svg>
+                </button>
+              </div>
+              <div class="industries-marquee" id="industriesMarquee">
               <div class="industries-focus-beam"></div>
               <div class="industries-track">
 
@@ -1390,6 +1511,7 @@
                   </div>
                 </article>
 
+              </div>
               </div>
             </div>
           </div>

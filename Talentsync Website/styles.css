@@ -1321,55 +1321,58 @@ body {
 /* WhatsApp Chat Button Styles */
 .whatsapp-chat-btn {
   position: fixed;
-  bottom: 30px;
-  right: 30px;
-  width: 60px;
-  height: 60px;
+  bottom: 24px;
+  right: 24px;
+  width: 52px;
+  height: 52px;
   background-color: #25D366; /* Official WhatsApp Color */
-  border-radius: 16px; /* Rounded Square */
+  border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
   box-shadow: 0 4px 15px rgba(37, 211, 102, 0.4);
   z-index: 9999;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-  animation: whatsapp-pulse 2s infinite ease-in-out;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.whatsapp-chat-btn svg {
+  width: 30px;
+  height: 30px;
 }
 
 .whatsapp-chat-btn:hover {
-  animation: none;
-  transform: scale(1.1);
-  box-shadow: 0 6px 20px rgba(37, 211, 102, 0.6);
-}
-
-@keyframes whatsapp-pulse {
-  0% { transform: scale(1); box-shadow: 0 4px 15px rgba(37, 211, 102, 0.4); }
-  50% { transform: scale(1.05); box-shadow: 0 6px 20px rgba(37, 211, 102, 0.6); }
-  100% { transform: scale(1); box-shadow: 0 4px 15px rgba(37, 211, 102, 0.4); }
+  transform: scale(1.04);
+  box-shadow: 0 6px 18px rgba(37, 211, 102, 0.52);
 }
 
 /* Responsive adjustments for smaller screens */
 @media (max-width: 768px) {
   .whatsapp-chat-btn {
-    bottom: 20px;
-    right: 20px;
-    width: 55px;
-    height: 55px;
-    border-radius: 14px;
+    bottom: 18px;
+    right: 18px;
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+  }
+
+  .whatsapp-chat-btn svg {
+    width: 28px;
+    height: 28px;
   }
 }
 
 @media (max-width: 480px) {
   .whatsapp-chat-btn {
-    bottom: 15px;
-    right: 15px;
-    width: 50px;
-    height: 50px;
-    border-radius: 12px;
+    bottom: 14px;
+    right: 14px;
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
   }
+
   .whatsapp-chat-btn svg {
-    width: 28px;
-    height: 28px;
+    width: 24px;
+    height: 24px;
   }
 }
 

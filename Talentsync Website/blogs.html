@@ -58,35 +58,34 @@
     .section-title .bar { width: 60px; height: 4px; background: var(--secondary); margin: 0 auto; border-radius: 2px; }
 
     /* ── Enterprise Flip Cards ── */
-    .resources-section { padding: 0.5rem 8% 1rem; background: transparent !important; }
+    .resources-section { padding: 1rem 8% 1rem; background: transparent !important; }
     .resources-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; perspective: 1000px; }
     .resource-card-link { text-decoration: none; display: block; opacity: 0; transform: translateY(40px); transition: opacity 0.7s cubic-bezier(0.2,0.8,0.2,1), transform 0.7s cubic-bezier(0.2,0.8,0.2,1); height: 420px; }
     .resource-card-link.in-view { opacity: 1; transform: translateY(0); }
-    .resource-card { position: relative !important; height: 420px !important; border-radius: 6px !important; overflow: hidden !important; padding: 0 !important; border: none !important; box-shadow: 0 8px 32px rgba(0,0,0,0.45) !important; backdrop-filter: none !important; -webkit-backdrop-filter: none !important; background: transparent !important; transition: transform 0.5s cubic-bezier(0.23,1,0.32,1), box-shadow 0.5s cubic-bezier(0.23,1,0.32,1) !important; cursor: pointer; display: block !important; transform-style: preserve-3d; will-change: transform; }
+    .resource-card { position: relative !important; height: 420px !important; border-radius: 6px !important; overflow: hidden !important; padding: 0 !important; border: none !important; box-shadow: 0 8px 32px rgba(0,0,0,0.45) !important; backdrop-filter: none !important; -webkit-backdrop-filter: none !important; background: transparent !important; transition: transform 0.25s ease, box-shadow 0.5s cubic-bezier(0.23,1,0.32,1) !important; cursor: pointer; display: block !important; transform-style: preserve-3d; will-change: transform; }
     .resource-card::after { display: none !important; }
-    .resource-card:hover { transform: translateY(-28px) scale(1.04) rotateX(4deg) !important; box-shadow: 0 50px 100px rgba(0,0,0,0.9), 0 25px 50px rgba(29,78,216,0.4), 0 0 0 1px rgba(99,102,241,0.25), 0 60px 40px -20px rgba(0,0,0,0.5) !important; }
+    .resource-card:hover { transform: translateY(-5px) !important; box-shadow: 0 32px 70px rgba(0,0,0,0.7), 0 18px 36px rgba(26,60,190,0.28), 0 0 0 1px rgba(246,211,101,0.18), 0 42px 28px -18px rgba(0,0,0,0.45) !important; }
     /* ── Front face ── */
-    .rc-front { position: absolute; inset: 0; z-index: 1; transition: opacity 0.4s ease; }
-    .rc-bg-split { position: absolute; inset: 0; background-image: url('pattern.jpg'); background-size: 300% 200%; background-repeat: no-repeat; z-index: 0; transition: transform 0.5s ease; }
-    .resource-card-link:nth-child(1) .rc-bg-split { background-position: 0% 0%; }
-    .resource-card-link:nth-child(2) .rc-bg-split { background-position: 50% 0%; }
-    .resource-card-link:nth-child(3) .rc-bg-split { background-position: 100% 0%; }
-    .resource-card-link:nth-child(4) .rc-bg-split { background-position: 0% 100%; }
-    .resource-card-link:nth-child(5) .rc-bg-split { background-position: 50% 100%; }
-    .resource-card-link:nth-child(6) .rc-bg-split { background-position: 100% 100%; }
-    .rc-front-overlay { position: absolute; inset: 0; background: linear-gradient(to top, rgba(0,0,0,0.82) 0%, rgba(0,0,0,0.2) 55%, rgba(0,0,0,0) 100%); z-index: 1; }
-    .rc-front-title { position: absolute; bottom: 1.6rem; left: 1.4rem; right: 1.4rem; z-index: 2; font-family: 'Poppins', sans-serif; font-size: 1.1rem; font-weight: 700; color: #ffffff !important; -webkit-text-fill-color: #ffffff !important; line-height: 1.4; text-shadow: 0 2px 10px rgba(0,0,0,0.8); margin: 0; }
+    .rc-front { position: absolute; inset: 0; z-index: 1; transition: opacity 0.4s ease, filter 0.4s ease; }
+    .rc-bg-split { position: absolute; inset: 0; background-size: cover; background-repeat: no-repeat; background-position: center; transform: scale(1) translate(0%, 0%); z-index: 0; transition: transform 0.55s cubic-bezier(0.4, 0, 0.2, 1); will-change: transform; }
+    .resource-card-link:nth-child(1) .rc-bg-split { background-image: url('https://images.unsplash.com/photo-1517048676732-d65bc937f952?auto=format&fit=crop&w=1400&q=80'); }
+    .resource-card-link:nth-child(2) .rc-bg-split { background-image: url('https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=1400&q=80'); }
+    .resource-card-link:nth-child(3) .rc-bg-split { background-image: url('https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=1400&q=80'); }
+    .resource-card-link:nth-child(4) .rc-bg-split { background-image: url('https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=1400&q=80'); }
+    .resource-card-link:nth-child(5) .rc-bg-split { background-image: url('https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=1400&q=80'); }
+    .resource-card-link:nth-child(6) .rc-bg-split { background-image: url('https://images.unsplash.com/photo-1521791136064-7986c2920216?auto=format&fit=crop&w=1400&q=80'); }
+    .rc-front-overlay { position: absolute; inset: 0; background: rgba(10, 10, 10, 0.65); opacity: 0.35; transition: opacity 0.45s ease; z-index: 1; }
+    .rc-front-title { position: absolute; top: 1.4rem; left: 1.4rem; right: 1.4rem; z-index: 2; font-family: 'Poppins', sans-serif; font-size: 1.1rem; font-weight: 700; color: #ffffff !important; -webkit-text-fill-color: #ffffff !important; line-height: 1.4; text-shadow: 0 2px 10px rgba(0,0,0,0.8); margin: 0; }
     /* ── Back face ── */
-    .rc-back { position: absolute; inset: 0; z-index: 2; background: linear-gradient(135deg, #0a0015 0%, #1a0a2e 50%, #2d1b69 100%); display: flex; flex-direction: column; justify-content: flex-end; padding: 2rem 1.8rem; opacity: 0; transform: translateY(100%); transition: opacity 1.4s cubic-bezier(0.23,1,0.32,1), transform 1.4s cubic-bezier(0.23,1,0.32,1); pointer-events: none; }
-    .resource-card:hover .rc-back { opacity: 1; transform: translateY(0); pointer-events: all; }
-    .resource-card:hover .rc-bg-split { transform: scale(1.06); }
-    .rc-back-badge { display: inline-block; padding: 4px 12px; background: rgba(167,139,250,0.15); color: #e9d5ff; font-size: 0.65rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; border-radius: 2px; border: 1px solid rgba(167,139,250,0.35); margin-bottom: 1rem; width: fit-content; }
-    .rc-back-title { font-family: 'Poppins', sans-serif; font-size: 1.15rem; font-weight: 700; color: #FFD700 !important; -webkit-text-fill-color: transparent !important; background: linear-gradient(135deg, #FFD700 0%, #FFF5A0 40%, #FFD700 60%, #FFA500 100%) !important; -webkit-background-clip: text !important; background-clip: text !important; line-height: 1.4; margin: 0 0 0.7rem 0; text-shadow: none !important; filter: drop-shadow(0 0 6px rgba(255,215,0,0.5)); }
-    .rc-back-desc { font-family: 'Poppins', sans-serif; font-size: 0.88rem; font-weight: 500; color: #ffffff !important; -webkit-text-fill-color: #ffffff !important; line-height: 1.75; margin: 0 0 1.4rem 0; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; text-shadow: none; opacity: 1 !important; }
-    .rc-back-btn { display: inline-flex; align-items: center; gap: 8px; padding: 0.55rem 1.3rem; background: rgba(167,139,250,0.15); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); border: 1px solid rgba(167,139,250,0.4); color: #e9d5ff !important; font-size: 0.78rem; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; border-radius: 3px; width: fit-content; transition: background 0.3s ease, gap 0.3s ease, border-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease; position: relative; overflow: hidden; }
-    .rc-back-btn::before { content: ''; position: absolute; inset: 0; background: linear-gradient(120deg, transparent 0%, rgba(167,139,250,0.25) 50%, transparent 100%); transform: translateX(-100%); transition: transform 0.5s ease; }
-    .rc-back-btn:hover { background: rgba(167,139,250,0.28); border-color: rgba(167,139,250,0.7); gap: 14px; transform: translateY(-2px); box-shadow: 0 6px 20px rgba(0,0,0,0.3), 0 0 14px rgba(167,139,250,0.4); }
-    .rc-back-btn:hover::before { transform: translateX(100%); }
+    .rc-back { position: absolute; inset: 0; z-index: 2; background: linear-gradient(135deg, rgba(6,13,46,0.76) 0%, rgba(10,24,88,0.78) 52%, rgba(13,27,110,0.82) 100%); display: flex; flex-direction: column; justify-content: flex-end; padding: 28px; opacity: 0; transform: translateX(100%); transition: opacity 0.5s ease, transform 0.5s cubic-bezier(0.4, 0, 0.2, 1) 0.08s; pointer-events: none; }
+    .resource-card:hover .rc-back { opacity: 1; transform: translateX(0%); pointer-events: all; }
+    .resource-card:hover .rc-front { opacity: 0.72; filter: saturate(0.96) brightness(0.9); }
+    .resource-card:hover .rc-bg-split { transform: scale(1.12) translate(5%, 5%); }
+    .resource-card:hover .rc-front-overlay { opacity: 0.88; }
+    .rc-back-badge { display: inline-block; padding: 4px 12px; background: rgba(26,60,190,0.2); color: #e4eeff; font-size: 0.65rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; border-radius: 2px; border: 1px solid rgba(125,211,252,0.3); margin-bottom: 1rem; width: fit-content; }
+    .rc-back-title { font-family: 'Poppins', sans-serif; font-size: 1.15rem; font-weight: 700; color: #FFD700 !important; -webkit-text-fill-color: transparent !important; background: linear-gradient(135deg, #fff3c4 0%, #f6d365 42%, #d4a017 100%) !important; -webkit-background-clip: text !important; background-clip: text !important; line-height: 1.4; margin: 0 0 0.7rem 0; text-shadow: 0 2px 10px rgba(0,0,0,0.78) !important; }
+    .rc-back-desc { font-family: 'Poppins', sans-serif; font-size: 0.88rem; font-weight: 500; color: #ffffff !important; -webkit-text-fill-color: #ffffff !important; line-height: 1.75; margin: 0 0 1.4rem 0; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; text-shadow: 0 2px 8px rgba(0,0,0,0.85); opacity: 1 !important; }
+    .rc-back-btn { display: inline-flex; align-items: center; gap: 6px; color: #f6d365 !important; font-weight: 700; font-size: 13px; letter-spacing: 0.5px; text-transform: uppercase; text-decoration: none; }
     @media (max-width: 1024px) { .resources-grid { grid-template-columns: repeat(2, 1fr); } }
     @media (max-width: 600px) { .resources-grid { grid-template-columns: 1fr; } .resource-card { height: 360px !important; } .resource-card-link { height: 360px; } }
 
@@ -323,11 +322,7 @@
           <div class="rc-back">
             <span class="rc-back-badge">Innovation</span>
             <h3 class="rc-back-title">AI and ML in Business Operations</h3>
-<<<<<<< HEAD
             <p class="rc-back-desc">From predictive planning to intelligent automation, exploring the technologies transforming modern business execution.</p>
-=======
-            <p class="rc-back-desc">From predictive planning to intelligent automation,exploring the technologies transforming modern business execution.</p>
->>>>>>> 29ac61a (Update website code and add animation scripts)
             <span class="rc-back-btn">Explore Tech →</span>
           </div>
         </div>
