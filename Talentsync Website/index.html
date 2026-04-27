@@ -503,42 +503,48 @@
     .page .industries-carousel .industries-nav-btn[data-dir="prev"] {
       position: absolute;
       top: 50%;
-      left: -3.4rem;
+      left: 1rem;
       transform: translateY(-50%) scale(1);
+      z-index: 10;
     }
 
     .page .industries-carousel .industries-nav-btn[data-dir="next"] {
       position: absolute;
       top: 50%;
-      right: -2.45rem;
+      right: 1rem;
       transform: translateY(-50%) scale(1);
+      z-index: 10;
     }
 
     .page .industries-carousel .industries-nav-btn {
       pointer-events: auto;
-      width: 42px;
-      height: 42px;
+      width: 48px;
+      height: 48px;
       display: inline-flex;
       align-items: center;
       justify-content: center;
       border-radius: 999px;
-      border: 1px solid rgba(246, 211, 101, 0.42);
-      background: linear-gradient(145deg, rgba(10, 20, 68, 0.95), rgba(9, 14, 48, 0.95));
-      color: #f6d365;
-      box-shadow: 0 14px 26px rgba(4, 8, 30, 0.46);
+      border: 2px solid rgba(246, 211, 101, 0.6);
+      background: rgba(255, 255, 255, 0.95);
+      color: #0d1b6e;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
       cursor: pointer;
-      transition: transform 0.24s ease, border-color 0.24s ease, background 0.24s ease;
+      transition: transform 0.24s ease, border-color 0.24s ease, background 0.24s ease, box-shadow 0.24s ease;
     }
 
     .page .industries-carousel .industries-nav-btn:hover {
-      transform: scale(1.06);
-      border-color: rgba(246, 211, 101, 0.7);
-      background: linear-gradient(145deg, rgba(18, 34, 102, 0.98), rgba(11, 20, 68, 0.95));
+      transform: scale(1.1);
+      border-color: #f6d365;
+      background: rgba(255, 255, 255, 1);
+      box-shadow: 0 12px 32px rgba(0, 0, 0, 0.4);
     }
 
-    .page .industries-carousel .industries-nav-btn[data-dir="prev"]:hover,
+    .page .industries-carousel .industries-nav-btn[data-dir="prev"]:hover {
+      transform: translateY(-50%) scale(1.1);
+    }
+
     .page .industries-carousel .industries-nav-btn[data-dir="next"]:hover {
-      transform: translateY(-50%) scale(1.06);
+      transform: translateY(-50%) scale(1.1);
     }
 
     .page .industries-carousel .industries-nav-btn:focus-visible {
@@ -547,10 +553,10 @@
     }
 
     .page .industries-carousel .industries-nav-btn svg {
-      width: 18px;
-      height: 18px;
+      width: 20px;
+      height: 20px;
       stroke: currentColor;
-      stroke-width: 2.4;
+      stroke-width: 3;
       fill: none;
     }
 
@@ -1351,18 +1357,6 @@
               <p>Deep domain expertise across the most in-demand sectors in India.</p>
             </div>
             <div class="industries-carousel reveal">
-              <div class="industries-nav" aria-label="Industries navigation">
-                <button class="industries-nav-btn" type="button" data-dir="prev" aria-label="Show previous industries">
-                  <svg viewBox="0 0 24 24" aria-hidden="true">
-                    <path d="M15 6l-6 6 6 6" />
-                  </svg>
-                </button>
-                <button class="industries-nav-btn" type="button" data-dir="next" aria-label="Show next industries">
-                  <svg viewBox="0 0 24 24" aria-hidden="true">
-                    <path d="M9 6l6 6-6 6" />
-                  </svg>
-                </button>
-              </div>
               <div class="industries-marquee" id="industriesMarquee">
               <div class="industries-focus-beam"></div>
               <div class="industries-track">
