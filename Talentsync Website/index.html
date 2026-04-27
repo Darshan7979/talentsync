@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -185,7 +185,7 @@
       background:
         radial-gradient(circle at top center, rgba(56, 189, 248, 0.16), transparent 24%),
         radial-gradient(circle at 12% 24%, rgba(244, 114, 182, 0.12), transparent 22%),
-        linear-gradient(180deg, #090f35 0%, #0a113d 24%, #0c1234 100%);
+        linear-gradient(160deg, #010818 0%, #020d2e 30%, #030f3a 60%, #040c30 80%, #050e38 100%);
       padding: 0 1.35rem 6rem;
       overflow: hidden;
     }
@@ -301,7 +301,7 @@
     .section-header h2,
     .hiw-header h2,
     .cta-content h2 {
-      margin: 0 0 0.4rem;
+      margin: 0.85rem 0 0.7rem;
       font-family: 'Poppins', sans-serif;
       font-size: clamp(1.7rem, 2.8vw, 2.4rem);
       font-weight: 700;
@@ -390,7 +390,7 @@
     }
 
     .page .industries {
-      padding: 2.2rem 0 4rem 0;
+      padding: 2.2rem 0;
       background: transparent !important;
       overflow: hidden;
       position: relative;
@@ -451,7 +451,6 @@
       gap: 1.8rem;
       align-items: stretch;
       padding-top: 3rem;
-      padding-bottom: 3rem;
       max-width: 1180px;
       margin: 0 auto;
       width: 100%;
@@ -520,6 +519,67 @@
       display: none;
     }
 
+    .industries-slider-wrapper {
+      position: relative;
+      display: flex;
+      align-items: center;
+      padding: 0 4.25rem;
+      gap: 0;
+    }
+
+    .industries-slider-wrapper .industries-marquee {
+      flex: 1;
+      margin-left: 0;
+      margin-right: 0;
+      padding-left: 0;
+      padding-right: 0;
+    }
+
+    .industries-arrow {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      z-index: 10;
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      border: 1px solid rgba(246, 211, 101, 0.3);
+      background: rgba(7, 14, 50, 0.85);
+      backdrop-filter: blur(12px);
+      color: #f7e6a1;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.3s ease;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.4);
+    }
+
+    .industries-arrow:hover {
+      background: rgba(246, 211, 101, 0.15);
+      border-color: rgba(246, 211, 101, 0.6);
+      transform: translateY(-50%) scale(1.1);
+      box-shadow: 0 12px 32px rgba(246, 211, 101, 0.15);
+    }
+
+    .industries-arrow svg {
+      width: 22px;
+      height: 22px;
+      stroke: currentColor;
+      fill: none;
+      stroke-width: 2.5;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    .industries-arrow-left {
+      left: 0.85rem;
+    }
+
+    .industries-arrow-right {
+      right: 0.85rem;
+    }
+
     .page .industries-focus-beam {
       display: none;
     }
@@ -534,48 +594,42 @@
     .page .industries-carousel .industries-nav-btn[data-dir="prev"] {
       position: absolute;
       top: 50%;
-      left: 1rem;
+      left: -3.4rem;
       transform: translateY(-50%) scale(1);
-      z-index: 10;
     }
 
     .page .industries-carousel .industries-nav-btn[data-dir="next"] {
       position: absolute;
       top: 50%;
-      right: 1rem;
+      right: -2.45rem;
       transform: translateY(-50%) scale(1);
-      z-index: 10;
     }
 
     .page .industries-carousel .industries-nav-btn {
       pointer-events: auto;
-      width: 48px;
-      height: 48px;
+      width: 42px;
+      height: 42px;
       display: inline-flex;
       align-items: center;
       justify-content: center;
       border-radius: 999px;
-      border: 2px solid rgba(246, 211, 101, 0.6);
-      background: rgba(255, 255, 255, 0.95);
-      color: #0d1b6e;
-      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+      border: 1px solid rgba(246, 211, 101, 0.42);
+      background: linear-gradient(145deg, rgba(10, 20, 68, 0.95), rgba(9, 14, 48, 0.95));
+      color: #f6d365;
+      box-shadow: 0 14px 26px rgba(4, 8, 30, 0.46);
       cursor: pointer;
-      transition: transform 0.24s ease, border-color 0.24s ease, background 0.24s ease, box-shadow 0.24s ease;
+      transition: transform 0.24s ease, border-color 0.24s ease, background 0.24s ease;
     }
 
     .page .industries-carousel .industries-nav-btn:hover {
-      transform: scale(1.1);
-      border-color: #f6d365;
-      background: rgba(255, 255, 255, 1);
-      box-shadow: 0 12px 32px rgba(0, 0, 0, 0.4);
+      transform: scale(1.06);
+      border-color: rgba(246, 211, 101, 0.7);
+      background: linear-gradient(145deg, rgba(18, 34, 102, 0.98), rgba(11, 20, 68, 0.95));
     }
 
-    .page .industries-carousel .industries-nav-btn[data-dir="prev"]:hover {
-      transform: translateY(-50%) scale(1.1);
-    }
-
+    .page .industries-carousel .industries-nav-btn[data-dir="prev"]:hover,
     .page .industries-carousel .industries-nav-btn[data-dir="next"]:hover {
-      transform: translateY(-50%) scale(1.1);
+      transform: translateY(-50%) scale(1.06);
     }
 
     .page .industries-carousel .industries-nav-btn:focus-visible {
@@ -584,19 +638,18 @@
     }
 
     .page .industries-carousel .industries-nav-btn svg {
-      width: 20px;
-      height: 20px;
+      width: 18px;
+      height: 18px;
       stroke: currentColor;
-      stroke-width: 3;
+      stroke-width: 2.4;
       fill: none;
     }
 
     .page .industries-track {
       display: flex;
       gap: 1.35rem;
-      width: max-content;
       padding: 0 0.25rem;
-      animation: none;
+      transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
     }
 
     .page .industries .industry-card {
@@ -613,7 +666,6 @@
       z-index: 1;
       will-change: transform;
       transition: transform 0.42s ease, border-color 0.42s ease, box-shadow 0.42s ease;
-      animation: industry-pop 24s ease-in-out infinite;
     }
 
     .page .industries .industry-card::before {
@@ -653,10 +705,7 @@
       transform: scaleX(1.1);
     }
 
-    .page .industries-marquee:hover .industries-track,
-    .page .industries-marquee:hover .industry-card {
-      animation-play-state: paused;
-    }
+
 
     .page .industries .industry-card:hover .industry-media {
       transform: scale(1.08);
@@ -728,84 +777,7 @@
       line-height: 1.7;
     }
 
-    .industries-track .industry-card:nth-child(1) {
-      animation-delay: 0s;
-    }
 
-    .industries-track .industry-card:nth-child(2) {
-      animation-delay: 4s;
-    }
-
-    .industries-track .industry-card:nth-child(3) {
-      animation-delay: 8s;
-    }
-
-    .industries-track .industry-card:nth-child(4) {
-      animation-delay: 12s;
-    }
-
-    .industries-track .industry-card:nth-child(5) {
-      animation-delay: 16s;
-    }
-
-    .industries-track .industry-card:nth-child(6) {
-      animation-delay: 20s;
-    }
-
-    .industries-track .industry-card:nth-child(7) {
-      animation-delay: 0s;
-    }
-
-    .industries-track .industry-card:nth-child(8) {
-      animation-delay: 4s;
-    }
-
-    .industries-track .industry-card:nth-child(9) {
-      animation-delay: 8s;
-    }
-
-    .industries-track .industry-card:nth-child(10) {
-      animation-delay: 12s;
-    }
-
-    .industries-track .industry-card:nth-child(11) {
-      animation-delay: 16s;
-    }
-
-    .industries-track .industry-card:nth-child(12) {
-      animation-delay: 20s;
-    }
-
-    @keyframes industries-marquee {
-      from {
-        transform: translateX(0);
-      }
-
-      to {
-        transform: translateX(calc(-50% - 0.675rem));
-      }
-    }
-
-    @keyframes industry-pop {
-
-      0%,
-      15%,
-      100% {
-        transform: translateY(0) scale(1);
-        box-shadow: 0 22px 44px rgba(3, 7, 24, 0.34);
-      }
-
-      16%,
-      20.5% {
-        transform: translateY(-24px) scale(1.1);
-        box-shadow: 0 38px 78px rgba(3, 7, 24, 0.52);
-      }
-
-      23% {
-        transform: translateY(0) scale(1);
-        box-shadow: 0 22px 44px rgba(3, 7, 24, 0.34);
-      }
-    }
 
     .page .how-it-works-v2 {
       padding: 2rem 0;
@@ -1150,6 +1122,23 @@
         padding-right: 2.7rem;
       }
 
+      .industries-slider-wrapper {
+        padding: 0 3.25rem;
+      }
+
+      .industries-arrow {
+        width: 42px;
+        height: 42px;
+      }
+
+      .industries-arrow-left {
+        left: 0.45rem;
+      }
+
+      .industries-arrow-right {
+        right: 0.45rem;
+      }
+
       .industries-carousel .industries-nav-btn[data-dir="prev"] {
         left: -2.7rem;
       }
@@ -1211,6 +1200,23 @@
       .industries-marquee {
         padding-left: 2.35rem;
         padding-right: 2.35rem;
+      }
+
+      .industries-slider-wrapper {
+        padding: 0 2.7rem;
+      }
+
+      .industries-arrow {
+        width: 36px;
+        height: 36px;
+      }
+
+      .industries-arrow-left {
+        left: 0.25rem;
+      }
+
+      .industries-arrow-right {
+        right: 0.25rem;
       }
 
       .industries-carousel .industries-nav-btn {
@@ -1387,10 +1393,13 @@
               <h2>Industries We Serve</h2>
               <p>Deep domain expertise across the most in-demand sectors in India.</p>
             </div>
-            <div class="industries-carousel reveal">
-              <div class="industries-marquee" id="industriesMarquee">
-              <div class="industries-focus-beam"></div>
-              <div class="industries-track">
+            <div class="industries-slider-wrapper">
+              <button class="industries-arrow industries-arrow-left" id="indArrowLeft" aria-label="Previous">
+                <svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg>
+              </button>
+              <div class="industries-marquee reveal">
+                <div class="industries-focus-beam"></div>
+                <div class="industries-track" id="industriesTrack">
 
                 <article class="industry-card">
                   <div class="industry-media" style="background-image:url('./assests/bpo-2.jpg');"></div>
@@ -1464,80 +1473,11 @@
                   </div>
                 </article>
 
-                <article class="industry-card" aria-hidden="true">
-                  <div class="industry-media" style="background-image:url('./assests/bpo-2.jpg');"></div>
-                  <div class="industry-card-body">
-                    <div class="industry-topline"><span class="industry-badge">Operations</span>
-                    </div>
-                    <div class="industry-copy">
-                      <div class="industry-name">BPO / KPO</div>
-                      <div class="industry-desc">Customer support, data processing knowledge services</div>
-                    </div>
-                  </div>
-                </article>
-
-                <article class="industry-card" aria-hidden="true">
-                  <div class="industry-media" style="background-image:url('./assests/bank.jpeg');"></div>
-                  <div class="industry-card-body">
-                    <div class="industry-topline"><span class="industry-badge">Finance</span>
-                    </div>
-                    <div class="industry-copy">
-                      <div class="industry-name">Banking Finance</div>
-                      <div class="industry-desc">BFSI, insurance, fintech investment roles</div>
-                    </div>
-                  </div>
-                </article>
-
-                <article class="industry-card" aria-hidden="true">
-                  <div class="industry-media" style="background-image:url('./assests/Hospitality.jpg');"></div>
-                  <div class="industry-card-body">
-                    <div class="industry-topline"><span class="industry-badge">Service</span>
-                    </div>
-                    <div class="industry-copy">
-                      <div class="industry-name">Hospitality</div>
-                      <div class="industry-desc">Hotels, restaurants, travel &amp; tourism staffing</div>
-                    </div>
-                  </div>
-                </article>
-
-                <article class="industry-card" aria-hidden="true">
-                  <div class="industry-media" style="background-image:url('./assests/it.jpg');"></div>
-                  <div class="industry-card-body">
-                    <div class="industry-topline"><span class="industry-badge">Technology</span>
-                    </div>
-                    <div class="industry-copy">
-                      <div class="industry-name">IT &amp; Technology</div>
-                      <div class="industry-desc">Software, cloud, AI/ML &amp; product companies</div>
-                    </div>
-                  </div>
-                </article>
-
-                <article class="industry-card" aria-hidden="true">
-                  <div class="industry-media" style="background-image:url('./assests/manufacturing.jpg');"></div>
-                  <div class="industry-card-body">
-                    <div class="industry-topline"><span class="industry-badge">Industrial</span>
-                    </div>
-                    <div class="industry-copy">
-                      <div class="industry-name">Manufacturing</div>
-                      <div class="industry-desc">Production, quality, supply chain &amp; engineering</div>
-                    </div>
-                  </div>
-                </article>
-
-                <article class="industry-card" aria-hidden="true">
-                  <div class="industry-media" style="background-image:url('./assests/healthcare.jpg');"></div>
-                  <div class="industry-card-body">
-                    <div class="industry-topline"><span class="industry-badge">Care</span>
-                    </div>
-                    <div class="industry-copy">
-                      <div class="industry-name">Healthcare</div>
-                      <div class="industry-desc">Hospitals, pharma, diagnostics &amp; medical devices</div>
-                    </div>
-                  </div>
-                </article>
-
+                </div>
               </div>
-              </div>
+              <button class="industries-arrow industries-arrow-right" id="indArrowRight" aria-label="Next">
+                <svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg>
+              </button>
             </div>
           </div>
         </section>
@@ -1860,6 +1800,60 @@
   </div><!-- /.page -->
 
   <script src="script.js"></script>
+
+  <script>
+    // Industries Slider Arrow Navigation
+    (function() {
+      const track = document.getElementById('industriesTrack');
+      const leftBtn = document.getElementById('indArrowLeft');
+      const rightBtn = document.getElementById('indArrowRight');
+      if (!track || !leftBtn || !rightBtn) return;
+
+      let currentIndex = 0;
+      const cards = track.querySelectorAll('.industry-card');
+      const totalCards = cards.length;
+      const gap = 21.6; // 1.35rem in px approx
+
+      function getCardWidth() {
+        if (cards.length === 0) return 320;
+        return cards[0].getBoundingClientRect().width;
+      }
+
+      function getVisibleCount() {
+        const marquee = track.closest('.industries-marquee');
+        if (!marquee) return 3;
+        const containerWidth = marquee.getBoundingClientRect().width;
+        const cardWidth = getCardWidth();
+        return Math.floor(containerWidth / (cardWidth + gap));
+      }
+
+      function getMaxIndex() {
+        const visible = getVisibleCount();
+        return Math.max(0, totalCards - visible);
+      }
+
+      function slide(direction) {
+        const maxIdx = getMaxIndex();
+        if (direction === 'right') {
+          currentIndex = currentIndex >= maxIdx ? 0 : currentIndex + 1;
+        } else {
+          currentIndex = currentIndex <= 0 ? maxIdx : currentIndex - 1;
+        }
+        const cardWidth = getCardWidth();
+        const offset = currentIndex * (cardWidth + gap);
+        track.style.transform = 'translateX(-' + offset + 'px)';
+      }
+
+      rightBtn.addEventListener('click', function() { slide('right'); });
+      leftBtn.addEventListener('click', function() { slide('left'); });
+
+      // Reset on resize
+      window.addEventListener('resize', function() {
+        currentIndex = 0;
+        track.style.transform = 'translateX(0)';
+      });
+    })();
+  </script>
 
 
   <!-- WhatsApp Chat Button -->
