@@ -87,6 +87,8 @@
     h2::after { content: ""; display: block; width: 60px; height: 4px; background: linear-gradient(90deg, #0099ff, #7b2cbf); margin-top: 10px; border-radius: 2px; }
     .center-header { text-align: center; position: relative; z-index: 1; }
     .center-header h2::after { margin-left: auto; margin-right: auto; }
+    .left-header { text-align: left; position: relative; z-index: 1; }
+    .left-header h2::after { margin-left: 0; }
     p { line-height: 1.9; margin-bottom: 1.2rem; color: rgba(224, 224, 224, 0.9); }
 
     /* -- Stats -- */
@@ -326,9 +328,9 @@
 
   <!-- Our Values -->
   <section class="section" style="padding-top: 0;">
-    <div class="center-header">
+    <div class="left-header">
       <h2>Our Core Values</h2>
-      <p style="max-width: 600px; margin: 0.5rem auto 3rem;">The principles that guide every interaction, from recruitment lifecycle to software deployment.</p>
+      <p style="max-width: 600px; margin: 0.5rem 0 3rem;">The principles that guide every interaction, from recruitment lifecycle to software deployment.</p>
     </div>
     <div class="values-grid">
       <div class="value-card reveal">
