@@ -20,8 +20,8 @@
       --white: #ffffff;
     }
 
-    body { background: #0a0015 !important; overflow-x: hidden; overflow-y: auto; font-family: 'Poppins', sans-serif; color: #e2d9f3; }
-    body::before { content: ''; position: fixed; inset: 0; background: linear-gradient(rgba(10,0,21,0.55), rgba(45,27,105,0.45)); z-index: -1; pointer-events: none; }
+    body { background: #050e3a !important; overflow-x: hidden; overflow-y: auto; font-family: 'Poppins', sans-serif; color: #e2d9f3; }
+    body::before { content: ''; position: fixed; inset: 0; background: linear-gradient(180deg, #061032 0%, #08133a 100%); z-index: -1; pointer-events: none; }
 
 
 
@@ -54,11 +54,11 @@
 
     /* ── Content Elements ── */
     .section-title { text-align: center; margin-bottom: 1.5rem; }
-    .section-title h3 { font-size: 1.5rem; color: var(--primary); margin-bottom: 0.6rem; position: relative; }
+    .section-title h3 { font-size: 2rem; color: var(--primary); margin-bottom: 0.6rem; position: relative; }
     .section-title .bar { width: 60px; height: 4px; background: var(--secondary); margin: 0 auto; border-radius: 2px; }
 
     /* ── Enterprise Flip Cards ── */
-    .resources-section { padding: 1rem 8% 1rem; background: transparent !important; }
+    .resources-section { padding: 3rem 8% 1rem; background: transparent !important; }
     .resources-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; perspective: 1000px; }
     .resource-card-link { text-decoration: none; display: block; opacity: 0; transform: translateY(40px); transition: opacity 0.7s cubic-bezier(0.2,0.8,0.2,1), transform 0.7s cubic-bezier(0.2,0.8,0.2,1); height: 420px; }
     .resource-card-link.in-view { opacity: 1; transform: translateY(0); }
