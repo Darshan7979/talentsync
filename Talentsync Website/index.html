@@ -48,7 +48,7 @@
     }
 
     .hero-stat-num {
-      font-size: 2rem !important;
+      font-size: 1.5rem !important;
       font-weight: 800 !important;
       background: linear-gradient(90deg, #fff3c4, #f6d365, #d4a017) !important;
       -webkit-background-clip: text !important;
@@ -966,9 +966,9 @@
       border: 1px solid rgba(246, 211, 101, 0.18) !important;
       background:
         radial-gradient(circle at top left, rgba(246, 211, 101, 0.16), transparent 24%),
-        radial-gradient(circle at 78% 22%, rgba(124, 58, 237, 0.18), transparent 26%),
-        radial-gradient(circle at bottom right, rgba(56, 189, 248, 0.12), transparent 24%),
-        linear-gradient(135deg, rgba(13, 24, 82, 0.98), rgba(25, 16, 79, 0.96), rgba(8, 18, 61, 0.98)) !important;
+        radial-gradient(circle at 78% 22%, rgba(26, 60, 190, 0.18), transparent 26%),
+        radial-gradient(circle at bottom right, rgba(14, 143, 221, 0.12), transparent 24%),
+        linear-gradient(135deg, rgba(13, 27, 110, 0.98), rgba(13, 24, 82, 0.96), rgba(8, 18, 61, 0.98)) !important;
       box-shadow: 0 30px 90px rgba(4, 8, 30, 0.4) !important;
       overflow: hidden;
       isolation: isolate;
@@ -992,7 +992,7 @@
       position: absolute;
       inset: auto 1.6rem 1.1rem 1.6rem;
       height: 1px;
-      background: linear-gradient(90deg, transparent 0%, rgba(246, 211, 101, 0.8) 35%, rgba(124, 58, 237, 0.7) 70%, transparent 100%);
+      background: linear-gradient(90deg, transparent 0%, rgba(246, 211, 101, 0.8) 35%, rgba(26, 60, 190, 0.7) 70%, transparent 100%);
       opacity: 0.75;
       pointer-events: none;
     }
@@ -1354,12 +1354,12 @@
 
         <div class="hero-stats">
           <div class="hero-stat">
-            <span class="hero-stat-num">100+</span>
+            <span class="hero-stat-num">50+</span>
             <span class="hero-stat-label">Partner Companies</span>
           </div>
           <div class="hero-stat-divider"></div>
           <div class="hero-stat">
-            <span class="hero-stat-num">10K+</span>
+            <span class="hero-stat-num">500+</span>
             <span class="hero-stat-label">Candidates Placed</span>
           </div>
           <div class="hero-stat-divider"></div>
@@ -1369,7 +1369,7 @@
           </div>
           <div class="hero-stat-divider"></div>
           <div class="hero-stat">
-            <span class="hero-stat-num">6+</span>
+            <span class="hero-stat-num">4+</span>
             <span class="hero-stat-label">Industries Served</span>
           </div>
         </div>
@@ -1382,12 +1382,6 @@
 
         <!-- INDUSTRIES -->
         <section class="industries reveal">
-          <div class="industries-video-wrap">
-            <video autoplay muted loop playsinline>
-              <source src="./bg-video.mp4" type="video/mp4" />
-            </video>
-            <div class="industries-video-overlay"></div>
-          </div>
           <div class="industries-shell">
             <div class="section-header reveal">
 
@@ -1862,12 +1856,21 @@
         }
         const cardWidth = getCardWidth();
         const offset = currentIndex * (cardWidth + gap);
-        track.style.tra
+        track.style.transform = 'translateX(-' + offset + 'px)';
+        updateArrows();
+      }
+
+      rightBtn.addEventListener('click', function() { slide('right'); });
+      leftBtn.addEventListener('click', function() { slide('left'); });
+      
+      // Initialize arrows
+      updateArrows();
 
       // Reset on resize
       window.addEventListener('resize', function() {
         currentIndex = 0;
         track.style.transform = 'translateX(0)';
+        updateArrows();
       });
     })();
   </script>
