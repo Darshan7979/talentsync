@@ -139,11 +139,11 @@
 
     /* â”€â”€ HERO â”€â”€ */
     .srv-hero {
-      min-height: 44vh;
+      min-height: 36vh;
       display: flex;
       align-items: center;
       justify-content: center;
-      padding: 1.4rem 2rem 0.9rem;
+      padding: 1.4rem 2rem 0.5rem;
       text-align: center;
       color: #fff;
       position: relative;
@@ -200,7 +200,7 @@
     .srv-hero h1 {
       font-family: 'Times New Roman', Times, serif;
       font-weight: 800;
-      font-size: clamp(3rem, 7vw, 5.8rem);
+      font-size: clamp(2.6rem, 6vw, 4.8rem);
       color: #fff;
       margin-bottom: 0;
       margin-top: 0;
@@ -253,9 +253,34 @@
       padding: 0 2rem 5rem;
     }
 
+    .srv-section-header {
+      max-width: 1200px;
+      margin: 0 auto 2.5rem;
+      text-align: left;
+      padding-top: 1.5rem;
+    }
+
+    .srv-section-header h2 {
+      font-family: 'Poppins', sans-serif;
+      font-size: clamp(1.8rem, 3vw, 2.4rem);
+      font-weight: 700;
+      color: #fff;
+      background: linear-gradient(90deg, #fff3c4 0%, #f6d365 40%, #d4a017 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      margin-bottom: 0.5rem;
+    }
+
+    .srv-section-header p {
+      font-size: 1rem;
+      color: rgba(220, 228, 255, 0.75);
+      margin: 0;
+    }
+
     .srv-grid {
       max-width: 1200px;
-      margin: 0 auto;
+      margin: 0 auto 4rem;
       display: grid;
       grid-template-columns: repeat(3, 1fr);
       gap: 2rem;
@@ -492,6 +517,12 @@
 
   <!-- SERVICES GRID -->
   <section class="srv-grid-section" id="services">
+    
+    <!-- Section 1: HR & Recruitment Services -->
+    <div class="srv-section-header">
+      <h2>HR & Recruitment Services</h2>
+      <p>Comprehensive talent acquisition and workforce management solutions</p>
+    </div>
     <div class="srv-grid">
       <!-- Recruitment Process Outsourcing (RPO) -->
       <div class="srv-card reveal reveal-delay-1" onclick="window.location.href='recruitment-process-outsourcing.html'">
@@ -584,9 +615,16 @@
           </a>
         </div>
       </div>
+    </div>
 
+    <!-- Section 2: Software Development Services -->
+    <div class="srv-section-header">
+      <h2>Software Development Services</h2>
+      <p>Custom software solutions tailored to your business needs</p>
+    </div>
+    <div class="srv-grid">
       <!-- Customised Software Development -->
-      <div class="srv-card reveal reveal-delay-3" onclick="window.location.href='customised-software-development.html'">
+      <div class="srv-card reveal reveal-delay-1" onclick="window.location.href='customised-software-development.html'">
         <div class="srv-card-img" style="background-image: url('https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=800&q=80');"></div>
         <div class="srv-card-text">
           <span class="srv-card-label">05 Custom Software</span>
@@ -609,7 +647,7 @@
       </div>
 
       <!-- Mobile Application Development -->
-      <div class="srv-card reveal reveal-delay-1" onclick="window.location.href='mobile-application-development.html'">
+      <div class="srv-card reveal reveal-delay-2" onclick="window.location.href='mobile-application-development.html'">
         <div class="srv-card-img" style="background-image: url('https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?w=800&q=80');"></div>
         <div class="srv-card-text">
           <span class="srv-card-label">06 Mobile App</span>
@@ -632,7 +670,7 @@
       </div>
 
       <!-- Web Application Development -->
-      <div class="srv-card reveal reveal-delay-2" onclick="window.location.href='web-application-development.html'">
+      <div class="srv-card reveal reveal-delay-3" onclick="window.location.href='web-application-development.html'">
         <div class="srv-card-img" style="background-image: url('https://images.unsplash.com/photo-1461749280684-dccba630e2f6?w=800&q=80');"></div>
         <div class="srv-card-text">
           <span class="srv-card-label">07 Web App</span>
@@ -653,9 +691,16 @@
           </a>
         </div>
       </div>
+    </div>
 
+    <!-- Section 3: Advanced Technology Services -->
+    <div class="srv-section-header">
+      <h2>Advanced Technology Services</h2>
+      <p>Cutting-edge AI, ML, and data analytics solutions</p>
+    </div>
+    <div class="srv-grid">
       <!-- Data Analytics Solutions -->
-      <div class="srv-card reveal reveal-delay-3" onclick="window.location.href='data-analytics-solutions.html'">
+      <div class="srv-card reveal reveal-delay-1" onclick="window.location.href='data-analytics-solutions.html'">
         <div class="srv-card-img" style="background-image: url('https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&q=80');"></div>
         <div class="srv-card-text">
           <span class="srv-card-label">08 Data Analytics</span>
@@ -678,7 +723,7 @@
       </div>
 
       <!-- Artificial Intelligence & Machine Learning -->
-      <div class="srv-card reveal reveal-delay-1" onclick="window.location.href='artificial-intelligence-machine-learning.html'">
+      <div class="srv-card reveal reveal-delay-2" onclick="window.location.href='artificial-intelligence-machine-learning.html'">
         <div class="srv-card-img" style="background-image: url('https://images.unsplash.com/photo-1620712943543-bcc4688e7485?w=800&q=80');"></div>
         <div class="srv-card-text">
           <span class="srv-card-label">09 AI & ML</span>
@@ -699,7 +744,30 @@
           </a>
         </div>
       </div>
+
+      <!-- Digital Marketing -->
+      <div class="srv-card reveal reveal-delay-3" onclick="window.location.href='digital-marketing.html'">
+        <div class="srv-card-img" style="background-image: url('https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&q=80');"></div>
+        <div class="srv-card-text">
+          <span class="srv-card-label">10 Digital Marketing</span>
+          <h2 class="srv-card-title">Digital Marketing</h2>
         </div>
+        <div class="srv-card-overlay"></div>
+        <div class="srv-card-desc">
+          <p>
+            Strategic digital marketing solutions to grow your online presence and reach.
+          </p>
+          <a href="digital-marketing.html" class="srv-card-read-more">
+            Read more
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none"
+              stroke="currentColor" stroke-width="2.5"
+              stroke-linecap="round" stroke-linejoin="round">
+              <path d="M5 12h14M12 5l7 7-7 7"/>
+            </svg>
+          </a>
+        </div>
+      </div>
+    </div>
   </section>
 
   <!-- FOOTER -->
